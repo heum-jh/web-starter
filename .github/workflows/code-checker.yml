@@ -1,0 +1,69 @@
+name: 코드 검사
+on:
+  push:
+    branches-ignore:
+      - 'deploy'
+  workflow_dispatch:
+jobs:
+  lint:
+    name: ⬣ ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.11.0
+
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v3.5.2
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v2.5.2
+        with:
+          node-version: 18
+
+      - name: 📥 Download packages
+        run: yarn
+
+      - name: 🔎 Lint check
+        run: yarn eslint -f stylish "src/**/*.{ts,tsx}"
+
+  typecheck:
+    name: ⬣ TypeScript
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.11.0
+
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v3.5.2
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v2.5.2
+        with:
+          node-version: 18
+
+      - name: 📥 Download packages
+        run: yarn
+
+      - name: 🔎 Type check
+        run: yarn tsc --noEmit
+
+  prettier:
+    name: ⬣ Prettier
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.11.0
+
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v3.5.2
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v2.5.2
+        with:
+          node-version: 18
+
+      - name: 📥 Download packages
+        run: yarn
+
+      - name: 🔎 Prettier check
+        run: yarn prettier -c "src/**/*.{ts,tsx}"
