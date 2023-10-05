@@ -4,11 +4,11 @@ import { useRouter } from "next/router";
 const NavigationFooter = () => {
   const router = useRouter();
   return (
-    <div className="fixed bottom-0 w-full bg-[#ffffff] pt-[2.2rem]">
+    <div className="fixed bottom-0 w-full bg-[#ffffff] pt-5">
       <div className="flex  flex-1 justify-evenly bg-[#ffffff] text-[1rem]/[2.4rem] font-medium text-[#4a5360]">
         <div className="flex cursor-pointer flex-col items-center justify-center">
           <div
-            className="relative h-[2.4rem] w-[2.4rem]"
+            className="relative h-[1.5rem] w-[1.5rem]"
             onClick={() => {
               router.push("/home");
             }}
@@ -24,7 +24,7 @@ const NavigationFooter = () => {
         </div>
         <div className="flex cursor-pointer flex-col items-center justify-center">
           <div
-            className="relative h-[2.4rem] w-[2.4rem]"
+            className="relative h-[1.5rem] w-[1.5rem]"
             onClick={() => {
               router.push("/article");
             }}
@@ -40,7 +40,7 @@ const NavigationFooter = () => {
         </div>
         <div className="flex cursor-pointer flex-col items-center justify-center">
           <div
-            className="relative h-[2.4rem] w-[2.4rem]"
+            className="relative h-[1.5rem] w-[1.5rem]"
             onClick={() => {
               router.push("/around-location");
             }}
@@ -58,7 +58,7 @@ const NavigationFooter = () => {
         </div>
         <div className="flex cursor-pointer flex-col items-center justify-center">
           <div
-            className="relative h-[2.4rem] w-[2.4rem]"
+            className="relative h-[1.5rem] w-[1.5rem]"
             onClick={() => {
               router.push("/chatting");
             }}
@@ -76,7 +76,7 @@ const NavigationFooter = () => {
         </div>
         <div className="flex cursor-pointer flex-col items-center justify-center">
           <div
-            className="relative h-[2.4rem] w-[2.4rem]"
+            className="relative h-[1.5rem] w-[1.5rem]"
             onClick={() => {
               router.push("/my-page");
             }}
