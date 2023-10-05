@@ -1,6 +1,6 @@
 import { cn } from "src/core/function/cn";
 import Header from "./header";
-import Footer from "./footer";
+import NavigationFooter from "./navigation-footer";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -11,7 +11,7 @@ const Layout = ({ children, className }: LayoutProps) => {
     <>
       <Header />
       <main className={cn("min-h-full", className)}>{children}</main>
-      <Footer />
+      <NavigationFooter />
     </>
   );
 };
