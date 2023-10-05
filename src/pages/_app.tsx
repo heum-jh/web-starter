@@ -11,7 +11,10 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         {/* viewport */}
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+        />
         {/* robots */}
         <meta name="robots" content="noindex, follow, nocache" />
         <meta
