@@ -1,10 +1,18 @@
-# NextJs Apollo Boilerplate
+# 50K, `반려동물 기반 커뮤니티 서비스`
+> 해당 프로젝트는 [`web-starter`](https://github.com/heum-jh/web-starter)를 기반으로 하고있습니다.
 
-기존에 작업한 프로젝트를 바탕으로 Wavle에 맞춰 Boilerplate를 만들었습니다.
+## Features
+<br/><br/><br/>
+## Teck Stack
+<br/><br/><br/>
+## 환경설정
+<br/><br/><br/>
 
-해당 Boilerplate는 새로운 프로젝트를 시작할때 Wavle에서 자주 사용되는 패키지와 환경설정이 설정되었습니다.
-NextJs와 Apollo, GraphQL 및 Tailwind CSS 등을 사용하였습니다. 상세 패키지는 하단에서 확인할 수 있습니다.
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
+---
+
+## web-starter 안내
 ## Features
 * 👌 Authentication(with. cookies-next)
 * ☀️ Dark/Light 테마(보류)
