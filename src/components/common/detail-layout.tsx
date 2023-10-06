@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
-import { Suspense, useState } from "react";
-import { cn } from "src/core/function/cn";
+import { Suspense } from "react";
 
 type DetailLayoutProps = {
   children: React.ReactNode;
@@ -10,11 +9,10 @@ type DetailLayoutProps = {
 
 const DetailLayout = ({ children, title, render }: DetailLayoutProps) => {
   const router = useRouter();
-  const [progressValue] = useState(10);
   return (
     <>
       <header>
-        <div className="flex h-16 items-center gap-1 py-[0.38rem] pl-2 pr-5">
+        <div className="container flex h-16 items-center gap-1 py-[0.38rem] pl-2 pr-5">
           <button type="button" className="flex-1 p-3" onClick={() => router.back()}>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
@@ -34,7 +32,7 @@ const DetailLayout = ({ children, title, render }: DetailLayoutProps) => {
       <Suspense
         fallback={
           <div className="h-0.5 w-full overflow-hidden bg-white">
-            <div className="animate-progress h-full w-full bg-[#FF7314]"></div>
+            <div className="h-full w-full animate-progress bg-[#FF7314]"></div>
           </div>
         }
       >
