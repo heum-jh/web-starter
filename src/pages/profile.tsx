@@ -43,7 +43,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="mx-5 mt-5">
+    <div className="relative mx-5 mt-5">
       <div className="flex flex-col gap-2">
         <div className="text-[1.5rem]/[2.125rem] font-bold text-[#1e1e1e]">프로필 작성하기</div>
         <div className="text-[0.875rem]/[1.25rem] font-normal text-[#707888]">
@@ -54,27 +54,27 @@ const Profile = () => {
         <div className="flex flex-col">
           <span className="text-[0.875rem]/[1.25rem] font-semibold text-[#111111]">닉네임</span>
           <input
-            className="h-14 rounded-[0.25rem] bg-[#F4F4F5] px-4 outline-none"
+            className="h-14 rounded-[0.25rem] bg-[#F4F4F5] px-4 text-[1.125rem]/[1.5rem] font-normal text-[#1E1E1E] outline-none"
             placeholder="닉네임을 입력해주세요"
             onChange={e => {
               setCheckNickName(e.target.value);
             }}
           />
           {checkNickName.length > 2 && (
-            <div className="mt-6 flex items-center gap-1">
-              <div className="h-13 w-13 rounded-100 flex items-center justify-center bg-[#FF7314]">
+            <div className="mt-[0.375rem] flex items-center gap-1">
+              <div className="flex h-[0.833rem] w-[0.833rem] items-center justify-center rounded-full bg-[#EE4633]">
                 <Image src={"/images/assets/common/check.svg"} alt="check" width={9} height={6} />
               </div>
-              <span className="text-14/20 font-normal text-[#EE4633]">중복된 닉네임이 있습니다.</span>
+              <span className="text-[0.875rem]/[1.25rem] font-normal text-[#EE4633]">중복된 닉네임이 있습니다.</span>
             </div>
           )}
         </div>
-        <div className="mt-22 flex flex-col">
-          <span className="text-14/20 font-semibold text-[#111111]">휴대폰 번호</span>
-          <div className="flex gap-8">
+        <div className="mt-[1.375rem] flex flex-col">
+          <span className="mb-[0.375rem] text-[0.875rem]/[1.25rem] font-semibold text-[#111111]">휴대폰 번호</span>
+          <div className="flex gap-2">
             <input
               maxLength={13}
-              className="w-244 h-14   rounded-[0.25rem] bg-[#F4F4F5] px-4 outline-none"
+              className="h-14 flex-1 rounded-[0.25rem] bg-[#F4F4F5] px-4 text-[1.125rem]/[1.5rem] font-normal text-[#1E1E1E] outline-none"
               placeholder="번호를 입력해 주세요"
               value={phoneNumber}
               onChange={e => {
@@ -87,16 +87,16 @@ const Profile = () => {
                 setIsCertification(true);
               }}
               className={clsx(
-                "w-83 text-18/24 h-14   rounded-[0.25rem] font-normal text-[#ffffff]",
+                "h-14 w-[5.188rem] rounded-[0.25rem] text-[1.125rem]/[1.5rem] font-normal text-[#ffffff]",
                 isDonePhoneNumber ? "bg-[#FF7314]" : "bg-[#fdccb0]",
               )}
             >
-              인증하기
+              {isCertification ? "재전송" : "인증하기"}
             </button>
           </div>
           {isCertification && (
             <>
-              <div className="w-335 relative mt-8">
+              <div className="w-335 relative mt-2">
                 <input
                   onChange={e => {
                     const value = e.target.value;
@@ -106,25 +106,27 @@ const Profile = () => {
                       setIsCertificationNumber(false);
                     }
                   }}
-                  className="h-14 w-full rounded-[0.25rem] bg-[#F4F4F5] px-4 outline-none"
+                  className="h-14 w-full rounded-[0.25rem] bg-[#F4F4F5] pl-4 pr-20 text-[1.125rem]/[1.5rem] font-normal text-[#1E1E1E] outline-none"
                   placeholder="인증번호를 입력해 주세요"
                 />
-                <div className=" text-16/24 absolute right-4 top-1/2   translate-y-[-50%] font-medium text-[#F2555A]">
+                <div className="absolute right-4 top-1/2 translate-y-[-50%] text-[1rem]/[1.5rem] font-medium text-[#F2555A]">
                   {secondsToTime(count)}
                 </div>
               </div>
-              <div className="mt-6 flex items-center gap-5">
-                <div className="h-13 w-13 rounded-100 flex items-center justify-center bg-[#FF7314]">
-                  <Image src={"/assets/common/check.svg"} alt="check" width={9} height={6} />
+              <div className="mt-[0.875rem] flex items-center gap-1">
+                <div className="flex h-[0.833rem] w-[0.833rem] items-center justify-center rounded-full bg-[#EE4633]">
+                  <Image src={"/images/assets/common/check.svg"} alt="check" width={9} height={6} />
                 </div>
-                <span className="text-14/20 font-normal text-[#EE4633]">인증번호를 다시 확인해주세요.</span>
+                <span className="text-[0.875rem]/[1.25rem] font-normal text-[#EE4633]">
+                  인증번호를 다시 확인해주세요.
+                </span>
               </div>
             </>
           )}
 
           <button
             className={clsx(
-              "mt-248 w-335 text-18/24 h-14  rounded-[0.25rem]  font-semibold text-[#ffffff]",
+              "fixed bottom-3 mt-[15.5rem] h-14 w-[20.938rem] items-center justify-center rounded-[0.25rem] text-[1.125rem]/[1.5rem] font-semibold text-[#ffffff]",
               isCertificationNumber ? "bg-[#ff7314]" : "bg-[#FDDCB0]",
             )}
           >

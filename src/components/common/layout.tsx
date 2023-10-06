@@ -9,7 +9,7 @@ type LayoutProps = {
 const Layout = ({ children, className }: LayoutProps) => {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <main className={cn("min-h-full", className)}>{children}</main>
       <Footer />
     </>
