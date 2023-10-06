@@ -82,7 +82,7 @@ const AlertProvider = () => {
     <div ref={ref} className="relative z-10" aria-labelledby="alert-title" role="alertdialog" aria-modal="true">
       <div className="fixed inset-0 z-10 overflow-y-auto bg-[#1e1e1e99]">
         <div className="flex min-h-full items-center justify-center px-5">
-          <div className="w-full overflow-hidden rounded-xl bg-white">
+          <div className="container overflow-hidden rounded-xl bg-white">
             <div className="space-y-4 px-4 py-10 text-center text-[#111111]">
               {options.title && <h3 className="text-xl font-bold">{options.title}</h3>}
               {options.message && (

@@ -5,6 +5,7 @@ import AlertProvider from "src/components/common/alert-provider";
 import "src/styles/globals.css";
 import { client } from "src/core/apollo-client";
 import Layout from "src/components/common/layout";
+import { PopupProvider } from "src/components/common/popup-provider";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -38,9 +39,11 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <ApolloProvider client={client}>
         <AlertProvider />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <PopupProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </PopupProvider>
       </ApolloProvider>
     </>
   );

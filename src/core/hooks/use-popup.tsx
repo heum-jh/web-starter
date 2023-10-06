@@ -1,7 +1,10 @@
 import { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { PopupContext, PopupRenderContext } from "src/components/common/popup-provider";
-
-export const usePopup = (render: (close: () => void) => React.ReactNode) => {
+type usePopupProps = {
+  title?: string;
+  render: (close: () => void) => React.ReactNode;
+};
+export const usePopup = ({ title, render }: usePopupProps) => {
   const [visible, setVisible] = useState(false);
   const popup = useContext(PopupContext);
   const setRendered = useContext(PopupRenderContext);
@@ -10,11 +13,12 @@ export const usePopup = (render: (close: () => void) => React.ReactNode) => {
     setRendered(render(popup.close));
     setVisible(true);
     popup.open({
+      title: title,
       onClose: () => {
         setVisible(false);
       },
     });
-  }, [popup, render, setRendered]);
+  }, [popup, render, setRendered, title]);
 
   const handleClose = useCallback(() => {
     popup.close();
@@ -25,7 +29,6 @@ export const usePopup = (render: (close: () => void) => React.ReactNode) => {
     if (visible === true) {
       setRendered(render(popup.close));
     }
-
     return () => {
       if (visible === true) {
         setRendered(render(popup.close));
