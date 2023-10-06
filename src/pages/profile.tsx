@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import Image from "next/image";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import useCountdown from "src/core/hooks/use-countdown";
 
 const Profile = () => {
