@@ -71,9 +71,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <ApolloProvider client={client}>
         <OptionProvider />
         <AlertProvider />
-        <PopupProvider>
-          {getLayout()}
-        </PopupProvider>
+        <PopupProvider>{getLayout()}</PopupProvider>
       </ApolloProvider>
     </>
   );
