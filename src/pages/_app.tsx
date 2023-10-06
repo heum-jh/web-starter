@@ -36,12 +36,12 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="al:web:url" content="https://nextjs.org/web" />
         <meta property="al:web:should_fallback" content="true" />
       </Head>
-      <ApolloProvider client={client}>
-        <AlertProvider />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ApolloProvider>
+      {/* <ApolloProvider client={client}> */}
+      <AlertProvider />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+      {/* </ApolloProvider> */}
     </>
   );
 }
