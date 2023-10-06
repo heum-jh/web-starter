@@ -1,14 +1,44 @@
 import { ApolloProvider } from "@apollo/client";
+import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import AlertProvider from "src/components/common/alert-provider";
-import "src/styles/globals.css";
-import { client } from "src/core/apollo-client";
+import DetailLayout from "src/components/common/detail-layout";
 import Layout from "src/components/common/layout";
 import { PopupProvider } from "src/components/common/popup-provider";
 import OptionProvider from "src/components/common/option-provider";
+import { client } from "src/core/apollo-client";
+import "src/styles/globals.css";
 
-export default function App({ Component, pageProps }: AppProps) {
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  title?: string;
+  type?: "detail" | "error";
+  render?: () => React.ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = () => {
+    switch (Component.type) {
+      case "detail":
+        return (
+          <DetailLayout title={Component.title} render={Component.render}>
+            <Component {...pageProps} />
+          </DetailLayout>
+        );
+      case "error":
+        return <Component {...pageProps} />;
+      default:
+        return (
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        );
+    }
+  };
   return (
     <>
       <Head>
@@ -42,9 +72,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <OptionProvider />
         <AlertProvider />
         <PopupProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          {getLayout()}
         </PopupProvider>
       </ApolloProvider>
     </>

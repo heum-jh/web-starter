@@ -1,6 +1,8 @@
-const Footer = () => {
+import { cn } from "src/core/function/cn";
+
+const Footer = ({ className }: { className: string }) => {
   return (
-    <footer className="body-font text-gray-600">
+    <footer className={cn("body-font text-gray-600", className)}>
       <div className="container mx-auto flex flex-col flex-wrap px-5 py-24 md:flex-row md:flex-nowrap md:items-center lg:items-start">
         <div className="mx-auto w-auto flex-shrink-0 text-center md:mx-0 md:text-left">
           <a className="title-font flex items-center justify-center font-medium text-gray-900 md:justify-start">
@@ -8,9 +10,9 @@ const Footer = () => {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               className="h-10 w-10 rounded-full bg-indigo-500 p-2 text-white"
               viewBox="0 0 24 24"
             >
@@ -108,9 +110,9 @@ const Footer = () => {
             <a className="text-gray-500">
               <svg
                 fill="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 className="h-15 w-15"
                 viewBox="0 0 24 24"
               >
@@ -120,9 +122,9 @@ const Footer = () => {
             <a className="ml-3 text-gray-500">
               <svg
                 fill="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 className="h-15 w-15"
                 viewBox="0 0 24 24"
               >
@@ -133,9 +135,9 @@ const Footer = () => {
               <svg
                 fill="none"
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 className="h-15 w-15"
                 viewBox="0 0 24 24"
               >
@@ -147,9 +149,9 @@ const Footer = () => {
               <svg
                 fill="currentColor"
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="0"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="0"
                 className="h-15 w-15"
                 viewBox="0 0 24 24"
               >
