@@ -10,7 +10,7 @@ const NavigationFooter = () => {
           <div
             className="relative h-[1.5rem] w-[1.5rem]"
             onClick={() => {
-              router.push("/home");
+              router.push("/");
             }}
           >
             <Image
@@ -26,7 +26,7 @@ const NavigationFooter = () => {
           <div
             className="relative h-[1.5rem] w-[1.5rem]"
             onClick={() => {
-              router.push("/article");
+              router.push("/");
             }}
           >
             <Image
@@ -42,7 +42,7 @@ const NavigationFooter = () => {
           <div
             className="relative h-[1.5rem] w-[1.5rem]"
             onClick={() => {
-              router.push("/around-location");
+              router.push("/");
             }}
           >
             <Image
@@ -60,7 +60,7 @@ const NavigationFooter = () => {
           <div
             className="relative h-[1.5rem] w-[1.5rem]"
             onClick={() => {
-              router.push("/chatting");
+              router.push("/");
             }}
           >
             <Image
@@ -78,7 +78,7 @@ const NavigationFooter = () => {
           <div
             className="relative h-[1.5rem] w-[1.5rem]"
             onClick={() => {
-              router.push("/my-page");
+              router.push("/");
             }}
           >
             <Image
