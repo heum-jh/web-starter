@@ -14,7 +14,7 @@ const NavigationFooter = () => {
             }}
           >
             <Image
-              src={`/images/assets/common/${router.asPath.startsWith("/home") ? "home-active" : "home"}.svg`}
+              src={`/images/assets/common/${router.asPath.startsWith("/") ? "home-active" : "home"}.svg`}
               alt="home"
               fill
               className="object-cover"
@@ -30,7 +30,7 @@ const NavigationFooter = () => {
             }}
           >
             <Image
-              src={`/images/assets/common/${router.asPath.startsWith("/article") ? "article-active" : "article"}.svg`}
+              src={`/images/assets/common/${router.asPath.startsWith("/") ? "article-active" : "article"}.svg`}
               fill
               className="object-cover"
               alt="article"
@@ -47,7 +47,7 @@ const NavigationFooter = () => {
           >
             <Image
               src={`/images/assets/common/${
-                router.asPath.startsWith("/around-location") ? "around-location-active" : "around-location"
+                router.asPath.startsWith("/") ? "around-location-active" : "around-location"
               }.svg`}
               fill
               className="object-cover"
@@ -64,9 +64,7 @@ const NavigationFooter = () => {
             }}
           >
             <Image
-              src={`/images/assets/common/${
-                router.asPath.startsWith("/chatting") ? "chatting-active" : "chatting"
-              }.svg`}
+              src={`/images/assets/common/${router.asPath.startsWith("/") ? "chatting-active" : "chatting"}.svg`}
               fill
               className="object-cover"
               alt="chatting"
@@ -82,7 +80,7 @@ const NavigationFooter = () => {
             }}
           >
             <Image
-              src={`/images/assets/common/${router.asPath.startsWith("/my-page") ? "my-page-active" : "my-page"}.svg`}
+              src={`/images/assets/common/${router.asPath.startsWith("/") ? "my-page-active" : "my-page"}.svg`}
               fill
               className="object-cover"
               alt="my-page"
