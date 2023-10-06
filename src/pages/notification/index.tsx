@@ -1,7 +1,4 @@
-import Image from "next/image";
-import React from "react";
 import NotificationCard from "src/components/notification/card";
-import { cn } from "src/core/function/cn";
 import { NextPageWithLayout } from "src/pages/_app";
 
 const NotificationPage: NextPageWithLayout = () => {

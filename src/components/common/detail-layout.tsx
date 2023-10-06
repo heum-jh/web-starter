@@ -32,7 +32,7 @@ const DetailLayout = ({ children, title, render }: DetailLayoutProps) => {
       <Suspense
         fallback={
           <div className="h-0.5 w-full overflow-hidden bg-white">
-            <div className="animate-progress h-full w-full bg-[#FF7314]"></div>
+            <div className="h-full w-full animate-progress bg-[#FF7314]"></div>
           </div>
         }
       >
