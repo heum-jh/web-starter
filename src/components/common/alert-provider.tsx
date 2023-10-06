@@ -9,8 +9,8 @@ export interface AlertButtonOptions {
 }
 
 export interface AlertOptions {
-  title?: string;
-  message: string;
+  title: string;
+  message?: string;
   buttons?: AlertButtonOptions[];
   onClose?: (result?: boolean) => void;
 }
@@ -80,52 +80,48 @@ const AlertProvider = () => {
   if (options == null) return <></>;
   return createPortal(
     <div ref={ref} className="relative z-10" aria-labelledby="alert-title" role="alertdialog" aria-modal="true">
-      <div>
-        <div>
-          <div>
-            <h3>{options.title ?? "알림"}</h3>
-            <svg
-              width="40"
-              height="40"
-              viewBox="0 0 40 40"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="mobile:h-24 mobile:w-24 mobile:basis-24 shrink-0 grow-0 basis-40 cursor-pointer"
-              onClick={handleClose}
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M30.7071 10.7071C31.0976 10.3166 31.0976 9.68342 30.7071 9.29289C30.3166 8.90237 29.6834 8.90237 29.2929 9.29289L20 18.5858L10.7071 9.29289C10.3166 8.90237 9.68342 8.90237 9.29289 9.29289C8.90237 9.68342 8.90237 10.3166 9.29289 10.7071L18.5858 20L9.29289 29.2929C8.90237 29.6834 8.90237 30.3166 9.29289 30.7071C9.68342 31.0976 10.3166 31.0976 10.7071 30.7071L20 21.4142L29.2929 30.7071C29.6834 31.0976 30.3166 31.0976 30.7071 30.7071C31.0976 30.3166 31.0976 29.6834 30.7071 29.2929L21.4142 20L30.7071 10.7071Z"
-                fill="#333333"
-              />
-            </svg>
-          </div>
-          <div>
-            <p className="break-words" dangerouslySetInnerHTML={{ __html: options.message }} />
-          </div>
-          <div>
-            {options?.buttons?.map((button, idx) => (
-              <button
-                key={idx}
-                type="button"
-                className={clsx(button.type === "confirm" && "", button.type === "cancel" && "")}
-                onClick={() => {
-                  button.onClick?.();
-                  handleClose();
-                }}
-              >
-                {button.text}
-              </button>
-            )) ?? (
-              <button type="button" onClick={handleClose}>
-                확인
-              </button>
-            )}
+      <div className="fixed inset-0 z-10 overflow-y-auto bg-[#1e1e1e99]">
+        <div className="flex min-h-full items-center justify-center px-5">
+          <div className="w-full overflow-hidden rounded-xl bg-white">
+            <div className="space-y-4 px-4 py-10 text-center text-[#111111]">
+              {options.title && <h3 className="text-xl font-bold">{options.title}</h3>}
+              {options.message && (
+                <p
+                  className="break-words text-base font-normal"
+                  dangerouslySetInnerHTML={{ __html: options.message }}
+                />
+              )}
+            </div>
+            <div className="flex">
+              {options.buttons?.map((button, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  className={clsx(
+                    "w-full py-4 text-center text-[1.125rem]/[1.5rem] font-semibold ",
+                    button.type === "confirm" && "bg-[#FF7314] text-white",
+                    button.type === "cancel" && "bg-[#EBECF0] text-[#111111]",
+                  )}
+                  onClick={() => {
+                    button.onClick?.();
+                    handleClose();
+                  }}
+                >
+                  {button.text}
+                </button>
+              )) ?? (
+                <button
+                  type="button"
+                  onClick={handleClose}
+                  className="w-full bg-[#FF7314] py-4 text-center text-[1.125rem]/[1.5rem] font-semibold text-white"
+                >
+                  확인
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
-      <div className="fixed inset-0 z-10 overflow-y-auto bg-[#22222266]" />
     </div>,
     container,
   );
