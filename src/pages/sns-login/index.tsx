@@ -2,13 +2,13 @@ import Image from "next/image";
 
 const SnsLoginPage = () => {
   return (
-    <div>
+    <div className="flex h-full flex-col justify-between">
       <div>
-        <div className="relative  mx-auto mb-[15.438rem] mt-[7.375rem] h-[5.375rem] w-full">
+        <div className="relative mx-auto h-[29.125rem] w-full">
           <Image src={"/images/assets/sns-icon/google.svg"} fill alt="google" className="object-contain" />
         </div>
       </div>
-      <div className="fixed bottom-0 w-full px-5 pb-6">
+      <div className="w-full px-5 pb-6">
         <div className="flex flex-col gap-[0.625rem]">
           <button
             type="button"
