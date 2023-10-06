@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "generate": "graphql-codegen --config codegen.ts",
+    "prepare": "husky install",
     "build:check": "tsc --noEmit",
     "lint:check": "eslint -f stylish \"src/**/*.{ts,tsx}\"",
     "format:check": "prettier -c \"src/**/*.{ts,tsx}\"",
@@ -36,7 +37,14 @@
     "@graphql-codegen/client-preset": "4.1.0",
     "dotenv": "^16.3.1",
     "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.4"
+  },
+  "lint-staged": {
+    "src/*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --max-warnings=0"
+    ]
   }
 }
