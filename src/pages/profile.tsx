@@ -1,13 +1,14 @@
 import clsx from "clsx";
 import Image from "next/image";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
+import useCountdown from "src/core/hooks/use-countdown";
 
 const Profile = () => {
   const [checkNickName, setCheckNickName] = useState<string>("");
   const [isCertification, setIsCertification] = useState<boolean>(false); //인증하기 버튼
   const [phoneNumber, setPhoneNumber] = useState<string>(""); //핸드폰 번호
   const [isDonePhoneNumber, setIsDonePhoneNumber] = useState(false); // 핸드폰 번호 전부 입력
-  const [count, setCount] = useState(180); //타이머
+  const phoneCountdown = useCountdown(180);
   const [isCertificationNumber, setIsCertificationNumber] = useState<boolean>(false); //인증번호 4자리 이상
 
   const phoneNumberConvert = (e: ChangeEvent<HTMLInputElement>) => {
@@ -19,27 +20,6 @@ const Profile = () => {
     } else {
       setIsDonePhoneNumber(false);
     }
-  };
-
-  useEffect(() => {
-    if (!isCertification) return;
-    const certificationTimmer = setInterval(() => {
-      setCount(count => count - 1);
-    }, 1000);
-    if (count === 0) {
-      clearInterval(certificationTimmer);
-    }
-    return () => clearInterval(certificationTimmer);
-  }, [count, isCertification]);
-
-  const secondsToTime = (seconds: number) => {
-    const minutes: number = Math.floor(seconds / 60);
-    const remainingSeconds: number = seconds % 60;
-
-    const formattedMinutes: string = String(minutes).padStart(2, "0");
-    const formattedSeconds: string = String(remainingSeconds).padStart(2, "0");
-
-    return `${formattedMinutes}:${formattedSeconds}`;
   };
 
   return (
@@ -54,7 +34,7 @@ const Profile = () => {
         <div className="flex flex-col">
           <span className="text-[0.875rem]/[1.25rem] font-semibold text-[#111111]">닉네임</span>
           <input
-            className="h-14 rounded-[0.25rem] bg-[#F4F4F5] px-4 text-[1.125rem]/[1.5rem] font-normal text-[#1E1E1E] outline-none"
+            className="mt-[0.375rem] h-14 rounded-[0.25rem] bg-[#F4F4F5] px-4 text-[1.125rem]/[1.5rem] font-normal text-[#1E1E1E] outline-none"
             placeholder="닉네임을 입력해주세요"
             onChange={e => {
               setCheckNickName(e.target.value);
@@ -73,6 +53,7 @@ const Profile = () => {
           <span className="mb-[0.375rem] text-[0.875rem]/[1.25rem] font-semibold text-[#111111]">휴대폰 번호</span>
           <div className="flex gap-2">
             <input
+              type="tel"
               maxLength={13}
               className="h-14 flex-1 rounded-[0.25rem] bg-[#F4F4F5] px-4 text-[1.125rem]/[1.5rem] font-normal text-[#1E1E1E] outline-none"
               placeholder="번호를 입력해 주세요"
@@ -85,19 +66,21 @@ const Profile = () => {
               disabled={!isDonePhoneNumber}
               onClick={() => {
                 setIsCertification(true);
+                phoneCountdown.start();
               }}
               className={clsx(
                 "h-14 w-[5.188rem] rounded-[0.25rem] text-[1.125rem]/[1.5rem] font-normal text-[#ffffff]",
                 isDonePhoneNumber ? "bg-[#FF7314]" : "bg-[#fdccb0]",
               )}
             >
-              {isCertification ? "재전송" : "인증하기"}
+              {phoneCountdown.isRunning ? "재전송" : "인증하기"}
             </button>
           </div>
           {isCertification && (
             <>
-              <div className="w-335 relative mt-2">
+              <div className="relative mt-2">
                 <input
+                  type="number"
                   onChange={e => {
                     const value = e.target.value;
                     if (value.length > 3) {
@@ -109,8 +92,8 @@ const Profile = () => {
                   className="h-14 w-full rounded-[0.25rem] bg-[#F4F4F5] pl-4 pr-20 text-[1.125rem]/[1.5rem] font-normal text-[#1E1E1E] outline-none"
                   placeholder="인증번호를 입력해 주세요"
                 />
-                <div className="absolute right-4 top-1/2 translate-y-[-50%] text-[1rem]/[1.5rem] font-medium text-[#F2555A]">
-                  {secondsToTime(count)}
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[1rem]/[1.5rem] font-medium text-[#F2555A]">
+                  {phoneCountdown.count}
                 </div>
               </div>
               <div className="mt-[0.875rem] flex items-center gap-1">
@@ -125,9 +108,10 @@ const Profile = () => {
           )}
 
           <button
+            type="button"
             className={clsx(
               "fixed bottom-3 mt-[15.5rem] h-14 w-[20.938rem] items-center justify-center rounded-[0.25rem] text-[1.125rem]/[1.5rem] font-semibold text-[#ffffff]",
-              isCertificationNumber ? "bg-[#ff7314]" : "bg-[#FDDCB0]",
+              checkNickName.length >= 2 && isCertificationNumber ? "bg-[#ff7314]" : "bg-[#FDDCB0]",
             )}
           >
             다음
