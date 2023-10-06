@@ -6,6 +6,7 @@ import "src/styles/globals.css";
 import { client } from "src/core/apollo-client";
 import Layout from "src/components/common/layout";
 import { PopupProvider } from "src/components/common/popup-provider";
+import OptionProvider from "src/components/common/option-provider";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -38,6 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="al:web:should_fallback" content="true" />
       </Head>
       <ApolloProvider client={client}>
+        <OptionProvider />
         <AlertProvider />
         <PopupProvider>
           <Layout>
