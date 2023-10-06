@@ -4,10 +4,7 @@ const SnsLoginPage = () => {
   return (
     <div className="p-5">
       <div>
-        <div className="relative mx-auto mb-[15.438rem] mt-[7.375rem] h-8 w-8">
-          로고
-          {/* <Image src={"/images/next.svg"} fill className="object-cover" alt="logo" /> */}
-        </div>
+        <div className="relative mx-auto mb-[15.438rem] mt-[7.375rem] h-8 w-8">로고</div>
       </div>
       <div className="flex flex-col gap-[0.625rem]">
         <button
@@ -21,7 +18,7 @@ const SnsLoginPage = () => {
         </button>
         <button
           type="button"
-          className="flex h-14 w-full cursor-pointer items-center justify-center gap-2 rounded-[0.25rem] bg-[#FEE500] text-[1.125rem]/[1.5rem] font-semibold text-[#1e1e1e]"
+          className="flex h-14 w-full cursor-pointer items-center justify-center gap-2 rounded-[0.75rem] bg-[#FEE500] text-[1.125rem]/[1.5rem] font-semibold text-[#1e1e1e]"
         >
           <div className="relative h-8 w-8">
             <Image src={"/images/assets/sns-icon/kakao.svg"} fill alt="kakao" className="object-cover" />
@@ -45,7 +42,7 @@ const SnsLoginPage = () => {
           <div className="relative h-8 w-8">
             <Image src={"/images/assets/sns-icon/google.svg"} fill alt="google" className="object-cover" />
           </div>
-          구글 로그인
+          Google로 로그인
         </button>
       </div>
       <div className="mt-[1.813rem] flex justify-center text-center text-[0.875rem]/[1.25rem] font-normal text-[#9CA2AF]">
