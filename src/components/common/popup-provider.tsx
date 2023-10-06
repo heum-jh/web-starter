@@ -103,7 +103,7 @@ export const PopupProvider = ({ children }: PopupProviderProps) => {
                 className="pointer-events-auto flex h-full w-full touch-auto flex-col overflow-auto overscroll-none p-16"
                 ref={popupRef}
               >
-                <div className="m-auto max-w-full rounded-8 bg-white shadow-[0_0_32px_#63636340]">{rendered}</div>
+                <div className="rounded-8 m-auto max-w-full bg-white shadow-[0_0_32px_#63636340]">{rendered}</div>
               </div>
             </div>
           </>,
