@@ -1,13 +1,15 @@
 import { useRouter } from "next/router";
 import { Suspense } from "react";
+import { cn } from "src/core/function/cn";
 
 type DetailLayoutProps = {
   children: React.ReactNode;
   title?: string;
+  className?: string;
   render?: () => React.ReactNode;
 };
 
-const DetailLayout = ({ children, title, render }: DetailLayoutProps) => {
+const DetailLayout = ({ children, title, render, className }: DetailLayoutProps) => {
   const router = useRouter();
   return (
     <>
@@ -38,7 +40,7 @@ const DetailLayout = ({ children, title, render }: DetailLayoutProps) => {
           </div>
         }
       >
-        <main>{children}</main>
+        <main className={cn("container", className)}>{children}</main>
       </Suspense>
     </>
   );
