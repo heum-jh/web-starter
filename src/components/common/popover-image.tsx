@@ -1,8 +1,9 @@
 import clsx from "clsx";
 import Image, { ImageProps } from "next/image";
 import { useState } from "react";
+import { cn } from "src/core/function/cn";
 
-const PopoverImage = ({ width, height, src, alt, ...res }: ImageProps) => {
+const PopoverImage = ({ width, height, src, alt, className, ...res }: ImageProps) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -15,6 +16,7 @@ const PopoverImage = ({ width, height, src, alt, ...res }: ImageProps) => {
         placeholder="blur"
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
         onClick={() => setIsOpen(true)}
+        className={cn("cursor-pointer", className)}
       />
       <div
         className={clsx(
