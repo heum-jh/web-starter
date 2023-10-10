@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -106,10 +107,15 @@ export const PopupProvider = ({ children }: PopupProviderProps) => {
           <>
             <div className="pointer-events-none fixed inset-0 z-9 touch-none bg-[#1e1e1e99]">
               <div
-                className="pointer-events-auto flex h-full w-full touch-auto flex-col overflow-auto overscroll-none"
+                className={
+                  "pointer-events-auto absolute bottom-0 flex h-full w-full touch-auto flex-col overflow-hidden overscroll-none"
+                }
                 ref={popupRef}
               >
-                <div className="container mx-auto mt-auto rounded-t-2xl bg-white" ref={popupAreaRef}>
+                <div
+                  className="animate-popup container relative mx-auto mt-auto rounded-t-2xl bg-white"
+                  ref={popupAreaRef}
+                >
                   {options?.title && (
                     <h3 className="relative flex h-16 items-center justify-center p-2 text-lg font-semibold text-[#111111]">
                       {options.title}
