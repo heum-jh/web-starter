@@ -12,7 +12,7 @@ const DetailLayout = ({ children, title, render }: DetailLayoutProps) => {
   return (
     <>
       <header>
-        <div className="container flex h-16 items-center gap-1 py-[0.38rem] pl-2 pr-5">
+        <div className="container mx-auto flex h-16 items-center gap-1 py-[0.38rem] pl-2 pr-5">
           <button type="button" className="flex-1 p-3" onClick={() => router.back()}>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
@@ -36,7 +36,7 @@ const DetailLayout = ({ children, title, render }: DetailLayoutProps) => {
           </div>
         }
       >
-        <main>{children}</main>
+        <main className="container mx-auto flex-grow-[1]">{children}</main>
       </Suspense>
     </>
   );
