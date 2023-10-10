@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import Option from "src/core/function/option";
 import { NextPageWithLayout } from "./_app";
 
@@ -28,6 +28,12 @@ const PetProfile: NextPageWithLayout = () => {
     } catch (error) {
       console.error("앨범 열기 오류:", error);
     }
+  };
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const pattern = /[^\wㄱ-ㅎㅏ-ㅣ가-힣]/g;
+    const newValue = e.target.value.replace(pattern, "");
+    setPetName(newValue);
   };
 
   return (
@@ -79,12 +85,11 @@ const PetProfile: NextPageWithLayout = () => {
       <div className="mt-[2.875rem] flex flex-col gap-6 px-5">
         <div className="text-[0.875rem]/[1.25rem] font-semibold text-[#111111]">반려동물 이름</div>
         <input
-          onChange={e => {
-            setPetName(e.currentTarget.value);
-          }}
+          value={petName}
+          maxLength={8}
+          onChange={handleInputChange}
           className="h-[3.25rem] w-full rounded-[0.25rem] bg-[#f4f4f4] px-4"
           placeholder="반려동물 이름을 입력해 주세요"
-          name="petName"
         />
       </div>
       <div className="fixed bottom-3 w-full px-4">
