@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SelectPopup from "../common/select-popup";
+import MettingCard from "./metting-card";
 
 const HomeMeetingList = () => {
   const [sort, setSort] = useState<string>("new");
@@ -19,11 +20,9 @@ const HomeMeetingList = () => {
         />
       </div>
       <div className="space-y-3">
-        {/* Component */}
-        <div className="h-[6.5rem] w-full bg-white">Component</div>
-        <div className="h-[6.5rem] w-full bg-white">Component</div>
-        <div className="h-[6.5rem] w-full bg-white">Component</div>
-        <div className="h-[6.5rem] w-full bg-white">Component</div>
+        {Array.from({ length: 5 }).map((_, idx) => (
+          <MettingCard key={idx} />
+        ))}
       </div>
     </div>
   );

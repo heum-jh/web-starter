@@ -1,9 +1,9 @@
 import clsx from "clsx";
-import { FormEvent, useContext, useRef, useState } from "react";
-import { SearchContext } from "./layout";
 import { useRouter } from "next/router";
+import { FormEvent, useContext, useRef, useState } from "react";
 import { cn } from "src/core/function/cn";
-import TempImage from "./temp-image";
+import MettingCard from "../index/metting-card";
+import { SearchContext } from "./layout";
 
 const Header = () => {
   const router = useRouter();
@@ -19,7 +19,10 @@ const Header = () => {
   return (
     <header>
       <div
-        className={clsx("container flex h-16 items-center justify-between px-5", searchContext?.isOpen ? "hidden" : "")}
+        className={clsx(
+          "container mx-auto flex h-16 items-center justify-between px-5",
+          searchContext?.isOpen ? "hidden" : "",
+        )}
       >
         <button
           type="button"
@@ -288,35 +291,7 @@ const Search = ({ onClick, onSubmit, progressValue, search }: SearchProps) => {
             <ul className="space-y-3">
               {/* TODO: 컴포넌트 적용 필요 */}
               {Array.from({ length: 20 }).map((_, index) => {
-                return (
-                  <li key={index} className="flex w-full cursor-pointer gap-2 rounded bg-white p-4">
-                    <div className="h-[4.5rem] w-[4.5rem] shrink-0 basis-[4.5rem]">
-                      <TempImage width={72} height={72} />
-                    </div>
-                    <div className="flex min-w-0 flex-auto flex-col justify-between">
-                      <div className="flex items-center justify-between">
-                        <span className="truncate text-[1.125rem]/[1.5rem] font-bold text-[#1E1E1E]">
-                          같이 산책시켜요!
-                        </span>
-                        <span className="shrink-0 basis-auto rounded-[6.25rem] bg-[#FEEFD7] px-2 py-[0.13rem] text-[0.625rem]/[1rem] font-semibold text-[#FF7314]">
-                          일일모임
-                        </span>
-                      </div>
-                      <div className="truncate text-[0.875rem]/[1.25rem] font-normal text-[#707888]">
-                        서울숲으로 가실 분들 모집합니다~!!
-                      </div>
-                      <div className="flex items-center gap-1 text-[0.75rem]/[1.125rem] font-medium">
-                        <span className="text-[#1E1E1E]">성동구</span>
-                        <span className="inline-block h-[2px] w-[2px] rounded-full bg-[#DBDEE4]" />
-                        <span className="text-[#707888]">10.10(수)</span>
-                        <span className="inline-block h-[2px] w-[2px] rounded-full bg-[#DBDEE4]" />
-                        <span className="text-[#707888]">
-                          참여자 <span className="text-[#FF7314]">2</span>
-                        </span>
-                      </div>
-                    </div>
-                  </li>
-                );
+                return <MettingCard key={index} />;
               })}
               {/* TODO: 해당 검색결과가 없을 떄 */}
               {/* <div className="flex h-[100vw] w-full items-center justify-center text-center text-[1.125rem]/[1.75rem] font-normal text-[#C3C7D0]">
