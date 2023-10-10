@@ -9,9 +9,9 @@ const useOutsideClick = <T extends HTMLElement = HTMLElement>(
         callback(event);
       }
     };
-    document.addEventListener("click", listener as EventListener);
+    document.addEventListener("mousedown", listener as EventListener);
     return () => {
-      document.removeEventListener("click", listener as EventListener);
+      document.removeEventListener("mousedown", listener as EventListener);
     };
   }, [ref, callback]);
 };

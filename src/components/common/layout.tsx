@@ -43,7 +43,7 @@ const Layout = ({ children, className }: LayoutProps) => {
       }}
     >
       <Header />
-      <main className={cn("container min-h-full", className, isOpen ? "!hidden" : "")}>{children}</main>
+      <main className={cn("container", className, isOpen ? "!hidden" : "")}>{children}</main>
       <Footer className={cn(className, isOpen ? "!hidden" : "")} />
     </SearchContext.Provider>
   );

@@ -5,6 +5,8 @@ import Head from "next/head";
 import AlertProvider from "src/components/common/alert-provider";
 import DetailLayout from "src/components/common/detail-layout";
 import Layout from "src/components/common/layout";
+import { PopupProvider } from "src/components/common/popup-provider";
+import OptionProvider from "src/components/common/option-provider";
 import { client } from "src/core/apollo-client";
 import "src/styles/globals.css";
 
@@ -68,8 +70,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <meta property="al:web:should_fallback" content="true" />
       </Head>
       <ApolloProvider client={client}>
+        <OptionProvider />
         <AlertProvider />
-        {getLayout()}
+        <PopupProvider>{getLayout()}</PopupProvider>
       </ApolloProvider>
     </>
   );
