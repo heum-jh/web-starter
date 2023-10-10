@@ -20,9 +20,20 @@ module.exports = {
             transform: "translateX(0)",
           },
         },
+        popup: {
+          "0%": {
+            transform: "translateY(100%)",
+            opacity: "0",
+          },
+          "100%": {
+            transform: "translateY(0)",
+            opacity: "1",
+          },
+        },
       },
       animation: {
         progress: "progress 10s linear",
+        popup: "popup 250ms linear",
       },
     },
   },
