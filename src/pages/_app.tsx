@@ -13,6 +13,7 @@ import "src/styles/globals.css";
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   title?: string;
   type?: "detail" | "error";
+  className?: string;
   render?: () => React.ReactNode;
 };
 
@@ -25,7 +26,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
     switch (Component.type) {
       case "detail":
         return (
-          <DetailLayout title={Component.title} render={Component.render}>
+          <DetailLayout className={Component.className} title={Component.title} render={Component.render}>
             <Component {...pageProps} />
           </DetailLayout>
         );
