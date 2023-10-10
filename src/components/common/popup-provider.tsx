@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -113,7 +112,7 @@ export const PopupProvider = ({ children }: PopupProviderProps) => {
                 ref={popupRef}
               >
                 <div
-                  className="animate-popup container relative mx-auto mt-auto rounded-t-2xl bg-white"
+                  className="container relative mx-auto mt-auto animate-popup rounded-t-2xl bg-white"
                   ref={popupAreaRef}
                 >
                   {options?.title && (
