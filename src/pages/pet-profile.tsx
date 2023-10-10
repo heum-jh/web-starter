@@ -67,11 +67,11 @@ const PetProfile = () => {
         />
         {selectedImage ? (
           <div className="relative h-full w-full">
-            <Image alt="profile" fill src={selectedImage} className="absolute rounded-full object-cover" />
+            <Image alt="profile" fill src={selectedImage} className="absolute rounded-full object-contain" />
           </div>
         ) : (
           <div className="relative h-9 w-9">
-            <Image alt="profile" fill src="/images/assets/common/basic-img.svg" className="absolute object-cover" />
+            <Image alt="profile" fill src="/images/assets/common/basic-img.svg" className="absolute object-contain" />
           </div>
         )}
       </div>
