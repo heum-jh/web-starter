@@ -2,8 +2,9 @@ import clsx from "clsx";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import Option from "src/core/function/option";
+import { NextPageWithLayout } from "./_app";
 
-const PetProfile = () => {
+const PetProfile: NextPageWithLayout = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [petName, setPetName] = useState<string>();
   const cameraRef = useRef<HTMLInputElement>(null);
@@ -86,7 +87,7 @@ const PetProfile = () => {
           name="petName"
         />
       </div>
-      <div className="fixed bottom-3 w-full px-5">
+      <div className="fixed bottom-3 w-full px-4">
         <button
           type="button"
           className={clsx(
@@ -102,3 +103,4 @@ const PetProfile = () => {
 };
 
 export default PetProfile;
+PetProfile.type = "detail";
