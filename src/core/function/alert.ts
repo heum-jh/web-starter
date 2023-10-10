@@ -17,7 +17,7 @@ const Alert = {
       }),
     );
   },
-  async alert(message: string, title?: string, { confirmText = "확인" }: AlertAlertOptions = {}) {
+  async alert(title: string, message?: string, { confirmText = "확인" }: AlertAlertOptions = {}) {
     return new Promise(resolve =>
       window.dispatchEvent(
         new CustomEvent("alert", {
@@ -32,9 +32,9 @@ const Alert = {
     );
   },
   async confirm(
-    message: string,
-    title?: string,
-    { confirmText = "예", cancelText = "아니오" }: AlertConfirmOptions = {},
+    title: string,
+    message?: string,
+    { confirmText = "확인", cancelText = "취소" }: AlertConfirmOptions = {},
   ) {
     return new Promise<boolean>(resolve =>
       window.dispatchEvent(
