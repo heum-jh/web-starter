@@ -19,10 +19,7 @@ const Header = () => {
   return (
     <header>
       <div
-        className={clsx(
-          "container mx-auto flex h-16 items-center justify-between px-5",
-          searchContext?.isOpen ? "hidden" : "",
-        )}
+        className={clsx("container flex h-16 items-center justify-between px-5", searchContext?.isOpen ? "hidden" : "")}
       >
         <button
           type="button"
