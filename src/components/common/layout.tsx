@@ -9,25 +9,12 @@ type LayoutProps = {
 };
 export const SearchContext = createContext<{
   isOpen: boolean;
-  type: "location" | "search" | null;
-  handleChangeOpen: (type?: "location" | "search") => void;
+  handleChangeOpen: () => void;
 } | null>(null);
 
 const Layout = ({ children, className }: LayoutProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [type, setType] = useState<"location" | "search" | null>(null);
-  const handleChangeOpen = (type?: "location" | "search") => {
-    switch (type) {
-      case "location":
-        setType("location");
-        break;
-      case "search":
-        setType("search");
-        break;
-      default:
-        setType(null);
-        break;
-    }
+  const handleChangeOpen = () => {
     if (isOpen) {
       setIsOpen(false);
     } else {
@@ -38,7 +25,6 @@ const Layout = ({ children, className }: LayoutProps) => {
     <SearchContext.Provider
       value={{
         isOpen,
-        type,
         handleChangeOpen,
       }}
     >
