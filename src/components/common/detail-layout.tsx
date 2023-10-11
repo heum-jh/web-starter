@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import { cn } from "src/core/function/cn";
 
 type DetailLayoutProps = {

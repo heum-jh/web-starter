@@ -5,13 +5,11 @@ import Head from "next/head";
 import AlertProvider from "src/components/common/alert-provider";
 import DetailLayout from "src/components/common/detail-layout";
 import Layout from "src/components/common/layout";
-import { PopupProvider } from "src/components/common/popup-provider";
 import OptionProvider from "src/components/common/option-provider";
+import { PopupProvider } from "src/components/common/popup-provider";
 import { client } from "src/core/apollo-client";
-import "src/styles/globals.css";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
 import useScrollRestoration from "src/core/hooks/use-scroll-restoration";
+import "src/styles/globals.css";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   title?: string;
