@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { NextPageWithLayout } from "../_app";
-import ToggleSwitch from "src/components/common/togle-switch";
+import ToggleSwitch from "src/components/common/toggle-switch";
 
 const NotificationSettingPage: NextPageWithLayout = () => {
   const [chattingToggle, setChattingToggle] = useState<boolean>(false);
