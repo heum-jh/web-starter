@@ -32,7 +32,7 @@ const Header = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
-                <rect x="0.75" y="0.75" width="22.5" height="22.5" rx="11.25" stroke="#DBDEE4" stroke-width="1.5" />
+                <rect x="0.75" y="0.75" width="22.5" height="22.5" rx="11.25" stroke="#DBDEE4" strokeWidth="1.5" />
               </svg>
               동네 추가하기
             </button>

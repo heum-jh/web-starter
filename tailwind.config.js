@@ -8,6 +8,13 @@ module.exports = {
     },
     extend: {
       zIndex: _0_10,
+      fontFamily: {
+        SUITE: ["SUITE"],
+      },
+      translate: {
+        100: "100%",
+        200: "200%",
+      },
       keyframes: {
         progress: {
           "0%": {
