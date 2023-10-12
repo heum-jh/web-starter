@@ -24,7 +24,7 @@ const Alert = {
           detail: {
             title: title,
             message: message,
-            buttons: [{ text: confirmText, type: "confirm", onPress: resolve }],
+            buttons: [{ text: confirmText, type: "confirm", onClick: resolve }],
             onClose: resolve,
           },
         }),
@@ -46,12 +46,12 @@ const Alert = {
               {
                 text: cancelText,
                 type: "cancel",
-                onPress: () => resolve(false),
+                onClick: () => resolve(false),
               },
               {
                 text: confirmText,
                 type: "confirm",
-                onPress: () => resolve(true),
+                onClick: () => resolve(true),
               },
             ],
             onClose: (result: boolean) => resolve(result),

@@ -5,9 +5,10 @@ import Head from "next/head";
 import AlertProvider from "src/components/common/alert-provider";
 import DetailLayout from "src/components/common/detail-layout";
 import Layout from "src/components/common/layout";
-import { PopupProvider } from "src/components/common/popup-provider";
 import OptionProvider from "src/components/common/option-provider";
+import { PopupProvider } from "src/components/common/popup-provider";
 import { client } from "src/core/apollo-client";
+import useScrollRestoration from "src/core/hooks/use-scroll-restoration";
 import "src/styles/globals.css";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -15,6 +16,7 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   type?: "detail" | "error";
   className?: string;
   render?: () => React.ReactNode;
+  getLayout?: (page: React.ReactElement) => React.ReactNode;
 };
 
 type AppPropsWithLayout = AppProps & {
@@ -22,7 +24,11 @@ type AppPropsWithLayout = AppProps & {
 };
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
+  useScrollRestoration();
   const getLayout = () => {
+    if (Component.getLayout) {
+      return Component.getLayout(<Component {...pageProps} />);
+    }
     switch (Component.type) {
       case "detail":
         return (
@@ -40,9 +46,11 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         );
     }
   };
+
   return (
     <>
       <Head>
+        <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUITE/fonts/static/woff2/SUITE.css" rel="stylesheet"></link>
         {/* viewport */}
         <meta
           name="viewport"

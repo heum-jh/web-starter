@@ -1,6 +1,6 @@
 import NoticeListCard from "src/components/notice/list-card";
-import { NextPageWithLayout } from "../_app";
 import { useRouter } from "next/router";
+import { NextPageWithLayout } from "src/pages/_app";
 
 const NoticePage: NextPageWithLayout = () => {
   const router = useRouter();
@@ -15,7 +15,14 @@ const NoticePage: NextPageWithLayout = () => {
                 key={i}
                 title="공지 제목"
                 createdAt="2021-10-10"
-                onClick={() => router.push(`/notice/${i}`)}
+                onClick={() =>
+                  router.push({
+                    pathname: "notice/tesatasdf",
+                    query: {
+                      ...router.query,
+                    },
+                  })
+                }
               />
             );
           })}
