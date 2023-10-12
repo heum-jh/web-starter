@@ -84,7 +84,9 @@ const AlertProvider = () => {
         <div className="flex min-h-full items-center justify-center px-5">
           <div className="container overflow-hidden rounded-xl bg-white">
             <div className="space-y-4 px-4 py-10 text-center text-[#111111]">
-              {options.title && <h3 className="text-xl font-bold">{options.title}</h3>}
+              {options.title && (
+                <h3 className="break-words text-xl font-bold" dangerouslySetInnerHTML={{ __html: options.title }} />
+              )}
               {options.message && (
                 <p
                   className="break-words text-base font-normal"

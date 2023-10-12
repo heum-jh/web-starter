@@ -6,17 +6,24 @@ type DetailLayoutProps = {
   children: React.ReactNode;
   title?: string;
   className?: string;
+  handleBack?: () => void;
   render?: () => React.ReactNode;
 };
 
-const DetailLayout = ({ children, title, render, className }: DetailLayoutProps) => {
+const DetailLayout = ({ children, title, render, className, handleBack }: DetailLayoutProps) => {
   const router = useRouter();
   return (
     <>
       <header>
         <div className="container flex h-16 items-center gap-1 py-[0.38rem] pl-2 pr-5">
           <div className="flex-1">
-            <button type="button" className="p-3" onClick={() => router.back()}>
+            <button
+              type="button"
+              className="p-3"
+              onClick={() => {
+                handleBack ? handleBack() : router.back();
+              }}
+            >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path
                   d="M11 20L3 12L11 4"
@@ -40,7 +47,7 @@ const DetailLayout = ({ children, title, render, className }: DetailLayoutProps)
           </div>
         }
       >
-        <main className={cn("container", className)}>{children}</main>
+        <main className={cn("container flex-grow-[1]", className)}>{children}</main>
       </Suspense>
     </>
   );
