@@ -1,4 +1,4 @@
-import FAQListCard from "src/components/mypage/list-card";
+import FAQListCard from "src/components/my/list-card";
 import { NextPageWithLayout } from "src/pages/_app";
 
 const MyPageFAQPage: NextPageWithLayout = () => {
