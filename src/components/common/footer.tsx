@@ -5,7 +5,7 @@ import { cn } from "src/core/function/cn";
 const Footer = ({ className }: { className: string }) => {
   const router = useRouter();
   return (
-    <div className={cn("fixed bottom-0 w-full bg-[#ffffff] pt-5", className)}>
+    <div className={cn("sticky bottom-0 w-full bg-[#ffffff] pt-5", className)}>
       <div className="flex justify-evenly bg-[#ffffff] text-[0.625rem]/[1.5rem] font-medium text-[#4a5360]">
         <div className="flex flex-1 cursor-pointer flex-col items-center justify-center">
           <div
