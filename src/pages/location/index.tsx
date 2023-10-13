@@ -1,15 +1,13 @@
 import clsx from "clsx";
 import { useRef, useState } from "react";
+import BottomSheet from "src/components/common/bottom-sheet";
 import Footer from "src/components/common/footer";
 import ShopCard from "src/components/location/shop-card";
 import { NextPageWithLayout } from "../_app";
-import BottomSheet from "src/components/common/bottom-sheet";
 
 const LocationPage: NextPageWithLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [search, setSearch] = useState("");
   const searchRef = useRef<HTMLInputElement>(null);
-  const navRef = useRef(null);
 
   const handleSearchFocus = () => {
     setIsOpen(true);
@@ -86,14 +84,6 @@ const LocationPage: NextPageWithLayout = () => {
             </button>
           </form>
         </div>
-        {/* <progress
-          max="100"
-          value={progressValue}
-          className={cn(
-            "h-0.5 w-full appearance-none bg-[#FF7314] transition-all [&::-webkit-progress-bar]:bg-white [&::-webkit-progress-value]:bg-[#ff7314]",
-            progressValue === 0 ? "hidden" : "",
-          )}
-        /> */}
         <div
           className={clsx(
             "static top-0 border-t-[0.75rem] border-t-[#F6F6F6] px-5 before:absolute before:inset-0 before:z-[-1] before:h-full before:w-full before:bg-white",
