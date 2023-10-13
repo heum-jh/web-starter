@@ -2,9 +2,11 @@ import clsx from "clsx";
 import Image from "next/image";
 import { ChangeEvent, useRef, useState } from "react";
 import Option from "src/core/function/option";
-import { NextPageWithLayout } from "./_app";
+import { NextPageWithLayout } from "../_app";
+import { useRouter } from "next/router";
 
 const PetProfile: NextPageWithLayout = () => {
+  const router = useRouter();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [petName, setPetName] = useState<string>();
   const cameraRef = useRef<HTMLInputElement>(null);
@@ -94,13 +96,24 @@ const PetProfile: NextPageWithLayout = () => {
       </div>
       <div className="fixed bottom-3 w-full px-4">
         <button
+          onClick={() => {
+            if (router.query.addPet) {
+              router.push({
+                pathname: "/create-pet",
+                query: {
+                  petName: petName,
+                  image: selectedImage,
+                },
+              });
+            }
+          }}
           type="button"
           className={clsx(
             "h-14 w-full cursor-pointer rounded-[0.25rem] text-[1.25rem]/[1.5rem] font-semibold text-[#ffffff]",
             petName ? "bg-[#FF7314]" : "bg-[#fddcb0]",
           )}
         >
-          가입 완료
+          {router.query.addPet ? "다음" : "가입 완료"}
         </button>
       </div>
     </div>
