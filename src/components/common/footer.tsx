@@ -2,11 +2,11 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { cn } from "src/core/function/cn";
 
-const Footer = ({ className }: { className: string }) => {
+const Footer = ({ className }: { className?: string }) => {
   const router = useRouter();
   return (
-    <div className={cn("sticky bottom-0 w-full bg-[#ffffff] pt-5", className)}>
-      <div className="flex justify-evenly bg-[#ffffff] text-[0.625rem]/[1.5rem] font-medium text-[#4a5360]">
+    <footer className={cn("fixed bottom-0 h-16 w-full bg-[#ffffff] pt-5", className)}>
+      <div className="flex justify-evenly bg-[#ffffff] text-[0.625rem] font-medium text-[#4a5360]">
         <div className="flex flex-1 cursor-pointer flex-col items-center justify-center">
           <div
             className="relative h-[1.5rem] w-[1.5rem]"
@@ -15,7 +15,7 @@ const Footer = ({ className }: { className: string }) => {
             }}
           >
             <Image
-              src={`/images/assets/common/${router.asPath.startsWith("/") ? "home-active" : "home"}.svg`}
+              src={`/images/assets/common/${router.asPath === "/" ? "home-active" : "home"}.svg`}
               alt="home"
               fill
               className="object-cover"
@@ -27,11 +27,11 @@ const Footer = ({ className }: { className: string }) => {
           <div
             className="relative h-[1.5rem] w-[1.5rem]"
             onClick={() => {
-              router.push("/");
+              router.push("/article");
             }}
           >
             <Image
-              src={`/images/assets/common/${!router.asPath.startsWith("/") ? "article-active" : "article"}.svg`}
+              src={`/images/assets/common/${router.asPath.startsWith("/article") ? "article-active" : "article"}.svg`}
               fill
               className="object-cover"
               alt="article"
@@ -43,16 +43,16 @@ const Footer = ({ className }: { className: string }) => {
           <div
             className="relative h-[1.5rem] w-[1.5rem]"
             onClick={() => {
-              router.push("/");
+              router.push("/location");
             }}
           >
             <Image
               src={`/images/assets/common/${
-                !router.asPath.startsWith("/") ? "around-location-active" : "around-location"
+                router.asPath.startsWith("/location") ? "around-location-active" : "around-location"
               }.svg`}
               fill
               className="object-cover"
-              alt="around-location"
+              alt="location"
             />
           </div>
           <span>주변 탐색</span>
@@ -61,14 +61,14 @@ const Footer = ({ className }: { className: string }) => {
           <div
             className="relative h-[1.5rem] w-[1.5rem]"
             onClick={() => {
-              router.push("/");
+              router.push("/chat");
             }}
           >
             <Image
-              src={`/images/assets/common/${!router.asPath.startsWith("/") ? "chatting-active" : "chatting"}.svg`}
+              src={`/images/assets/common/${router.asPath.startsWith("/chat") ? "chatting-active" : "chatting"}.svg`}
               fill
               className="object-cover"
-              alt="chatting"
+              alt="chat"
             />
           </div>
           <span>채팅</span>
@@ -77,20 +77,20 @@ const Footer = ({ className }: { className: string }) => {
           <div
             className="relative h-[1.5rem] w-[1.5rem]"
             onClick={() => {
-              router.push("/");
+              router.push("/my");
             }}
           >
             <Image
-              src={`/images/assets/common/${!router.asPath.startsWith("/") ? "my-page-active" : "my-page"}.svg`}
+              src={`/images/assets/common/${router.asPath.startsWith("/my") ? "my-page-active" : "my-page"}.svg`}
               fill
               className="object-cover"
-              alt="my-page"
+              alt="my"
             />
           </div>
           <span>마이페이지</span>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
