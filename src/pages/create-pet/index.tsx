@@ -69,7 +69,7 @@ const CreatePet: NextPageWithLayout = () => {
           <span className="text-[0.875rem]/[1.25rem] font-semibold text-[#111111]">크기</span>
           <SelectPopup
             placeholder="크기를 선택해 주세요"
-            plceholderColor="text-[#A2A9B5]"
+            placeholderColor="#A2A9B5"
             list={[
               { label: "소형", value: "소형" },
               { label: "중형", value: "중형" },

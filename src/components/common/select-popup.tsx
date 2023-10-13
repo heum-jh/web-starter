@@ -12,9 +12,9 @@ type SelectPopupProps = {
   onChange: (value: string) => void;
   className?: string;
   placeholder?: string;
-  plceholderColor?: string;
+  placeholderColor?: string;
 };
-const SelectPopup = ({ list, value, onChange, className, placeholder, plceholderColor }: SelectPopupProps) => {
+const SelectPopup = ({ list, value, onChange, className, placeholder, placeholderColor }: SelectPopupProps) => {
   const [currentValue, setCurrentValue] = useState(value);
   const popup = usePopup({
     title: "정렬",
@@ -60,7 +60,7 @@ const SelectPopup = ({ list, value, onChange, className, placeholder, plceholder
           popup.open();
         }}
       >
-        {placeholder && value == undefined && <span className={plceholderColor}>{placeholder}</span>}
+        {placeholder && value == undefined && <span className={`text-[${placeholderColor}]`}>{placeholder}</span>}
         <span>{list.find(item => item.value === currentValue)?.label}</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M4 6L8 10L12 6" stroke="#707888" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
