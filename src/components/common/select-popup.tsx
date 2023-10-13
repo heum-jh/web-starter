@@ -11,8 +11,17 @@ type SelectPopupProps = {
   value?: string;
   onChange: (value: string) => void;
   className?: string;
+  placeholder?: string;
+  placeholderColor?: string;
 };
-const SelectPopup = ({ list, value, onChange, className }: SelectPopupProps) => {
+const SelectPopup = ({
+  list,
+  value,
+  onChange,
+  className,
+  placeholder,
+  placeholderColor = "#A2A9B5",
+}: SelectPopupProps) => {
   const [currentValue, setCurrentValue] = useState(value);
   const popup = usePopup({
     title: "정렬",
@@ -58,10 +67,22 @@ const SelectPopup = ({ list, value, onChange, className }: SelectPopupProps) => 
           popup.open();
         }}
       >
-        <span>{list.find(item => item.value === currentValue)?.label}</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M4 6L8 10L12 6" stroke="#707888" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        {currentValue ? (
+          <>
+            <span>{list.find(item => item.value === currentValue)?.label}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M4 6L8 10L12 6"
+                stroke="#707888"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </>
+        ) : (
+          <span className={`text-[${placeholderColor}]`}>{placeholder}</span>
+        )}
       </div>
     </>
   );
