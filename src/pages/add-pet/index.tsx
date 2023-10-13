@@ -18,7 +18,7 @@ const AddPetPage: NextPageWithLayout = () => {
               <div className="flex items-center gap-3">
                 <div className="relative h-12 w-12">
                   <Image
-                    src="/images/assets/common/article.svg"
+                    src="/images/assets/common/default-dog.svg"
                     alt="profile"
                     fill
                     className="rounded-full object-contain"
