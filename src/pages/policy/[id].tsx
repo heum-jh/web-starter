@@ -1,4 +1,3 @@
-import PopoverImage from "src/components/common/popover-image";
 import { NextPageWithLayout } from "../_app";
 
 const PolicyDetailPage: NextPageWithLayout = () => {
