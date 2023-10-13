@@ -1,6 +1,5 @@
 import WriteModify from "src/components/common/write-modify";
 import { NextPageWithLayout } from "../_app";
-import InsertImage from "src/components/common/insert-image";
 
 const InquiryWritePage: NextPageWithLayout = () => {
   return <WriteModify type="write" titleCheck={true}></WriteModify>;

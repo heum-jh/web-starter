@@ -2,7 +2,6 @@ import DetailPage from "src/components/common/detail-page";
 import { NextPageWithLayout } from "../_app";
 import Image from "next/image";
 import Option from "src/core/function/option";
-import { useRouter } from "next/router";
 import router from "next/router";
 
 const InquiryDetailPage: NextPageWithLayout = () => {
