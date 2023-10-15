@@ -16,7 +16,7 @@ import Option from "src/core/function/option";
 
 const MettingDetailPage: NextPageWithLayout = () => {
   const router = useRouter();
-  const [userType, setUserType] = useState<"user" | "member" | "writer">("member");
+  const [userType] = useState<"user" | "member" | "writer">("member");
   const [nav, setNav] = useState("all");
   const [isLike, setIsLike] = useState(false);
   const [isJoin, setIsJoin] = useState(false);
