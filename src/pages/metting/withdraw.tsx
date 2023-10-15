@@ -33,7 +33,6 @@ const MettingWithdrawPage: NextPageWithLayout = () => {
         value={text}
         onChange={e => setText(e.currentTarget.value)}
       />
-      ;
     </DetailLayout>
   );
 };
