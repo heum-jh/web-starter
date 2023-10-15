@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
-import Option from "src/core/function/option";
-import Image from "next/image";
 import Alert from "src/core/function/alert";
+import Option from "src/core/function/option";
+import PopoverImage from "src/components/common/popover-image";
 
 export interface ImageProps {
   name: string;
@@ -48,11 +48,10 @@ const InsertImage = ({ imageUrl }: InsertImageProps) => {
 
   return (
     <>
-      {selectedImage.length === 10 ? (
-        <></>
-      ) : (
-        <div
-          className="pounded-[0.25rem] flex h-[3.5rem] w-[3.5rem] flex-col items-center justify-center rounded border border-[#A2A9B5]"
+      {selectedImage.length !== 10 && (
+        <button
+          type="button"
+          className="flex h-14 w-14 flex-col items-center justify-center rounded border border-[#A2A9B5]"
           onClick={async () => {
             await Option.lists([
               {
@@ -85,14 +84,16 @@ const InsertImage = ({ imageUrl }: InsertImageProps) => {
           <div className="text-sm font-normal text-[#A2A9B5]">
             <span>{selectedImage.length}</span>/10
           </div>
-        </div>
+        </button>
       )}
       {selectedImage.length > 0 &&
         selectedImage.map(item => {
           return (
-            <div key={item.name} className="relative h-[3.5rem] w-[3.5rem] rounded-[0.25rem] border border-[#F0F1F2]">
-              <div
-                className="absolute right-[-0.375rem] top-[-0.375rem] z-1 flex h-[1rem] w-[1rem] items-center justify-center rounded-[50%] bg-[#1E1E1E] "
+            <div key={item.name} className="relative h-[3.5rem] w-[3.5rem] rounded border border-[#F0F1F2]">
+              <PopoverImage alt="" src={item.url} fill className="rounded" />
+              <button
+                type="button"
+                className="absolute -right-[0.375rem] -top-[0.375rem] flex h-4 w-4 items-center justify-center rounded-full bg-[#1E1E1E] "
                 onClick={() => handleRemove(item.name)}
               >
                 <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -103,8 +104,7 @@ const InsertImage = ({ imageUrl }: InsertImageProps) => {
                     fill="white"
                   />
                 </svg>
-              </div>
-              <Image alt="" src={item.url} fill className="z-0 object-cover" />
+              </button>
             </div>
           );
         })}

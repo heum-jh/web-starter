@@ -1,6 +1,7 @@
 export type OptionProps = {
   label: string;
   onClick: () => void;
+  textColor?: string;
 };
 
 const Option = {
