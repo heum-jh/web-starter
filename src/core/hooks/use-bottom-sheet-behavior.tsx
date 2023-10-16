@@ -41,8 +41,6 @@ export function useBottomSheetBehavior({ footerHeight = 0, headerHeight = 0, add
   });
 
   useEffect(() => {
-    console.log("window.innerHeight", window.innerHeight);
-
     currentOptions.current = {
       min_y: headerHeight + addAreaHeight,
       max_y: window.innerHeight - footerHeight - 36,
