@@ -1,6 +1,6 @@
 import TempImage from "../common/temp-image";
 
-const MettingCard = () => {
+const MeetingCard = () => {
   return (
     <li className="flex w-full cursor-pointer gap-2 rounded bg-white p-4">
       <div className="h-[4.5rem] w-[4.5rem] shrink-0 basis-[4.5rem]">
@@ -29,4 +29,4 @@ const MettingCard = () => {
     </li>
   );
 };
-export default MettingCard;
+export default MeetingCard;
