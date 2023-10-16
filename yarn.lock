@@ -1167,6 +1167,11 @@
   dependencies:
     tslib "^2.4.0"
 
+"@types/geojson@*":
+  version "7946.0.11"
+  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.11.tgz#012c17cb2256ad8de78560da851ab914a7b9b40e"
+  integrity sha512-L7A0AINMXQpVwxHJ4jxD6/XjZ4NDufaRlUJHjNIFKYUFBH1SvOW+neaqb0VTRSLW5suSrSu19ObFEFnfNcr+qg==
+
 "@types/js-yaml@^4.0.0":
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/@types/js-yaml/-/js-yaml-4.0.6.tgz#4b3afd5158b8749095b1f096967b6d0f838d862f"
@@ -1186,6 +1191,13 @@
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/@types/luxon/-/luxon-3.3.2.tgz#f6e3524c2486b949a4db445e85d93c8e9886dfe2"
   integrity sha512-l5cpE57br4BIjK+9BSkFBOsWtwv6J9bJpC7gdXIzZyI0vuKvNTk0wZZrkQxMGsUAuGW9+WMNWF2IJMD7br2yeQ==
+
+"@types/navermaps@^3.7.0":
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/@types/navermaps/-/navermaps-3.7.0.tgz#d63633dda7a46e1bca87212805d80a302ad12e97"
+  integrity sha512-NSUiFwRzaeBg5gjcIuItGIGhb/BFj0L6b7ftUpDc7M4rpHEKbxnuGlZeO3vGooSkFQTMrBkkwHRwk7QFzVwPIA==
+  dependencies:
+    "@types/geojson" "*"
 
 "@types/node@*", "@types/node@20.7.0":
   version "20.7.0"
