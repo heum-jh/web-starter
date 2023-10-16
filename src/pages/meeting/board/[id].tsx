@@ -4,7 +4,7 @@ import Alert from "src/core/function/alert";
 import Option from "src/core/function/option";
 import { NextPageWithLayout } from "src/pages/_app";
 
-const MettingBoardDetail: NextPageWithLayout = () => {
+const MeetingBoardDetail: NextPageWithLayout = () => {
   const [isLike, setIsLike] = useState(false);
   const [isViewComment, setIsViewComment] = useState(false);
   const commentRef = useRef<HTMLTextAreaElement>(null);
@@ -234,15 +234,15 @@ const MettingBoardDetail: NextPageWithLayout = () => {
     </>
   );
 };
-export default MettingBoardDetail;
-MettingBoardDetail.type = "detail";
-MettingBoardDetail.render = () => {
+export default MeetingBoardDetail;
+MeetingBoardDetail.type = "detail";
+MeetingBoardDetail.render = () => {
   const handleOptions = () => {
     Option.lists([
       {
         label: "게시글 수정하기",
         onClick: () => {
-          window.location.href = "/metting/board/modify";
+          window.location.href = "/meeting/board/modify";
         },
       },
       {

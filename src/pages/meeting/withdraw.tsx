@@ -6,7 +6,7 @@ import { NextPageWithLayout } from "../_app";
 import Alert from "src/core/function/alert";
 import { useRouter } from "next/router";
 
-const MettingWithdrawPage: NextPageWithLayout = () => {
+const MeetingWithdrawPage: NextPageWithLayout = () => {
   const router = useRouter();
   const [text, setText] = useState<string>();
   return (
@@ -36,5 +36,5 @@ const MettingWithdrawPage: NextPageWithLayout = () => {
     </DetailLayout>
   );
 };
-export default MettingWithdrawPage;
-MettingWithdrawPage.getLayout = page => page;
+export default MeetingWithdrawPage;
+MeetingWithdrawPage.getLayout = page => page;

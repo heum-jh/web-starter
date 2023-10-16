@@ -4,17 +4,17 @@ import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import Nav from "src/components/common/nav";
 import TempImage from "src/components/common/temp-image";
-import MettingMemberListCard from "src/components/metting/member-list-card";
-import MettingScheduleCard from "src/components/metting/schedule-card";
+import MeetingMemberListCard from "src/components/meeting/member-list-card";
+import MeetingScheduleCard from "src/components/meeting/schedule-card";
 import Alert from "src/core/function/alert";
 import { NextPageWithLayout } from "../_app";
 import DetailLayout from "src/components/common/detail-layout";
 import { cn } from "src/core/function/cn";
-import MettingBoardTab from "src/components/metting/board-tab";
-import MettingChatTab from "src/components/metting/chat-tab";
 import Option from "src/core/function/option";
+import MeetingBoardTab from "src/components/meeting/board-tab";
+import MeetingChatTab from "src/components/meeting/chat-tab";
 
-const MettingDetailPage: NextPageWithLayout = () => {
+const MeetingDetailPage: NextPageWithLayout = () => {
   const router = useRouter();
   const [userType] = useState<"user" | "member" | "writer">("member");
   const [nav, setNav] = useState("all");
@@ -32,7 +32,7 @@ const MettingDetailPage: NextPageWithLayout = () => {
       {
         label: "모임 탈퇴하기",
         onClick: () => {
-          router.push("/metting/withdraw");
+          router.push("/meeting/withdraw");
         },
       },
     ]);
@@ -138,7 +138,7 @@ const MettingDetailPage: NextPageWithLayout = () => {
                   className="inline-flex items-center text-sm font-normal text-[#707888]"
                   onClick={() =>
                     router.push({
-                      pathname: "/metting/notice",
+                      pathname: "/meeting/notice",
                       query: {
                         id: router.query.id,
                       },
@@ -189,7 +189,7 @@ const MettingDetailPage: NextPageWithLayout = () => {
           <div className="text-lg font-semibold text-[#1E1E1E]">일정</div>
           <ul>
             {Array.from({ length: 2 }).map((_, idx) => (
-              <MettingScheduleCard key={idx} />
+              <MeetingScheduleCard key={idx} />
             ))}
           </ul>
           <button
@@ -197,7 +197,7 @@ const MettingDetailPage: NextPageWithLayout = () => {
             className="mt-6 w-full rounded bg-[#F0F1F2] py-4 text-center text-lg font-semibold text-[#707888]"
             onClick={() =>
               router.push({
-                pathname: "/metting/schedule",
+                pathname: "/meeting/schedule",
                 query: router.query,
               })
             }
@@ -210,7 +210,7 @@ const MettingDetailPage: NextPageWithLayout = () => {
           <div className="mb-5 text-lg font-semibold text-[#1E1E1E]">모임원</div>
           <ul className="space-y-6">
             {Array.from({ length: 5 }).map((_, idx) => (
-              <MettingMemberListCard key={idx}></MettingMemberListCard>
+              <MeetingMemberListCard key={idx}></MeetingMemberListCard>
             ))}
           </ul>
           <button
@@ -218,7 +218,7 @@ const MettingDetailPage: NextPageWithLayout = () => {
             className="mt-6 w-full rounded bg-[#F0F1F2] py-4 text-center text-lg font-semibold text-[#707888]"
             onClick={() =>
               router.push({
-                pathname: "/metting/member",
+                pathname: "/meeting/member",
                 query: router.query,
               })
             }
@@ -228,9 +228,9 @@ const MettingDetailPage: NextPageWithLayout = () => {
         </div>
       </div>
       {/* 게시글 */}
-      <MettingBoardTab className={nav !== "board" ? "hidden" : ""} />
+      <MeetingBoardTab className={nav !== "board" ? "hidden" : ""} />
       {/* 채팅 */}
-      <MettingChatTab className={nav !== "chat" ? "hidden" : ""}></MettingChatTab>
+      <MeetingChatTab className={nav !== "chat" ? "hidden" : ""}></MeetingChatTab>
       {/* 참여하기 */}
       {userType === "user" && (
         <div className="sticky bottom-0 mt-3 w-full bg-white px-5 py-3">
@@ -270,9 +270,9 @@ const MettingDetailPage: NextPageWithLayout = () => {
     </DetailLayout>
   );
 };
-export default MettingDetailPage;
-MettingDetailPage.type = "detail";
-MettingDetailPage.getLayout = (page: React.ReactElement) => {
+export default MeetingDetailPage;
+MeetingDetailPage.type = "detail";
+MeetingDetailPage.getLayout = (page: React.ReactElement) => {
   return page;
 };
 

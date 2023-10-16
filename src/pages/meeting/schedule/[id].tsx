@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useRef } from "react";
-import MettingMemberListCard from "src/components/metting/member-list-card";
+import MeetingMemberListCard from "src/components/meeting/member-list-card";
 import Alert from "src/core/function/alert";
 import { NextPageWithLayout } from "src/pages/_app";
 
@@ -60,10 +60,10 @@ const ScheduleDetailPage: NextPageWithLayout = () => {
           모임원<span className="ml-2 text-[#FF7314]">5</span>
         </div>
         <ul className="space-y-6">
-          <MettingMemberListCard />
-          <MettingMemberListCard />
-          <MettingMemberListCard />
-          <MettingMemberListCard />
+          <MeetingMemberListCard />
+          <MeetingMemberListCard />
+          <MeetingMemberListCard />
+          <MeetingMemberListCard />
         </ul>
       </div>
       <div className="sticky inset-x-0 bottom-0 bg-white px-5 py-3">

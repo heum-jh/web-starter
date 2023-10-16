@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SelectPopup from "../common/select-popup";
-import MettingCard from "./metting-card";
+import MeetingCard from "./meeting-card";
 import { useRouter } from "next/router";
 
 const HomeMeetingList = () => {
@@ -23,7 +23,7 @@ const HomeMeetingList = () => {
       </div>
       <div className="space-y-3">
         {Array.from({ length: 5 }).map((_, idx) => (
-          <MettingCard
+          <MeetingCard
             key={idx}
             onClick={() =>
               router.push({

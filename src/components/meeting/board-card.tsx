@@ -1,8 +1,8 @@
 import TempImage from "../common/temp-image";
-type MettingBoardCardProps = {
+type MeetingBoardCardProps = {
   onClick?: () => void;
 };
-const MettingBoardCard = ({ onClick }: MettingBoardCardProps) => {
+const MeetingBoardCard = ({ onClick }: MeetingBoardCardProps) => {
   return (
     <div className="space-y-4 px-5 py-6" onClick={onClick}>
       <div className="flex items-center gap-x-2">
@@ -52,4 +52,4 @@ const MettingBoardCard = ({ onClick }: MettingBoardCardProps) => {
     </div>
   );
 };
-export default MettingBoardCard;
+export default MeetingBoardCard;

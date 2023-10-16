@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SelectPopup from "src/components/common/select-popup";
-import MettingScheduleCard from "src/components/metting/schedule-card";
+import MeetingScheduleCard from "src/components/meeting/schedule-card";
 import { NextPageWithLayout } from "src/pages/_app";
 
 const SchedulePage: NextPageWithLayout = () => {
@@ -20,9 +20,9 @@ const SchedulePage: NextPageWithLayout = () => {
         />
       </div>
       <div className="border-orange-500 px-5">
-        <MettingScheduleCard isMap isAttendance={true} isJoin />
-        <MettingScheduleCard isMap isAttendance={false} />
-        <MettingScheduleCard isMap isAttendance={true} isJoin />
+        <MeetingScheduleCard isMap isAttendance={true} isJoin />
+        <MeetingScheduleCard isMap isAttendance={false} />
+        <MeetingScheduleCard isMap isAttendance={true} isJoin />
       </div>
     </div>
   );
