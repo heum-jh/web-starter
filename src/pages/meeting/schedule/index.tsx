@@ -20,9 +20,9 @@ const SchedulePage: NextPageWithLayout = () => {
         />
       </div>
       <div className="border-orange-500 px-5">
-        <MeetingScheduleCard isMap />
-        <MeetingScheduleCard isMap />
-        <MeetingScheduleCard isMap />
+        <MeetingScheduleCard isMap isAttendance={true} isJoin />
+        <MeetingScheduleCard isMap isAttendance={false} />
+        <MeetingScheduleCard isMap isAttendance={true} isJoin />
       </div>
     </div>
   );

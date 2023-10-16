@@ -84,7 +84,7 @@ const CreatePet: NextPageWithLayout = () => {
           <span className="text-[0.875rem]/[1.25rem] font-semibold text-[#111111]">성향</span>
           <TextArea
             onChange={e => {
-              setContent(e.target.value);
+              setContent(e.currentTarget.value);
             }}
             placeholder="성향을 입력해 주세요"
             className="mt-[0.375rem]"
