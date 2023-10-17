@@ -27,7 +27,7 @@ const HomeMeetingList = () => {
             key={idx}
             onClick={() =>
               router.push({
-                pathname: `/metting`,
+                pathname: `/meeting`,
                 query: {
                   id: idx,
                 },

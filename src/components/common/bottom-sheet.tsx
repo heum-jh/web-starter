@@ -1,8 +1,11 @@
 import clsx from "clsx";
-import { PropsWithChildren } from "react";
 import { useBottomSheetBehavior } from "src/core/hooks/use-bottom-sheet-behavior";
 
-const BottomSheet = ({ children }: PropsWithChildren) => {
+interface IBottomSheet {
+  children?: React.ReactNode | undefined;
+  render?: (position: "default" | "max" | "min") => React.ReactNode;
+}
+const BottomSheet = ({ children, render }: IBottomSheet) => {
   const { sheetRef, contentRef, position } = useBottomSheetBehavior({
     addAreaHeight: 100,
     headerHeight: 75,
@@ -16,6 +19,7 @@ const BottomSheet = ({ children }: PropsWithChildren) => {
       <div ref={contentRef} className={clsx(position === "max" ? "overflow-auto" : "overflow-hidden")}>
         {children}
       </div>
+      {render?.(position)}
     </div>
   );
 };
