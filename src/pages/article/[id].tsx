@@ -43,7 +43,7 @@ const ArticleDetailPage: NextPageWithLayout = () => {
         </div>
       </header>
       <main className="container flex-grow-[1]">
-        <div ref={targetRef} className="relative h-[470px] w-full bg-red-400">
+        <div ref={targetRef} className="relative h-[470px] w-full">
           <Image src={`https://via.placeholder.com/${500}x${500}/458278`} alt="" fill className="object-cover" />
           <div className="absolute bottom-0 w-full space-y-3 px-5 pb-7">
             <div className="space-y-[0.38rem]">

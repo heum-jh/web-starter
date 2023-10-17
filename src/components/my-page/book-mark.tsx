@@ -3,7 +3,7 @@ import Image from "next/image";
 const BookMark = () => {
   // 폴더 만들기 제한 5개
   return (
-    <div className="mt-5 px-5">
+    <div className="mb-20 mt-5 px-5">
       <div>
         <div className="flex h-14 cursor-pointer items-center gap-2">
           <div className="flex h-6 w-6 items-center justify-center rounded-full border border-[#DBDEE4]">

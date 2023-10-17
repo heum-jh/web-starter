@@ -4,17 +4,19 @@ import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import Nav from "src/components/common/nav";
 import TempImage from "src/components/common/temp-image";
-import MettingMemberListCard from "src/components/metting/member-list-card";
-import MettingScheduleCard from "src/components/metting/schedule-card";
+import MeetingMemberListCard from "src/components/meeting/member-list-card";
+import MeetingScheduleCard from "src/components/meeting/schedule-card";
 import Alert from "src/core/function/alert";
 import { NextPageWithLayout } from "../_app";
 import DetailLayout from "src/components/common/detail-layout";
 import { cn } from "src/core/function/cn";
-import MettingBoardTab from "src/components/metting/board-tab";
-import MettingChatTab from "src/components/metting/chat-tab";
+import Option from "src/core/function/option";
+import MeetingBoardTab from "src/components/meeting/board-tab";
+import MeetingChatTab from "src/components/meeting/chat-tab";
 
-const MettingDetailPage: NextPageWithLayout = () => {
+const MeetingDetailPage: NextPageWithLayout = () => {
   const router = useRouter();
+  const [userType] = useState<"user" | "member" | "writer">("member");
   const [nav, setNav] = useState("all");
   const [isLike, setIsLike] = useState(false);
   const [isJoin, setIsJoin] = useState(false);
@@ -25,8 +27,49 @@ const MettingDetailPage: NextPageWithLayout = () => {
     return "같이 산책시켜요!";
   }, [nav]);
 
+  const handleOptionsClick = async () => {
+    await Option.lists([
+      {
+        label: "모임 탈퇴하기",
+        onClick: () => {
+          router.push("/meeting/withdraw");
+        },
+      },
+    ]);
+  };
+
+  const optionsRender = () => {
+    return (
+      <button type="button" className="ml-auto flex h-full items-center" onClick={handleOptionsClick}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+            stroke="black"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z"
+            stroke="black"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z"
+            stroke="black"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+    );
+  };
+
   return (
-    <DetailLayout title={lyaoutTitle}>
+    <DetailLayout title={lyaoutTitle} render={() => userType === "member" && optionsRender()}>
       <div className={clsx("border-b-[0.75rem] border-b-[#F6F6F6] bg-white", nav !== "all" && "hidden")}>
         <div className="relative h-60 w-full bg-gray-300">
           <TempImage width={500} height={300} />
@@ -95,7 +138,7 @@ const MettingDetailPage: NextPageWithLayout = () => {
                   className="inline-flex items-center text-sm font-normal text-[#707888]"
                   onClick={() =>
                     router.push({
-                      pathname: "/metting/notice",
+                      pathname: "/meeting/notice",
                       query: {
                         id: router.query.id,
                       },
@@ -146,7 +189,7 @@ const MettingDetailPage: NextPageWithLayout = () => {
           <div className="text-lg font-semibold text-[#1E1E1E]">일정</div>
           <ul>
             {Array.from({ length: 2 }).map((_, idx) => (
-              <MettingScheduleCard key={idx} />
+              <MeetingScheduleCard key={idx} />
             ))}
           </ul>
           <button
@@ -154,7 +197,7 @@ const MettingDetailPage: NextPageWithLayout = () => {
             className="mt-6 w-full rounded bg-[#F0F1F2] py-4 text-center text-lg font-semibold text-[#707888]"
             onClick={() =>
               router.push({
-                pathname: "/metting/schedule",
+                pathname: "/meeting/schedule",
                 query: router.query,
               })
             }
@@ -167,7 +210,7 @@ const MettingDetailPage: NextPageWithLayout = () => {
           <div className="mb-5 text-lg font-semibold text-[#1E1E1E]">모임원</div>
           <ul className="space-y-6">
             {Array.from({ length: 5 }).map((_, idx) => (
-              <MettingMemberListCard key={idx}></MettingMemberListCard>
+              <MeetingMemberListCard key={idx}></MeetingMemberListCard>
             ))}
           </ul>
           <button
@@ -175,7 +218,7 @@ const MettingDetailPage: NextPageWithLayout = () => {
             className="mt-6 w-full rounded bg-[#F0F1F2] py-4 text-center text-lg font-semibold text-[#707888]"
             onClick={() =>
               router.push({
-                pathname: "/metting/member",
+                pathname: "/meeting/member",
                 query: router.query,
               })
             }
@@ -185,49 +228,51 @@ const MettingDetailPage: NextPageWithLayout = () => {
         </div>
       </div>
       {/* 게시글 */}
-      <MettingBoardTab className={nav !== "board" ? "hidden" : ""} />
+      <MeetingBoardTab className={nav !== "board" ? "hidden" : ""} />
       {/* 채팅 */}
-      <MettingChatTab className={nav !== "chat" ? "hidden" : ""}></MettingChatTab>
+      <MeetingChatTab className={nav !== "chat" ? "hidden" : ""}></MeetingChatTab>
       {/* 참여하기 */}
-      <div className="sticky bottom-0 mt-3 w-full bg-white px-5 py-3">
-        <button
-          type="button"
-          className={clsx(
-            "w-full rounded py-4 text-center text-lg font-semibold text-white",
-            isJoin ? "bg-[#1E1E1E]" : "bg-[#FF7314]",
-          )}
-          onClick={async () => {
-            if (isJoin) {
-              const confirm = await Alert.confirm("모임에 참여를 취소하시겠어요?", undefined, {
-                cancelText: "취소",
-                confirmText: "참여 취소하기",
-              });
-              if (confirm) {
-                await Alert.alert("참여 취소되었습니다!");
-                setIsJoin(false);
+      {userType === "user" && (
+        <div className="sticky bottom-0 mt-3 w-full bg-white px-5 py-3">
+          <button
+            type="button"
+            className={clsx(
+              "w-full rounded py-4 text-center text-lg font-semibold text-white",
+              isJoin ? "bg-[#1E1E1E]" : "bg-[#FF7314]",
+            )}
+            onClick={async () => {
+              if (isJoin) {
+                const confirm = await Alert.confirm("모임에 참여를 취소하시겠어요?", undefined, {
+                  cancelText: "취소",
+                  confirmText: "참여 취소하기",
+                });
+                if (confirm) {
+                  await Alert.alert("참여 취소되었습니다!");
+                  setIsJoin(false);
+                }
+              } else {
+                const confirm = await Alert.confirm(
+                  "모임에 참여하시겠어요?",
+                  "모인에 참여해서<br/>모임원들과 같이 산책해보세요!",
+                  { cancelText: "취소", confirmText: "참여하기" },
+                );
+                if (confirm) {
+                  await Alert.alert("참여 신청이 완료되었습니다!", "모임장의 승인을 잠시 기다려주세요!");
+                  setIsJoin(true);
+                }
               }
-            } else {
-              const confirm = await Alert.confirm(
-                "모임에 참여하시겠어요?",
-                "모인에 참여해서<br/>모임원들과 같이 산책해보세요!",
-                { cancelText: "취소", confirmText: "참여하기" },
-              );
-              if (confirm) {
-                await Alert.alert("참여 신청이 완료되었습니다!", "모임장의 승인을 잠시 기다려주세요!");
-                setIsJoin(true);
-              }
-            }
-          }}
-        >
-          {isJoin ? "승인 취소하기" : "참여하기"}
-        </button>
-      </div>
+            }}
+          >
+            {isJoin ? "승인 취소하기" : "참여하기"}
+          </button>
+        </div>
+      )}
     </DetailLayout>
   );
 };
-export default MettingDetailPage;
-MettingDetailPage.type = "detail";
-MettingDetailPage.getLayout = (page: React.ReactElement) => {
+export default MeetingDetailPage;
+MeetingDetailPage.type = "detail";
+MeetingDetailPage.getLayout = (page: React.ReactElement) => {
   return page;
 };
 

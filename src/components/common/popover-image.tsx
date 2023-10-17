@@ -16,7 +16,7 @@ const PopoverImage = ({ width, height, src, alt, className, ...res }: ImageProps
         placeholder="blur"
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
         onClick={() => setIsOpen(true)}
-        className={cn("cursor-pointer", className)}
+        className={cn("cursor-pointer object-cover", className)}
       />
       <div
         className={clsx(
@@ -25,13 +25,14 @@ const PopoverImage = ({ width, height, src, alt, className, ...res }: ImageProps
         )}
       >
         <div className="h-auto w-full">
-          <div className="relative h-[100vw] w-full rounded-[0.25rem] border border-[#F0F1F2]">
+          <div className="relative h-[100vw] w-full rounded border border-[#F0F1F2]">
             <Image
               src={src}
               alt={alt}
               fill
               placeholder="blur"
               blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+              className="object-cover"
             />
           </div>
           <button

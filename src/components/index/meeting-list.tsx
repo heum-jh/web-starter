@@ -1,8 +1,10 @@
 import { useState } from "react";
 import SelectPopup from "../common/select-popup";
-import MettingCard from "./metting-card";
+import MeetingCard from "./meeting-card";
+import { useRouter } from "next/router";
 
 const HomeMeetingList = () => {
+  const router = useRouter();
   const [sort, setSort] = useState<string>("new");
   return (
     <div className="space-y-4 bg-[#F4F4F5] px-5 py-[1.56rem]">
@@ -21,7 +23,17 @@ const HomeMeetingList = () => {
       </div>
       <div className="space-y-3">
         {Array.from({ length: 5 }).map((_, idx) => (
-          <MettingCard key={idx} />
+          <MeetingCard
+            key={idx}
+            onClick={() =>
+              router.push({
+                pathname: `/metting`,
+                query: {
+                  id: idx,
+                },
+              })
+            }
+          />
         ))}
       </div>
     </div>

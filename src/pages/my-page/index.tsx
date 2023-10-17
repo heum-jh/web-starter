@@ -5,6 +5,7 @@ import { cn } from "src/core/function/cn";
 import BookMark from "src/components/my-page/book-mark";
 import Gathering from "src/components/my-page/gathering";
 import MyPagePost from "src/components/my-page/post";
+import Footer from "src/components/common/footer";
 
 const MyPage: NextPageWithLayout = () => {
   const [subTab, setSubTab] = useState<"post" | "bookmark" | "gathering">("post");
@@ -96,3 +97,16 @@ const MyPage: NextPageWithLayout = () => {
 };
 
 export default MyPage;
+MyPage.getLayout = page => {
+  return (
+    <>
+      <div className="flex justify-end py-5 pr-5">
+        <div className="relative h-6 w-6">
+          <Image src={"/images/assets/common/menu.svg"} alt="알림" fill className="object-cover" />
+        </div>
+      </div>
+      {page}
+      <Footer />
+    </>
+  );
+};

@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { useRouter } from "next/router";
 import { FormEvent, useContext, useRef, useState } from "react";
 import { cn } from "src/core/function/cn";
-import MettingCard from "../index/metting-card";
+import MeetingCard from "../index/meeting-card";
 import { SearchContext } from "./layout";
 import { usePopup } from "src/core/hooks/use-popup";
 import LocationSearch from "../index/location-search";
@@ -255,7 +255,7 @@ const Search = ({ onClick, onSubmit, progressValue, search }: SearchProps) => {
             <ul className="space-y-3">
               {/* TODO: 컴포넌트 적용 필요 */}
               {Array.from({ length: 20 }).map((_, index) => {
-                return <MettingCard key={index} />;
+                return <MeetingCard key={index} />;
               })}
               {/* TODO: 해당 검색결과가 없을 떄 */}
               {/* <div className="flex h-[100vw] w-full items-center justify-center text-center text-[1.125rem]/[1.75rem] font-normal text-[#C3C7D0]">

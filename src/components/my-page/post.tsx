@@ -1,11 +1,9 @@
-import MettingBoardTab from "../metting/board-tab";
+import MettingBoardTab from "../meeting/board-tab";
 
 const MyPagePost = () => {
   return (
-    <div className="">
-      <div className="pt-16">
-        <MettingBoardTab />
-      </div>
+    <div className="mb-11">
+      <MettingBoardTab />
     </div>
   );
 };

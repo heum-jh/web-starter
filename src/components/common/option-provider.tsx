@@ -6,6 +6,7 @@ import { OptionProps } from "src/core/function/option";
 export interface IOptionButton {
   buttons: OptionProps[];
   onClose?: (result?: boolean) => void;
+  textColor?: string;
 }
 
 const OptionProvider = () => {
@@ -74,7 +75,7 @@ const OptionProvider = () => {
                 <button
                   key={idx}
                   type="button"
-                  className={clsx("w-full py-4 text-center")}
+                  className={clsx("w-full py-4 text-center", `text-[${button.textColor}]`)}
                   onClick={() => {
                     button.onClick();
                     handleClose();
