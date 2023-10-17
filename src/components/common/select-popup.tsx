@@ -25,29 +25,31 @@ const SelectPopup = ({
   const [currentValue, setCurrentValue] = useState(value);
   const popup = usePopup({
     title: "정렬",
-    render: () => (
-      <ul className="px-5">
-        {list.map(item => {
-          return (
-            <li
-              key={item.value}
-              className="font-500 flex items-center justify-between border-b border-[#F0F1F2] py-5 text-lg text-[#1E1E1E]"
-            >
-              <label>{item.label}</label>
-              <input
-                type="radio"
-                name="select"
-                value={item.value}
-                className="h-6 w-6 cursor-pointer appearance-none rounded-full border-[1.5px] border-[#DBDEE4] bg-[url('/images/assets/common/un-check.svg')] bg-center bg-no-repeat checked:border-none checked:bg-[#FF7314] checked:bg-[url('/images/assets/common/check.svg')]"
-                onChange={e => {
-                  handleSelectChange(e);
-                }}
-              />
-            </li>
-          );
-        })}
-      </ul>
-    ),
+    render: () => {
+      return (
+        <ul className="px-5">
+          {list.map(item => {
+            return (
+              <li
+                key={item.value}
+                className="font-500 flex items-center justify-between border-b border-[#F0F1F2] py-5 text-lg text-[#1E1E1E]"
+              >
+                <label>{item.label}</label>
+                <input
+                  type="radio"
+                  name="select"
+                  value={item.value}
+                  className="h-6 w-6 cursor-pointer appearance-none rounded-full border-[1.5px] border-[#DBDEE4] bg-[url('/images/assets/common/un-check.svg')] bg-center bg-no-repeat checked:border-none checked:bg-[#FF7314] checked:bg-[url('/images/assets/common/check.svg')]"
+                  onChange={e => {
+                    handleSelectChange(e);
+                  }}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      );
+    },
   });
   const handleSelectChange = (e: ChangeEvent<HTMLInputElement>) => {
     setCurrentValue(e.currentTarget.value);

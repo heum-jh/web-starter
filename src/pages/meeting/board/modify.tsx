@@ -22,7 +22,7 @@ const MeetingBoardModifyPage: NextPageWithLayout = () => {
     >
       <WriteModify
         type="modify"
-        content="내용입니다"
+        content={content}
         contentPlaceholder="게시글을 작성해주세요"
         imageUrl={[{ name: "test.png", url: "https://via.placeholder.com/300x300?text=test" }]}
         onChangeContent={setContent}

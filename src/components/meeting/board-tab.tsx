@@ -1,17 +1,17 @@
 import { cn } from "src/core/function/cn";
-import MettingBoardCard from "./board-card";
+import MeetingBoardCard from "./board-card";
 import { useRouter } from "next/router";
-type MettingBoardTabProps = {
+type MeetingBoardTabProps = {
   className?: string;
 };
-const MettingBoardTab = ({ className }: MettingBoardTabProps) => {
+const MeetingBoardTab = ({ className }: MeetingBoardTabProps) => {
   const router = useRouter();
   return (
     <>
       {true ? (
         <div className="divide-y divide-[#F0F1F2]">
           {Array.from({ length: 5 }).map((_, index) => (
-            <MettingBoardCard isMine={true} key={index} onClick={() => router.push("/metting/board/123")} />
+            <MeetingBoardCard isMine={true} key={index} onClick={() => router.push("/metting/board/123")} />
           ))}
         </div>
       ) : (
@@ -49,4 +49,4 @@ const MettingBoardTab = ({ className }: MettingBoardTabProps) => {
     </>
   );
 };
-export default MettingBoardTab;
+export default MeetingBoardTab;

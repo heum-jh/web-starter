@@ -3,7 +3,6 @@ import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import Nav from "src/components/common/nav";
-import TempImage from "src/components/common/temp-image";
 import MeetingMemberListCard from "src/components/meeting/member-list-card";
 import MeetingScheduleCard from "src/components/meeting/schedule-card";
 import Alert from "src/core/function/alert";
@@ -13,10 +12,11 @@ import { cn } from "src/core/function/cn";
 import Option from "src/core/function/option";
 import MeetingBoardTab from "src/components/meeting/board-tab";
 import MeetingChatTab from "src/components/meeting/chat-tab";
+import Image from "next/image";
 
 const MeetingDetailPage: NextPageWithLayout = () => {
   const router = useRouter();
-  const [userType] = useState<"user" | "member" | "writer">("member");
+  const [userType] = useState<"user" | "member" | "writer">("writer");
   const [nav, setNav] = useState("all");
   const [isLike, setIsLike] = useState(false);
   const [isJoin, setIsJoin] = useState(false);
@@ -27,7 +27,7 @@ const MeetingDetailPage: NextPageWithLayout = () => {
     return "같이 산책시켜요!";
   }, [nav]);
 
-  const handleOptionsClick = async () => {
+  const handleMemberOptionsClick = async () => {
     await Option.lists([
       {
         label: "모임 탈퇴하기",
@@ -37,10 +37,39 @@ const MeetingDetailPage: NextPageWithLayout = () => {
       },
     ]);
   };
+  const handleWriterOptionsClick = async () => {
+    await Option.lists([
+      {
+        label: "모임 수정하기",
+        onClick: () => {
+          router.push("/meeting/withdraw");
+        },
+      },
+      {
+        label: "모임 삭제하기",
+        onClick: async () => {
+          try {
+            const confirm = await Alert.confirm(
+              "모임을 삭제하시겠어요?",
+              "남아있는 모임원이 있으면<br/> 모임을 삭제할 수 없습니다.",
+              { cancelText: "취소", confirmText: "삭제하기" },
+            );
+            if (confirm) {
+              throw new Error("모임원을 모두 내보내기 후<br/>모임을 삭제해주세요.");
+            }
+          } catch (error) {
+            if (error instanceof Error) {
+              Alert.alert(error.message);
+            }
+          }
+        },
+      },
+    ]);
+  };
 
-  const optionsRender = () => {
+  const memberOptionsRender = () => {
     return (
-      <button type="button" className="ml-auto flex h-full items-center" onClick={handleOptionsClick}>
+      <button type="button" className="ml-auto flex h-full items-center" onClick={handleMemberOptionsClick}>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path
             d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
@@ -67,12 +96,108 @@ const MeetingDetailPage: NextPageWithLayout = () => {
       </button>
     );
   };
+  const writerOptionsRender = () => {
+    return (
+      <div className="flex items-center justify-end gap-3">
+        <button
+          type="button"
+          className={clsx(
+            "relative",
+            true &&
+              "after:absolute after:right-0 after:top-0 after:h-1 after:w-1 after:rounded-full after:bg-[#EE4633]",
+          )}
+          onClick={() =>
+            router.push(
+              {
+                pathname: "/meeting/member",
+                query: router.query,
+              },
+              undefined,
+              {
+                shallow: false,
+              },
+            )
+          }
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M22 21V19C22 17.1362 20.7252 15.5701 19 15.126M15.5 3.29076C16.9659 3.88415 18 5.32131 18 7C18 8.67869 16.9659 10.1159 15.5 10.7092M17 21C17 19.1362 17 18.2044 16.6955 17.4693C16.2895 16.4892 15.5108 15.7105 14.5307 15.3045C13.7956 15 12.8638 15 11 15H8C6.13623 15 5.20435 15 4.46927 15.3045C3.48915 15.7105 2.71046 16.4892 2.30448 17.4693C2 18.2044 2 19.1362 2 21M13.5 7C13.5 9.20914 11.7091 11 9.5 11C7.29086 11 5.5 9.20914 5.5 7C5.5 4.79086 7.29086 3 9.5 3C11.7091 3 13.5 4.79086 13.5 7Z"
+              stroke="black"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+        <button type="button" onClick={handleWriterOptionsClick}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+              stroke="black"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z"
+              stroke="black"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z"
+              stroke="black"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+    );
+  };
+  const handleAddOptions = async () => {
+    await Option.lists([
+      {
+        label: "게시글 작성하기",
+        onClick: () => {
+          router.push({ pathname: "/meeting/board/create", query: router.query });
+        },
+      },
+      {
+        label: "일정 만들기",
+        onClick: () => {
+          router.push({ pathname: "/meeting", query: router.query });
+        },
+      },
+      {
+        label: "공지사항 작성하기",
+        onClick: () => {
+          router.push({ pathname: "/meeting/notice/create", query: router.query });
+        },
+      },
+    ]);
+  };
 
   return (
-    <DetailLayout title={lyaoutTitle} render={() => userType === "member" && optionsRender()}>
+    <DetailLayout
+      title={lyaoutTitle}
+      render={() => {
+        if (userType === "member") return memberOptionsRender();
+        if (userType === "writer") return writerOptionsRender();
+      }}
+    >
       <div className={clsx("border-b-[0.75rem] border-b-[#F6F6F6] bg-white", nav !== "all" && "hidden")}>
-        <div className="relative h-60 w-full bg-gray-300">
-          <TempImage width={500} height={300} />
+        <div className="relative h-60 w-full overflow-hidden bg-gray-300">
+          <Image
+            src={`https://via.placeholder.com/${500}x${500}`}
+            alt={`${500}x${500}`}
+            fill
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+            className="object-cover"
+          />
           <div className="rignt-0 absolute bottom-5 flex w-full justify-end gap-[18px] px-[1.19rem]">
             <button
               type="button"
@@ -182,6 +307,23 @@ const MeetingDetailPage: NextPageWithLayout = () => {
               {/* Empty */}
               {/* <div className="py-3 text-base font-normal text-[#A2A9B5]">등록된 공지가 없습니다.</div> */}
             </div>
+            {userType === "writer" && (
+              <button
+                type="button"
+                className="fixed bottom-9 right-5 flex h-12 w-12 items-center justify-center rounded-full bg-[#FF7314] drop-shadow-[0px_4px_10px_rgba(0,0,0,0.15)]"
+                onClick={handleAddOptions}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M8 1V15M1 8H15"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            )}
           </div>
         </div>
         {/* 일정 */}
