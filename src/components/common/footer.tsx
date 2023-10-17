@@ -6,7 +6,7 @@ const Footer = ({ className }: { className?: string }) => {
   const router = useRouter();
   return (
     <footer className={cn("fixed bottom-0 h-16 w-full bg-[#ffffff] pt-5", className)}>
-      <div className="flex justify-evenly bg-[#ffffff] text-[0.625rem] font-medium text-[#4a5360]">
+      <div className="container flex justify-evenly bg-[#ffffff] text-[0.625rem] font-medium text-[#4a5360]">
         <div className="flex flex-1 cursor-pointer flex-col items-center justify-center">
           <div
             className="relative h-[1.5rem] w-[1.5rem]"

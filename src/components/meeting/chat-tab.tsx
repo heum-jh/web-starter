@@ -1,8 +1,8 @@
 import { cn } from "src/core/function/cn";
-type MettingChatTabProps = {
+type MeetingChatTabProps = {
   className?: string;
 };
-const MettingChatTab = ({ className }: MettingChatTabProps) => {
+const MeetingChatTab = ({ className }: MeetingChatTabProps) => {
   return (
     <div
       className={cn(
@@ -44,4 +44,4 @@ const MettingChatTab = ({ className }: MettingChatTabProps) => {
     </div>
   );
 };
-export default MettingChatTab;
+export default MeetingChatTab;

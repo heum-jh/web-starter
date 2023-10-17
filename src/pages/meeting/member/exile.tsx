@@ -2,16 +2,16 @@ import clsx from "clsx";
 import { useState } from "react";
 import DetailLayout from "src/components/common/detail-layout";
 import TextArea from "src/components/common/textarea";
-import { NextPageWithLayout } from "../_app";
 import Alert from "src/core/function/alert";
 import { useRouter } from "next/router";
+import { NextPageWithLayout } from "src/pages/_app";
 
-const MeetingWithdrawPage: NextPageWithLayout = () => {
+const MeetingMemberExilePage: NextPageWithLayout = () => {
   const router = useRouter();
   const [text, setText] = useState<string>();
   return (
     <DetailLayout
-      title="모임 탈퇴"
+      title="내보내기"
       render={() => (
         <button
           type="button"
@@ -19,7 +19,7 @@ const MeetingWithdrawPage: NextPageWithLayout = () => {
           onClick={async () => {
             if (true) {
               router.back();
-              await Alert.alert("모임 탈퇴가 완료되었습니다!");
+              await Alert.alert("친구를 내보내기하였습니다.");
             }
           }}
         >
@@ -28,7 +28,7 @@ const MeetingWithdrawPage: NextPageWithLayout = () => {
       )}
     >
       <TextArea
-        placeholder="탈퇴 이유를 작성해주세요"
+        placeholder="내보내기 사유를 입력해주세요"
         className="h-full"
         value={text}
         onChange={e => setText(e.currentTarget.value)}
@@ -36,5 +36,5 @@ const MeetingWithdrawPage: NextPageWithLayout = () => {
     </DetailLayout>
   );
 };
-export default MeetingWithdrawPage;
-MeetingWithdrawPage.getLayout = page => page;
+export default MeetingMemberExilePage;
+MeetingMemberExilePage.getLayout = page => page;

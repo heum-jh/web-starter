@@ -2,19 +2,19 @@ import Alert from "src/core/function/alert";
 import TempImage from "../common/temp-image";
 import clsx from "clsx";
 import { useRouter } from "next/router";
-type MettingScheduleCardProps = {
+type MeetingScheduleCardProps = {
   isMap?: boolean;
   isAttendance?: boolean;
   isJoin?: boolean;
 };
-const MettingScheduleCard = ({ isMap = false, isAttendance, isJoin = false }: MettingScheduleCardProps) => {
+const MeetingScheduleCard = ({ isMap = false, isAttendance, isJoin = false }: MeetingScheduleCardProps) => {
   const router = useRouter();
   return (
     <li
       className="flex gap-x-3 border-b border-[#F0F1F2] py-6"
       onClick={() => {
         if (isJoin) {
-          router.push("/metting/schedule/123");
+          router.push("/meeting/schedule/123");
         } else {
           Alert.alert("더 자세한 내용을 보실려면<br/>모임에 참여해보세요!");
         }
@@ -92,4 +92,4 @@ const MettingScheduleCard = ({ isMap = false, isAttendance, isJoin = false }: Me
     </li>
   );
 };
-export default MettingScheduleCard;
+export default MeetingScheduleCard;
