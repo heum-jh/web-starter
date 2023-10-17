@@ -1,11 +1,26 @@
 import clsx from "clsx";
-
+import { useRef, useState } from "react";
+import { usePopup } from "src/core/hooks/use-popup";
+import AddNewFolder from "./add-new-folder";
+import Popup from "./popup";
 const BookMark = () => {
+  const bookMarkRef = useRef<HTMLDivElement>(null);
+  const [isOpenAddFolderPopup, setIsOpenAddFolderPopup] = useState(false);
   return (
     <>
-      <div className={clsx("divide-y divide-[#F0F1F2] px-5", true && "pb-32", "h-full overflow-auto")}>
+      <div
+        ref={bookMarkRef}
+        className={clsx("divide-y divide-[#F0F1F2] px-5", true && "pb-32", "h-full overflow-auto")}
+      >
         <div className="py-4">
-          <button type="button" className="flex items-center gap-x-2 text-base font-medium text-[#707888]">
+          <button
+            type="button"
+            className="flex select-none items-center gap-x-2 text-base font-medium text-[#707888]"
+            onClick={async () => {
+              // onClose?.();
+              setIsOpenAddFolderPopup(true);
+            }}
+          >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
                 d="M12 5V19M5 12H19"
@@ -71,6 +86,9 @@ const BookMark = () => {
           </button>
         </div>
       )}
+      <Popup isOpen={isOpenAddFolderPopup} title="폴더 추가" onClose={() => setIsOpenAddFolderPopup(false)}>
+        <AddNewFolder />
+      </Popup>
     </>
   );
 };
