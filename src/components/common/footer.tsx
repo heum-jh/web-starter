@@ -77,11 +77,11 @@ const Footer = ({ className }: { className?: string }) => {
           <div
             className="relative h-[1.5rem] w-[1.5rem]"
             onClick={() => {
-              router.push("/my-page");
+              router.push("/my");
             }}
           >
             <Image
-              src={`/images/assets/common/${router.asPath.startsWith("/my-page") ? "my-page-active" : "my-page"}.svg`}
+              src={`/images/assets/common/${router.asPath.startsWith("/my") ? "my-page-active" : "my-page"}.svg`}
               fill
               className="object-cover"
               alt="my-page"
