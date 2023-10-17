@@ -1,12 +1,11 @@
 import clsx from "clsx";
 import { useRef, useState } from "react";
+import BookMark from "src/components/common/book-mark";
 import BottomSheet from "src/components/common/bottom-sheet";
 import Footer from "src/components/common/footer";
 import ShopCard from "src/components/location/shop-card";
-import { NextPageWithLayout } from "../_app";
-import BookMark from "src/components/common/book-mark";
 import { usePopup } from "src/core/hooks/use-popup";
-import AddNewFolder from "src/components/common/add-new-folder";
+import { NextPageWithLayout } from "../_app";
 
 const LocationPage: NextPageWithLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,12 +15,6 @@ const LocationPage: NextPageWithLayout = () => {
     title: "북마크",
     render: () => {
       return <BookMark />;
-    },
-  });
-  const addFolderPopup = usePopup({
-    title: "폴더 추가",
-    render: () => {
-      return <AddNewFolder />;
     },
   });
   const handleBookMark = () => {

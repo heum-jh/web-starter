@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import { useRef, useState } from "react";
-import { usePopup } from "src/core/hooks/use-popup";
 import AddNewFolder from "./add-new-folder";
 import Popup from "./popup";
 const BookMark = () => {

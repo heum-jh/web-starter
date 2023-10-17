@@ -1,8 +1,5 @@
 import clsx from "clsx";
-import { PropsWithChildren } from "react";
 import { useBottomSheetBehavior } from "src/core/hooks/use-bottom-sheet-behavior";
-import { usePopup } from "src/core/hooks/use-popup";
-import BookMark from "./book-mark";
 
 interface IBottomSheet {
   children?: React.ReactNode | undefined;
