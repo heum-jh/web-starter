@@ -3,11 +3,11 @@ import DetailLayout from "src/components/common/detail-layout";
 import WriteModify from "src/components/common/write-modify";
 import { NextPageWithLayout } from "src/pages/_app";
 
-const MeetingBoardModifyPage: NextPageWithLayout = () => {
-  const [content, setContent] = useState("");
+const MeetingNoticeModifyPage: NextPageWithLayout = () => {
+  const [content, setContent] = useState("내용입니다");
   return (
     <DetailLayout
-      title="게시글"
+      title="공지"
       render={() => {
         return (
           <button
@@ -21,15 +21,18 @@ const MeetingBoardModifyPage: NextPageWithLayout = () => {
       }}
     >
       <WriteModify
-        type="write"
+        type="modify"
+        titleCheck
+        title="제목"
+        titlePlaceholder="제목을 입력해주세요"
         content={content}
-        contentPlaceholder="게시글을 작성해주세요"
+        contentPlaceholder="내용을 입력해주세요"
         onChangeContent={setContent}
       />
     </DetailLayout>
   );
 };
-export default MeetingBoardModifyPage;
-MeetingBoardModifyPage.type = "detail";
-MeetingBoardModifyPage.title = "게시글";
-MeetingBoardModifyPage.getLayout = page => page;
+export default MeetingNoticeModifyPage;
+MeetingNoticeModifyPage.type = "detail";
+MeetingNoticeModifyPage.title = "공지";
+MeetingNoticeModifyPage.getLayout = page => page;
