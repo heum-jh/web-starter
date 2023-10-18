@@ -1,22 +1,47 @@
+import Image from "next/image";
 import TempImage from "../common/temp-image";
+import Option from "src/core/function/option";
 type MeetingBoardCardProps = {
   onClick?: () => void;
+  isMine?: boolean;
 };
-const MeetingBoardCard = ({ onClick }: MeetingBoardCardProps) => {
+const MeetingBoardCard = ({ onClick, isMine = false }: MeetingBoardCardProps) => {
   return (
     <div className="space-y-4 px-5 py-6" onClick={onClick}>
-      <div className="flex items-center gap-x-2">
-        <div>
-          <TempImage width={36} height={36} className="rounded-full" />
-        </div>
-        <div>
-          <div className="text-base font-medium text-[#1E1E1E]">산책왕 홍길동</div>
-          <div className="flex items-center gap-x-1">
-            <span className="text-xs/[1.125rem] font-medium text-[#1E1E1E]">성동구</span>
-            <span className="h-[2px] w-[2px] rounded-full bg-[#DBDEE4]"></span>
-            <span className="text-xs/[1.125rem] font-medium text-[#A2A9B5]">23시간전</span>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-x-2">
+          <div>
+            <TempImage width={36} height={36} className="rounded-full" />
+          </div>
+          <div>
+            <div className="text-base font-medium text-[#1E1E1E]">산책왕 홍길동</div>
+            <div className="flex items-center gap-x-1">
+              <span className="text-xs/[1.125rem] font-medium text-[#1E1E1E]">성동구</span>
+              <span className="h-[2px] w-[2px] rounded-full bg-[#DBDEE4]"></span>
+              <span className="text-xs/[1.125rem] font-medium text-[#A2A9B5]">23시간전</span>
+            </div>
           </div>
         </div>
+        {isMine && (
+          <div
+            onClick={async e => {
+              e.stopPropagation();
+              await Option.lists([
+                {
+                  label: "수정",
+                  onClick: () => "",
+                },
+                {
+                  label: "삭제",
+                  onClick: () => "",
+                },
+              ]);
+            }}
+            className="relative h-6 w-6 cursor-pointer"
+          >
+            <Image src={"/images/assets/common/menu.svg"} alt="menu" fill className="object-cover" />
+          </div>
+        )}
       </div>
       <div className="h-[13.75rem] w-full rounded bg-green-300"></div>
       <div className="line-clamp-2 text-base/[1.75rem] font-normal text-[#707888]">

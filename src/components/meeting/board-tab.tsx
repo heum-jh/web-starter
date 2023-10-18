@@ -11,7 +11,7 @@ const MeetingBoardTab = ({ className }: MeetingBoardTabProps) => {
       {true ? (
         <div className="divide-y divide-[#F0F1F2]">
           {Array.from({ length: 5 }).map((_, index) => (
-            <MeetingBoardCard key={index} onClick={() => router.push("/meeting/board/123")} />
+            <MeetingBoardCard isMine={true} key={index} onClick={() => router.push("/meeting/board/123")} />
           ))}
         </div>
       ) : (

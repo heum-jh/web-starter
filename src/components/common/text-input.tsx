@@ -5,6 +5,8 @@ interface TextInputProps {
   className?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
+  value?: string;
+  maxLength?: number;
 }
 
 const TextInput = (props: TextInputProps) => {

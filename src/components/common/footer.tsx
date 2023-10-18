@@ -84,7 +84,7 @@ const Footer = ({ className }: { className?: string }) => {
               src={`/images/assets/common/${router.asPath.startsWith("/my") ? "my-page-active" : "my-page"}.svg`}
               fill
               className="object-cover"
-              alt="my"
+              alt="my-page"
             />
           </div>
           <span>마이페이지</span>
