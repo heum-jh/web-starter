@@ -1,68 +1,68 @@
-import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
+import { gql } from "@apollo/client";
+import * as Apollo from "@apollo/client";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type Incremental<T> = T | { [P in keyof T]?: P extends " $fragmentName" | "__typename" ? T[P] : never };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
-  DateTime: { input: any; output: any; }
-  PhoneNumber: { input: any; output: any; }
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
+  DateTime: { input: any; output: any };
+  PhoneNumber: { input: any; output: any };
 };
 
 export type Address = {
-  __typename?: 'Address';
+  __typename?: "Address";
   /** 읍면동 */
-  eupmyeondong: Scalars['String']['output'];
+  eupmyeondong: Scalars["String"]["output"];
   /** 위도 */
-  latitude: Scalars['Float']['output'];
+  latitude: Scalars["Float"]["output"];
   /** 경도 */
-  longitude: Scalars['Float']['output'];
+  longitude: Scalars["Float"]["output"];
   /** 시도 */
-  sido: Scalars['String']['output'];
+  sido: Scalars["String"]["output"];
   /** 시군구 */
-  sigungu?: Maybe<Scalars['String']['output']>;
+  sigungu?: Maybe<Scalars["String"]["output"]>;
 };
 
 export type AddressEdge = {
-  __typename?: 'AddressEdge';
+  __typename?: "AddressEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: Address;
 };
 
 /** 관리자 */
 export type Admin = User & {
-  __typename?: 'Admin';
+  __typename?: "Admin";
   /** 관리자용 유저 메모 */
-  adminMemo?: Maybe<Scalars['String']['output']>;
-  communityPostCount: Scalars['Int']['output'];
-  communityPostHideCount: Scalars['Int']['output'];
-  communityPostLikeCount: Scalars['Int']['output'];
+  adminMemo?: Maybe<Scalars["String"]["output"]>;
+  communityPostCount: Scalars["Int"]["output"];
+  communityPostHideCount: Scalars["Int"]["output"];
+  communityPostLikeCount: Scalars["Int"]["output"];
   /** 이메일 */
-  email?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars["String"]["output"]>;
   /** UUID */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   /** 고유번호 */
-  idx: Scalars['Int']['output'];
+  idx: Scalars["Int"]["output"];
   /** 가입 날짜/시간 */
-  joinedAt: Scalars['DateTime']['output'];
+  joinedAt: Scalars["DateTime"]["output"];
   /** 탈퇴 날짜/시간 */
-  leavedAt?: Maybe<Scalars['DateTime']['output']>;
+  leavedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 닉네임 */
-  nickname?: Maybe<Scalars['String']['output']>;
+  nickname?: Maybe<Scalars["String"]["output"]>;
   /** 전화번호 */
-  phoneNumber?: Maybe<Scalars['String']['output']>;
+  phoneNumber?: Maybe<Scalars["String"]["output"]>;
   /** 권한 타입 */
   role: UserRole;
   /** 소셜 서비스 연결 리스트 */
@@ -70,7 +70,7 @@ export type Admin = User & {
   /** 상태 */
   state: UserState;
   /** 정지 처리된 시간 */
-  suspendedAt?: Maybe<Scalars['DateTime']['output']>;
+  suspendedAt?: Maybe<Scalars["DateTime"]["output"]>;
 };
 
 /** 관리자가 올린 게시물 */
@@ -84,36 +84,36 @@ export type AdminPost = {
 /** 관리자 게시글 클릭 액션 */
 export enum AdminPostAction {
   /** URL 이동 */
-  MoveUrl = 'MOVE_URL',
+  MoveUrl = "MOVE_URL",
   /** 액션 없음 */
-  None = 'NONE',
+  None = "NONE",
   /** 텍스트 표시 */
-  Text = 'TEXT'
+  Text = "TEXT",
 }
 
 /** 관리자가 올린 게시물의 카테고리 */
 export type AdminPostCategory = {
-  __typename?: 'AdminPostCategory';
+  __typename?: "AdminPostCategory";
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   /** 카테고리 이름 */
-  name: Scalars['String']['output'];
+  name: Scalars["String"]["output"];
   /** 수정 날짜/시간 */
-  updatedAt: Scalars['DateTime']['output'];
+  updatedAt: Scalars["DateTime"]["output"];
 };
 
 /** 관리자 게시물 카테고리 생성 데이터 */
 export type AdminPostCategoryCreateInput = {
   /** 공개 여부 */
-  isVisible: Scalars['Boolean']['input'];
+  isVisible: Scalars["Boolean"]["input"];
   /** 이름 */
-  name: Scalars['String']['input'];
+  name: Scalars["String"]["input"];
   /** 우선 순위 */
-  priority?: InputMaybe<Scalars['Int']['input']>;
+  priority?: InputMaybe<Scalars["Int"]["input"]>;
   /** 타입 */
   type: AdminPostType;
 };
@@ -121,11 +121,11 @@ export type AdminPostCategoryCreateInput = {
 /** 관리자 게시물 카테고리 수정 데이터 */
 export type AdminPostCategoryUpdateInput = {
   /** 공개 여부 */
-  isVisible?: InputMaybe<Scalars['Boolean']['input']>;
+  isVisible?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** 이름 */
-  name?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
   /** 우선 순위 */
-  priority?: InputMaybe<Scalars['Int']['input']>;
+  priority?: InputMaybe<Scalars["Int"]["input"]>;
   /** 타입 */
   type?: InputMaybe<AdminPostType>;
 };
@@ -150,35 +150,35 @@ export type AdminPostFilterInput = {
 
 /** 관리자가 올린 게시물 목록 */
 export type AdminPostList = {
-  __typename?: 'AdminPostList';
+  __typename?: "AdminPostList";
   /** 페이지네이션된 데이터 목록 */
   edges: Array<Maybe<AdminPostModelEdge>>;
   /** 페이지네이션된 페이지 정보 */
   pageInfo: PageInfo;
   /** 전체 데이터 개 수 */
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 /** 관리자가 올린 게시물 */
 export type AdminPostModel = {
-  __typename?: 'AdminPostModel';
+  __typename?: "AdminPostModel";
   /** 카테고리 */
   category?: Maybe<AdminPostCategory>;
-  content?: Maybe<Scalars['String']['output']>;
-  priority: Scalars['Float']['output'];
-  publishingPeriodEndAt: Scalars['DateTime']['output'];
-  publishingPeriodStartAt: Scalars['DateTime']['output'];
+  content?: Maybe<Scalars["String"]["output"]>;
+  priority: Scalars["Float"]["output"];
+  publishingPeriodEndAt: Scalars["DateTime"]["output"];
+  publishingPeriodStartAt: Scalars["DateTime"]["output"];
   /** 상태 */
   state: AdminPostState;
-  title?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars["String"]["output"]>;
   /** 타입 */
   type: AdminPostType;
 };
 
 export type AdminPostModelEdge = {
-  __typename?: 'AdminPostModelEdge';
+  __typename?: "AdminPostModelEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: AdminPostModel;
 };
@@ -210,9 +210,9 @@ export type AdminPostSortInput = {
 /** 관리자가 올린 게시물 상태 */
 export enum AdminPostState {
   /** 활성화 */
-  Active = 'ACTIVE',
+  Active = "ACTIVE",
   /** 비활성화 */
-  Inactive = 'INACTIVE'
+  Inactive = "INACTIVE",
 }
 
 export type AdminPostStateFilterInput = {
@@ -224,15 +224,15 @@ export type AdminPostStateFilterInput = {
 /** 관리자가 올린 게시물 타입 */
 export enum AdminPostType {
   /** 배너 */
-  Banner = 'BANNER',
+  Banner = "BANNER",
   /** 이벤트 */
-  Event = 'EVENT',
+  Event = "EVENT",
   /** 자주 묻는 질문 */
-  Faq = 'FAQ',
+  Faq = "FAQ",
   /** 공지사항 */
-  Notice = 'NOTICE',
+  Notice = "NOTICE",
   /** 팝업 */
-  Popup = 'POPUP'
+  Popup = "POPUP",
 }
 
 export type AdminPostTypeFilterInput = {
@@ -249,44 +249,44 @@ export type AdminPostTypeSortInput = {
 
 /** 토큰 요청의 대한 응답 */
 export type AuthTokenResponse = {
-  __typename?: 'AuthTokenResponse';
+  __typename?: "AuthTokenResponse";
   /** 접근 토큰 */
-  accessToken: Scalars['String']['output'];
+  accessToken: Scalars["String"]["output"];
   /** 접근 토큰 만료 시간(초) */
-  expiresIn: Scalars['Int']['output'];
+  expiresIn: Scalars["Int"]["output"];
   /** 갱신 토큰 */
-  refreshToken: Scalars['String']['output'];
+  refreshToken: Scalars["String"]["output"];
   /** 토큰 타입 */
-  tokenType: Scalars['String']['output'];
+  tokenType: Scalars["String"]["output"];
 };
 
 /** 배너 */
 export type Banner = AdminPost & {
-  __typename?: 'Banner';
+  __typename?: "Banner";
   /** 클릭 액션 */
   action: AdminPostAction;
   /** 내용 */
-  content: Scalars['String']['output'];
+  content: Scalars["String"]["output"];
   /** 커버 이미지 */
-  coverUrl: Scalars['String']['output'];
+  coverUrl: Scalars["String"]["output"];
   /** 링크 URL */
-  linkUrl?: Maybe<Scalars['String']['output']>;
+  linkUrl?: Maybe<Scalars["String"]["output"]>;
   /** 우선순위 */
-  priority?: Maybe<Scalars['Int']['output']>;
+  priority?: Maybe<Scalars["Int"]["output"]>;
   /**
    * 게시 종료일
    * 없을시 2999-12-31 23:59:59.000 +0900 으로 생성
    */
-  publishingPeriodEndAt: Scalars['DateTime']['output'];
+  publishingPeriodEndAt: Scalars["DateTime"]["output"];
   /**
    * 게시 시작일
    * 없을시 1990-01-01 00:00:00.000 +0900 으로 생성
    */
-  publishingPeriodStartAt: Scalars['DateTime']['output'];
+  publishingPeriodStartAt: Scalars["DateTime"]["output"];
   /** 상태 */
   state: AdminPostState;
   /** 제목 */
-  title: Scalars['String']['output'];
+  title: Scalars["String"]["output"];
   /** 타입 */
   type: AdminPostType;
 };
@@ -296,29 +296,29 @@ export type BannerCreateInput = {
   /** 클릭 액션 */
   action: AdminPostAction;
   /** 카테고리 ID */
-  categoryId?: InputMaybe<Scalars['ID']['input']>;
+  categoryId?: InputMaybe<Scalars["ID"]["input"]>;
   /** 내용 */
-  content: Scalars['String']['input'];
+  content: Scalars["String"]["input"];
   /** 커버 이미지 */
-  coverUrl: Scalars['String']['input'];
+  coverUrl: Scalars["String"]["input"];
   /** 이동 URL */
-  linkUrl?: InputMaybe<Scalars['String']['input']>;
+  linkUrl?: InputMaybe<Scalars["String"]["input"]>;
   /** 우선순위 */
-  priority?: InputMaybe<Scalars['Int']['input']>;
+  priority?: InputMaybe<Scalars["Int"]["input"]>;
   /**
    * 게시 종료일
    * 없을시 2999-12-31 23:59:59.000 +0900 으로 생성
    */
-  publishingPeriodEndAt: Scalars['DateTime']['input'];
+  publishingPeriodEndAt: Scalars["DateTime"]["input"];
   /**
    * 게시 시작일
    * 없을시 1990-01-01 00:00:00.000 +0900 으로 생성
    */
-  publishingPeriodStartAt: Scalars['DateTime']['input'];
+  publishingPeriodStartAt: Scalars["DateTime"]["input"];
   /** 상태 */
   state?: InputMaybe<AdminPostState>;
   /** 제목 */
-  title: Scalars['String']['input'];
+  title: Scalars["String"]["input"];
 };
 
 /** 배너 수정 데이터 */
@@ -326,43 +326,43 @@ export type BannerUpdateInput = {
   /** 클릭 액션 */
   action?: InputMaybe<AdminPostAction>;
   /** 카테고리 ID */
-  categoryId?: InputMaybe<Scalars['ID']['input']>;
+  categoryId?: InputMaybe<Scalars["ID"]["input"]>;
   /** 내용 */
-  content?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars["String"]["input"]>;
   /** 커버 이미지 */
-  coverUrl?: InputMaybe<Scalars['String']['input']>;
+  coverUrl?: InputMaybe<Scalars["String"]["input"]>;
   /** 이동 URL */
-  linkUrl?: InputMaybe<Scalars['String']['input']>;
+  linkUrl?: InputMaybe<Scalars["String"]["input"]>;
   /** 우선순위 */
-  priority?: InputMaybe<Scalars['Int']['input']>;
+  priority?: InputMaybe<Scalars["Int"]["input"]>;
   /**
    * 게시 종료일
    * 없을시 2999-12-31 23:59:59.000 +0900 으로 생성
    */
-  publishingPeriodEndAt?: InputMaybe<Scalars['DateTime']['input']>;
+  publishingPeriodEndAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /**
    * 게시 시작일
    * 없을시 1990-01-01 00:00:00.000 +0900 으로 생성
    */
-  publishingPeriodStartAt?: InputMaybe<Scalars['DateTime']['input']>;
+  publishingPeriodStartAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** 상태 */
   state?: InputMaybe<AdminPostState>;
   /** 제목 */
-  title?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 /** 논리(Boolean) 필터 */
 export type BooleanFilterInput = {
   operator: BooleanFilterOperators;
-  value?: InputMaybe<Scalars['Boolean']['input']>;
+  value?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
 /** 논리 필터 연산자 */
 export enum BooleanFilterOperators {
-  Equal = 'EQUAL',
-  IsNotNull = 'IS_NOT_NULL',
-  IsNull = 'IS_NULL',
-  NotEqual = 'NOT_EQUAL'
+  Equal = "EQUAL",
+  IsNotNull = "IS_NOT_NULL",
+  IsNull = "IS_NULL",
+  NotEqual = "NOT_EQUAL",
 }
 
 export type CategoryFilterInput = {
@@ -373,54 +373,54 @@ export type CategoryFilterInput = {
 
 /** 커뮤니티 게시물 */
 export type CommunityPost = {
-  __typename?: 'CommunityPost';
+  __typename?: "CommunityPost";
   /** 작성자 */
   author: Member;
   /** 내용 */
-  content: Scalars['String']['output'];
+  content: Scalars["String"]["output"];
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
-  deepLinkUrl?: Maybe<Scalars['String']['output']>;
+  createdAt: Scalars["DateTime"]["output"];
+  deepLinkUrl?: Maybe<Scalars["String"]["output"]>;
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 이미지, 영상 목록 */
   files?: Maybe<Array<File>>;
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   /** 해당 게시물 숨기기 여부 */
-  isHide: Scalars['Boolean']['output'];
+  isHide: Scalars["Boolean"]["output"];
   /** 나의 좋아요 여부 */
-  isLike: Scalars['Boolean']['output'];
-  isPinned?: Maybe<Scalars['Boolean']['output']>;
+  isLike: Scalars["Boolean"]["output"];
+  isPinned?: Maybe<Scalars["Boolean"]["output"]>;
   /** 좋아요 수 */
-  likeCount: Scalars['Int']['output'];
-  pinnedAt?: Maybe<Scalars['DateTime']['output']>;
+  likeCount: Scalars["Int"]["output"];
+  pinnedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 댓글 수 */
-  replyCount: Scalars['Int']['output'];
+  replyCount: Scalars["Int"]["output"];
   /** 제목 */
-  title?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars["String"]["output"]>;
   /** 수정 날짜/시간 */
-  updatedAt: Scalars['DateTime']['output'];
+  updatedAt: Scalars["DateTime"]["output"];
   /** 조회수 */
-  viewCount: Scalars['Int']['output'];
+  viewCount: Scalars["Int"]["output"];
 };
 
 /** 커뮤니티 게시물 생성 */
 export type CommunityPostCreateInput = {
   /** 내용 */
-  content: Scalars['String']['input'];
+  content: Scalars["String"]["input"];
   /** 게시물 파일들 */
-  file__ids?: InputMaybe<Array<Scalars['ID']['input']>>;
+  file__ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   /** 모임 id */
-  gathering__id: Scalars['ID']['input'];
+  gathering__id: Scalars["ID"]["input"];
   /** 제목 */
-  title?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type CommunityPostEdge = {
-  __typename?: 'CommunityPostEdge';
+  __typename?: "CommunityPostEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: CommunityPost;
 };
@@ -453,13 +453,13 @@ export type CommunityPostFilterInput = {
 
 /** 커뮤니티 게시물 목록 */
 export type CommunityPostList = {
-  __typename?: 'CommunityPostList';
+  __typename?: "CommunityPostList";
   /** 페이지네이션된 데이터 목록 */
   edges: Array<Maybe<CommunityPostEdge>>;
   /** 페이지네이션된 페이지 정보 */
   pageInfo: PageInfo;
   /** 전체 데이터 개 수 */
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 /** 커뮤니티 게시물 정렬 */
@@ -484,39 +484,39 @@ export type CommunityPostOrderByInput = {
 
 /** 커뮤니티 게시물 댓글 */
 export type CommunityPostReply = {
-  __typename?: 'CommunityPostReply';
+  __typename?: "CommunityPostReply";
   /** 작성자 */
   author: Member;
   /** 댓글 내용 */
-  content: Scalars['String']['output'];
+  content: Scalars["String"]["output"];
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   /** 대댓글단 댓글 */
   parent?: Maybe<CommunityPostReply>;
   /** 대댓글 조회 */
   replies?: Maybe<Array<CommunityPostReply>>;
   /** 수정 날짜/시간 */
-  updatedAt: Scalars['DateTime']['output'];
+  updatedAt: Scalars["DateTime"]["output"];
 };
 
 /** 커뮤니티 게시물 댓글 생성 */
 export type CommunityPostReplyCreateInput = {
   /** 댓글 내용 */
-  content: Scalars['String']['input'];
+  content: Scalars["String"]["input"];
   /** 상위 댓글 uuid (대댓글일 경우만) */
-  parent__id?: InputMaybe<Scalars['ID']['input']>;
+  parent__id?: InputMaybe<Scalars["ID"]["input"]>;
   /** 게시물 uuid (댓글일 경우만) */
-  post__id?: InputMaybe<Scalars['ID']['input']>;
+  post__id?: InputMaybe<Scalars["ID"]["input"]>;
 };
 
 export type CommunityPostReplyEdge = {
-  __typename?: 'CommunityPostReplyEdge';
+  __typename?: "CommunityPostReplyEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: CommunityPostReply;
 };
@@ -543,13 +543,13 @@ export type CommunityPostReplyFilterInput = {
 
 /** 커뮤니티 게시물 댓글 목록 */
 export type CommunityPostReplyList = {
-  __typename?: 'CommunityPostReplyList';
+  __typename?: "CommunityPostReplyList";
   /** 페이지네이션된 데이터 목록 */
   edges: Array<Maybe<CommunityPostReplyEdge>>;
   /** 페이지네이션된 페이지 정보 */
   pageInfo: PageInfo;
   /** 전체 데이터 개 수 */
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 /** 커뮤니티 게시물 댓글 정렬 */
@@ -569,59 +569,59 @@ export type CommunityPostReplyOrderByInput = {
 /** 커뮤니티 게시물 댓글 수정 */
 export type CommunityPostReplyUpdateInput = {
   /** 댓글 내용 */
-  content?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 /** 커뮤니티 게시물 수정 */
 export type CommunityPostUpdateInput = {
   /** 내용 */
-  content?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars["String"]["input"]>;
   /** 모임 id */
-  gathering__id?: InputMaybe<Scalars['ID']['input']>;
+  gathering__id?: InputMaybe<Scalars["ID"]["input"]>;
   /** 제목 */
-  title?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 /** 커뮤니티 신고 모델 */
 export type CommunityReport = {
-  __typename?: 'CommunityReport';
+  __typename?: "CommunityReport";
   /** 관리자 메모 */
-  adminMemo: Scalars['String']['output'];
+  adminMemo: Scalars["String"]["output"];
   /** 작성자 */
   author: Member;
   /** 신고 카테고리 */
   category?: Maybe<CommunityReportCategoryEnumType>;
   /** 신고 내용 */
-  content?: Maybe<Scalars['String']['output']>;
+  content?: Maybe<Scalars["String"]["output"]>;
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 기타 예비용 필드 */
-  etc?: Maybe<Scalars['String']['output']>;
+  etc?: Maybe<Scalars["String"]["output"]>;
   /** 신고 파일 */
   files?: Maybe<Array<File>>;
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   /** 신고 상태 */
   state?: Maybe<CommunityReportStateEnumType>;
   /** 신고 커뮤니티 타겟 */
-  targetId?: Maybe<Scalars['String']['output']>;
+  targetId?: Maybe<Scalars["String"]["output"]>;
   /** 신고 타겟 데이터 */
   targetInfo?: Maybe<CommunityReportTarget>;
   /** 신고 종류 */
   type?: Maybe<CommunityReportType>;
   /** 수정 날짜/시간 */
-  updatedAt: Scalars['DateTime']['output'];
+  updatedAt: Scalars["DateTime"]["output"];
 };
 
 export enum CommunityReportCategoryEnumType {
   /** 욕설 */
-  Abusive = 'ABUSIVE',
+  Abusive = "ABUSIVE",
   /** 기타 */
-  Etc = 'ETC',
+  Etc = "ETC",
   /** 선정성 */
-  Sensuality = 'SENSUALITY'
+  Sensuality = "SENSUALITY",
 }
 
 export type CommunityReportCategoryFilterInput = {
@@ -635,21 +635,21 @@ export type CommunityReportCreateInput = {
   /** 신고 카테고리 */
   category?: InputMaybe<CommunityReportCategoryEnumType>;
   /** 신고 내용 */
-  content?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars["String"]["input"]>;
   /** 기타 예비용 필드 */
-  etc?: InputMaybe<Scalars['String']['input']>;
+  etc?: InputMaybe<Scalars["String"]["input"]>;
   /** 게시물 파일들 */
-  file__ids?: InputMaybe<Array<Scalars['ID']['input']>>;
+  file__ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   /** 신고 커뮤니티 타겟 */
-  targetId?: InputMaybe<Scalars['String']['input']>;
+  targetId?: InputMaybe<Scalars["String"]["input"]>;
   /** 신고 종류 */
   type?: InputMaybe<CommunityReportType>;
 };
 
 export type CommunityReportEdge = {
-  __typename?: 'CommunityReportEdge';
+  __typename?: "CommunityReportEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: CommunityReport;
 };
@@ -684,13 +684,13 @@ export type CommunityReportFilterInput = {
 
 /** 커뮤니티 신고 목록 */
 export type CommunityReportList = {
-  __typename?: 'CommunityReportList';
+  __typename?: "CommunityReportList";
   /** 페이지네이션된 데이터 목록 */
   edges: Array<Maybe<CommunityReportEdge>>;
   /** 페이지네이션된 페이지 정보 */
   pageInfo: PageInfo;
   /** 전체 데이터 개 수 */
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 /** 커뮤니티 신고 정렬 */
@@ -707,11 +707,11 @@ export type CommunityReportOrderByInput = {
 
 export enum CommunityReportStateEnumType {
   /** 완료 */
-  Complete = 'COMPLETE',
+  Complete = "COMPLETE",
   /** 대기중 */
-  Pending = 'PENDING',
+  Pending = "PENDING",
   /** 처리중 */
-  Processing = 'PROCESSING'
+  Processing = "PROCESSING",
 }
 
 export type CommunityReportStateFilterInput = {
@@ -724,9 +724,9 @@ export type CommunityReportTarget = CommunityPost | CommunityPostReply;
 
 export enum CommunityReportType {
   /** 게시글 */
-  Post = 'POST',
+  Post = "POST",
   /** 댓글 */
-  Replt = 'REPLT'
+  Replt = "REPLT",
 }
 
 export type CommunityReportTypeFilterInput = {
@@ -740,11 +740,11 @@ export type CommunityReportUpdateInput = {
   /** 신고 카테고리 */
   category?: InputMaybe<CommunityReportCategoryEnumType>;
   /** 신고 내용 */
-  content?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars["String"]["input"]>;
   /** 기타 예비용 필드 */
-  etc?: InputMaybe<Scalars['String']['input']>;
+  etc?: InputMaybe<Scalars["String"]["input"]>;
   /** 신고 커뮤니티 타겟 */
-  targetId?: InputMaybe<Scalars['String']['input']>;
+  targetId?: InputMaybe<Scalars["String"]["input"]>;
   /** 신고 종류 */
   type?: InputMaybe<CommunityReportType>;
 };
@@ -752,48 +752,48 @@ export type CommunityReportUpdateInput = {
 /** 날짜(DateTime) 필터 */
 export type DateTimeFilterInput = {
   operator: NumberFilterOperators;
-  value?: InputMaybe<Scalars['DateTime']['input']>;
-  value2?: InputMaybe<Scalars['DateTime']['input']>;
-  values?: InputMaybe<Array<Scalars['DateTime']['input']>>;
+  value?: InputMaybe<Scalars["DateTime"]["input"]>;
+  value2?: InputMaybe<Scalars["DateTime"]["input"]>;
+  values?: InputMaybe<Array<Scalars["DateTime"]["input"]>>;
 };
 
 /** Enum 필터 연산자 */
 export enum EnumFilterOperators {
-  Equal = 'EQUAL',
-  In = 'IN',
-  IsNotNull = 'IS_NOT_NULL',
-  IsNull = 'IS_NULL',
-  NotEqual = 'NOT_EQUAL',
-  NotIn = 'NOT_IN'
+  Equal = "EQUAL",
+  In = "IN",
+  IsNotNull = "IS_NOT_NULL",
+  IsNull = "IS_NULL",
+  NotEqual = "NOT_EQUAL",
+  NotIn = "NOT_IN",
 }
 
 /** 이벤트 */
 export type Event = AdminPost & {
-  __typename?: 'Event';
+  __typename?: "Event";
   /** 클릭 액션 */
   action: AdminPostAction;
   /** 내용 */
-  content: Scalars['String']['output'];
+  content: Scalars["String"]["output"];
   /** 커버 이미지 */
-  coverUrl: Scalars['String']['output'];
+  coverUrl: Scalars["String"]["output"];
   /** 링크 URL */
-  linkUrl?: Maybe<Scalars['String']['output']>;
+  linkUrl?: Maybe<Scalars["String"]["output"]>;
   /** 우선순위 */
-  priority?: Maybe<Scalars['Int']['output']>;
+  priority?: Maybe<Scalars["Int"]["output"]>;
   /**
    * 게시 종료일
    * 없을시 2999-12-31 23:59:59.000 +0900 으로 생성
    */
-  publishingPeriodEndAt: Scalars['DateTime']['output'];
+  publishingPeriodEndAt: Scalars["DateTime"]["output"];
   /**
    * 게시 시작일
    * 없을시 1990-01-01 00:00:00.000 +0900 으로 생성
    */
-  publishingPeriodStartAt: Scalars['DateTime']['output'];
+  publishingPeriodStartAt: Scalars["DateTime"]["output"];
   /** 상태 */
   state: AdminPostState;
   /** 제목 */
-  title: Scalars['String']['output'];
+  title: Scalars["String"]["output"];
   /** 타입 */
   type: AdminPostType;
 };
@@ -803,29 +803,29 @@ export type EventCreateInput = {
   /** 클릭 액션 */
   action: AdminPostAction;
   /** 카테고리 ID */
-  categoryId?: InputMaybe<Scalars['ID']['input']>;
+  categoryId?: InputMaybe<Scalars["ID"]["input"]>;
   /** 내용 */
-  content: Scalars['String']['input'];
+  content: Scalars["String"]["input"];
   /** 커버 이미지 */
-  coverUrl: Scalars['String']['input'];
+  coverUrl: Scalars["String"]["input"];
   /** 이동 URL */
-  linkUrl?: InputMaybe<Scalars['String']['input']>;
+  linkUrl?: InputMaybe<Scalars["String"]["input"]>;
   /** 우선순위 */
-  priority?: InputMaybe<Scalars['Int']['input']>;
+  priority?: InputMaybe<Scalars["Int"]["input"]>;
   /**
    * 게시 종료일
    * 없을시 2999-12-31 23:59:59.000 +0900 으로 생성
    */
-  publishingPeriodEndAt: Scalars['DateTime']['input'];
+  publishingPeriodEndAt: Scalars["DateTime"]["input"];
   /**
    * 게시 시작일
    * 없을시 1990-01-01 00:00:00.000 +0900 으로 생성
    */
-  publishingPeriodStartAt: Scalars['DateTime']['input'];
+  publishingPeriodStartAt: Scalars["DateTime"]["input"];
   /** 상태 */
   state?: InputMaybe<AdminPostState>;
   /** 제목 */
-  title: Scalars['String']['input'];
+  title: Scalars["String"]["input"];
 };
 
 /** 이벤트 수정 데이터 */
@@ -833,40 +833,40 @@ export type EventUpdateInput = {
   /** 클릭 액션 */
   action?: InputMaybe<AdminPostAction>;
   /** 카테고리 ID */
-  categoryId?: InputMaybe<Scalars['ID']['input']>;
+  categoryId?: InputMaybe<Scalars["ID"]["input"]>;
   /** 내용 */
-  content?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars["String"]["input"]>;
   /** 커버 이미지 */
-  coverUrl?: InputMaybe<Scalars['String']['input']>;
+  coverUrl?: InputMaybe<Scalars["String"]["input"]>;
   /** 이동 URL */
-  linkUrl?: InputMaybe<Scalars['String']['input']>;
+  linkUrl?: InputMaybe<Scalars["String"]["input"]>;
   /** 우선순위 */
-  priority?: InputMaybe<Scalars['Int']['input']>;
+  priority?: InputMaybe<Scalars["Int"]["input"]>;
   /**
    * 게시 종료일
    * 없을시 2999-12-31 23:59:59.000 +0900 으로 생성
    */
-  publishingPeriodEndAt?: InputMaybe<Scalars['DateTime']['input']>;
+  publishingPeriodEndAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /**
    * 게시 시작일
    * 없을시 1990-01-01 00:00:00.000 +0900 으로 생성
    */
-  publishingPeriodStartAt?: InputMaybe<Scalars['DateTime']['input']>;
+  publishingPeriodStartAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** 상태 */
   state?: InputMaybe<AdminPostState>;
   /** 제목 */
-  title?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 /** 자주 묻는 질문 */
 export type Faq = AdminPost & {
-  __typename?: 'Faq';
+  __typename?: "Faq";
   /** 답변 */
-  answer: Scalars['String']['output'];
+  answer: Scalars["String"]["output"];
   /** 우선순위 */
-  priority: Scalars['Int']['output'];
+  priority: Scalars["Int"]["output"];
   /** 질문 */
-  question: Scalars['String']['output'];
+  question: Scalars["String"]["output"];
   /** 상태 */
   state: AdminPostState;
   /** 타입 */
@@ -876,13 +876,13 @@ export type Faq = AdminPost & {
 /** 자주 묻는 질문 생성 데이터 */
 export type FaqCreateInput = {
   /** 답변 */
-  answer: Scalars['String']['input'];
+  answer: Scalars["String"]["input"];
   /** 카테고리 ID */
-  categoryId?: InputMaybe<Scalars['ID']['input']>;
+  categoryId?: InputMaybe<Scalars["ID"]["input"]>;
   /** 우선순위 */
-  priority?: InputMaybe<Scalars['Int']['input']>;
+  priority?: InputMaybe<Scalars["Int"]["input"]>;
   /** 질문 */
-  question: Scalars['String']['input'];
+  question: Scalars["String"]["input"];
   /** 상태 */
   state?: InputMaybe<AdminPostState>;
 };
@@ -890,13 +890,13 @@ export type FaqCreateInput = {
 /** 자주 묻는 질문 수정 데이터 */
 export type FaqUpdateInput = {
   /** 답변 */
-  answer?: InputMaybe<Scalars['String']['input']>;
+  answer?: InputMaybe<Scalars["String"]["input"]>;
   /** 카테고리 ID */
-  categoryId?: InputMaybe<Scalars['ID']['input']>;
+  categoryId?: InputMaybe<Scalars["ID"]["input"]>;
   /** 우선순위 */
-  priority?: InputMaybe<Scalars['Int']['input']>;
+  priority?: InputMaybe<Scalars["Int"]["input"]>;
   /** 질문 */
-  question?: InputMaybe<Scalars['String']['input']>;
+  question?: InputMaybe<Scalars["String"]["input"]>;
   /** 상태 */
   state?: InputMaybe<AdminPostState>;
 };
@@ -904,93 +904,93 @@ export type FaqUpdateInput = {
 /** Fcm토큰 OS */
 export enum FcmTokenOsEnum {
   /** AOS */
-  Android = 'ANDROID',
+  Android = "ANDROID",
   /** iOS */
-  Ios = 'IOS',
+  Ios = "IOS",
   /** web */
-  Web = 'WEB'
+  Web = "WEB",
 }
 
 /** 파일 */
 export type File = {
-  __typename?: 'File';
+  __typename?: "File";
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 원본 이름 */
-  filename: Scalars['String']['output'];
+  filename: Scalars["String"]["output"];
   /** 고화질 URL (1080px) */
-  highQualityURL?: Maybe<Scalars['String']['output']>;
+  highQualityURL?: Maybe<Scalars["String"]["output"]>;
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   /** 저화질 URL (480px) */
-  lowQualityURL?: Maybe<Scalars['String']['output']>;
+  lowQualityURL?: Maybe<Scalars["String"]["output"]>;
   /** MD5 체크섬 */
-  md5: Scalars['String']['output'];
+  md5: Scalars["String"]["output"];
   /** MIME 타입 */
-  mimetype: Scalars['String']['output'];
+  mimetype: Scalars["String"]["output"];
   /** 우선 순위 (정렬용) */
-  priority: Scalars['Int']['output'];
+  priority: Scalars["Int"]["output"];
   /** 파일 크기 (바이트) */
-  size: Scalars['Int']['output'];
+  size: Scalars["Int"]["output"];
   /** 썸네일용 URL (240px) */
-  thumbnailURL?: Maybe<Scalars['String']['output']>;
+  thumbnailURL?: Maybe<Scalars["String"]["output"]>;
   /** 원본 URL */
-  url: Scalars['String']['output'];
+  url: Scalars["String"]["output"];
 };
 
 export type Gathering = {
-  __typename?: 'Gathering';
+  __typename?: "Gathering";
   /** 모집인원 */
-  capacity: Scalars['Float']['output'];
+  capacity: Scalars["Float"]["output"];
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   /** 소개 */
-  introduction?: Maybe<Scalars['String']['output']>;
+  introduction?: Maybe<Scalars["String"]["output"]>;
   /** 가입방법 */
   joinWay: GatheringJoinWayEnum;
   /** 모임 종류 */
   kind: GatheringKindEnum;
   /** 모임명 */
-  title: Scalars['String']['output'];
+  title: Scalars["String"]["output"];
   /** 수정 날짜/시간 */
-  updatedAt: Scalars['DateTime']['output'];
+  updatedAt: Scalars["DateTime"]["output"];
 };
 
 export type GatheringCategory = {
-  __typename?: 'GatheringCategory';
+  __typename?: "GatheringCategory";
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
-  name: Scalars['String']['output'];
+  id: Scalars["ID"]["output"];
+  name: Scalars["String"]["output"];
   /** 수정 날짜/시간 */
-  updatedAt: Scalars['DateTime']['output'];
+  updatedAt: Scalars["DateTime"]["output"];
 };
 
 export type GatheringCategoryCreateInputForAdmin = {
   /** 생성 날짜/시간 */
-  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** 삭제 날짜/시간 */
-  deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** 기본 키(UUID) */
-  id?: InputMaybe<Scalars['ID']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
   /** 수정 날짜/시간 */
-  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
 };
 
 export type GatheringCategoryEdge = {
-  __typename?: 'GatheringCategoryEdge';
+  __typename?: "GatheringCategoryEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: GatheringCategory;
 };
@@ -1008,13 +1008,13 @@ export type GatheringCategoryFilterInput = {
 };
 
 export type GatheringCategoryList = {
-  __typename?: 'GatheringCategoryList';
+  __typename?: "GatheringCategoryList";
   /** 페이지네이션된 데이터 목록 */
   edges: Array<Maybe<GatheringCategoryEdge>>;
   /** 페이지네이션된 페이지 정보 */
   pageInfo: PageInfo;
   /** 전체 데이터 개 수 */
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type GatheringCategorySortInput = {
@@ -1031,37 +1031,37 @@ export type GatheringCategorySortInput = {
 
 export type GatheringCategoryUpdateInputForAdmin = {
   /** 생성 날짜/시간 */
-  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** 삭제 날짜/시간 */
-  deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** 기본 키(UUID) */
-  id?: InputMaybe<Scalars['ID']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
   /** 수정 날짜/시간 */
-  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
 };
 
 export type GatheringCreateInput = {
   /** 모집인원 */
-  capacity: Scalars['Float']['input'];
-  category__id: Scalars['ID']['input'];
+  capacity: Scalars["Float"]["input"];
+  category__id: Scalars["ID"]["input"];
   /** 소개 */
-  introduction?: InputMaybe<Scalars['String']['input']>;
+  introduction?: InputMaybe<Scalars["String"]["input"]>;
   /** 가입방법 */
   joinWay: GatheringJoinWayEnum;
   /** 모임 종류 */
   kind: GatheringKindEnum;
   /** file id */
-  thumbnail__id: Scalars['ID']['input'];
+  thumbnail__id: Scalars["ID"]["input"];
   /** 모임명 */
-  title: Scalars['String']['input'];
-  type__ids: Array<Scalars['ID']['input']>;
+  title: Scalars["String"]["input"];
+  type__ids: Array<Scalars["ID"]["input"]>;
 };
 
 export type GatheringEdge = {
-  __typename?: 'GatheringEdge';
+  __typename?: "GatheringEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: Gathering;
 };
@@ -1076,7 +1076,7 @@ export type GatheringFilterInput = {
   /** UUID */
   id?: InputMaybe<Array<IdFilterInput>>;
   /** 소개 */
-  introduction?: InputMaybe<Scalars['String']['input']>;
+  introduction?: InputMaybe<Scalars["String"]["input"]>;
   /** 가입방법 */
   joinWay?: InputMaybe<Array<GatheringJoinWayFilterInput>>;
   /** 모임 종류 */
@@ -1089,20 +1089,20 @@ export type GatheringFilterInput = {
 
 export type GatheringFirstScheduleCreateInput = {
   /** 모임 내용 */
-  content?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars["String"]["input"]>;
   /** 모임 날짜, yyyyMMdd */
-  gatheringDate: Scalars['String']['input'];
+  gatheringDate: Scalars["String"]["input"];
   /** 모임 주소 */
-  locationAddress: Scalars['String']['input'];
+  locationAddress: Scalars["String"]["input"];
   /** 모임 장소 */
-  locationName: Scalars['String']['input'];
+  locationName: Scalars["String"]["input"];
 };
 
 export enum GatheringJoinWayEnum {
   /** 승인제 */
-  Approval = 'APPROVAL',
+  Approval = "APPROVAL",
   /** 선착순 */
-  Fcfs = 'FCFS'
+  Fcfs = "FCFS",
 }
 
 export type GatheringJoinWayFilterInput = {
@@ -1113,9 +1113,9 @@ export type GatheringJoinWayFilterInput = {
 
 export enum GatheringKindEnum {
   /** 일일모임 */
-  Daily = 'DAILY',
+  Daily = "DAILY",
   /** 정기모임 */
-  Regular = 'REGULAR'
+  Regular = "REGULAR",
 }
 
 export type GatheringKindFilterInput = {
@@ -1125,75 +1125,75 @@ export type GatheringKindFilterInput = {
 };
 
 export type GatheringList = {
-  __typename?: 'GatheringList';
+  __typename?: "GatheringList";
   /** 페이지네이션된 데이터 목록 */
   edges: Array<Maybe<GatheringEdge>>;
   /** 페이지네이션된 페이지 정보 */
   pageInfo: PageInfo;
   /** 전체 데이터 개 수 */
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type GatheringParticipant = {
-  __typename?: 'GatheringParticipant';
+  __typename?: "GatheringParticipant";
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   role: GatheringParticipantRoleEnum;
   state: GatheringParticipantStateEnum;
   /** 수정 날짜/시간 */
-  updatedAt: Scalars['DateTime']['output'];
+  updatedAt: Scalars["DateTime"]["output"];
 };
 
 export type GatheringParticipantEdge = {
-  __typename?: 'GatheringParticipantEdge';
+  __typename?: "GatheringParticipantEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: GatheringParticipant;
 };
 
 export enum GatheringParticipantRoleEnum {
   /** 모임원 */
-  Member = 'MEMBER',
+  Member = "MEMBER",
   /** 모임장 */
-  President = 'PRESIDENT'
+  President = "PRESIDENT",
 }
 
 export enum GatheringParticipantStateEnum {
   /** 활동중 */
-  Active = 'ACTIVE',
+  Active = "ACTIVE",
   /** 승인 대기중 */
-  Pending = 'PENDING'
+  Pending = "PENDING",
 }
 
 export type GatheringSchedule = {
-  __typename?: 'GatheringSchedule';
+  __typename?: "GatheringSchedule";
   /** 모임 내용 */
-  content?: Maybe<Scalars['String']['output']>;
+  content?: Maybe<Scalars["String"]["output"]>;
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 모임 날짜, yyyyMMdd */
-  gatheringDate: Scalars['String']['output'];
+  gatheringDate: Scalars["String"]["output"];
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   /** 모임 주소 */
-  locationAddress: Scalars['String']['output'];
+  locationAddress: Scalars["String"]["output"];
   /** 모임 장소 */
-  locationName: Scalars['String']['output'];
+  locationName: Scalars["String"]["output"];
   /** 수정 날짜/시간 */
-  updatedAt: Scalars['DateTime']['output'];
+  updatedAt: Scalars["DateTime"]["output"];
 };
 
 export type GatheringScheduleEdge = {
-  __typename?: 'GatheringScheduleEdge';
+  __typename?: "GatheringScheduleEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: GatheringSchedule;
 };
@@ -1210,34 +1210,34 @@ export type GatheringSortInput = {
 };
 
 export type GatheringType = {
-  __typename?: 'GatheringType';
+  __typename?: "GatheringType";
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
-  name: Scalars['String']['output'];
+  id: Scalars["ID"]["output"];
+  name: Scalars["String"]["output"];
   /** 수정 날짜/시간 */
-  updatedAt: Scalars['DateTime']['output'];
+  updatedAt: Scalars["DateTime"]["output"];
 };
 
 export type GatheringTypeCreateInputForAdmin = {
   /** 생성 날짜/시간 */
-  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** 삭제 날짜/시간 */
-  deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** 기본 키(UUID) */
-  id?: InputMaybe<Scalars['ID']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
   /** 수정 날짜/시간 */
-  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
 };
 
 export type GatheringTypeEdge = {
-  __typename?: 'GatheringTypeEdge';
+  __typename?: "GatheringTypeEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: GatheringType;
 };
@@ -1255,13 +1255,13 @@ export type GatheringTypeFilterInput = {
 };
 
 export type GatheringTypeList = {
-  __typename?: 'GatheringTypeList';
+  __typename?: "GatheringTypeList";
   /** 페이지네이션된 데이터 목록 */
   edges: Array<Maybe<GatheringTypeEdge>>;
   /** 페이지네이션된 페이지 정보 */
   pageInfo: PageInfo;
   /** 전체 데이터 개 수 */
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type GatheringTypeSortInput = {
@@ -1278,91 +1278,91 @@ export type GatheringTypeSortInput = {
 
 export type GatheringTypeUpdateInputForAdmin = {
   /** 생성 날짜/시간 */
-  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** 삭제 날짜/시간 */
-  deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** 기본 키(UUID) */
-  id?: InputMaybe<Scalars['ID']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
   /** 수정 날짜/시간 */
-  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
 };
 
 export type GatheringUpdateInput = {
   /** 모집인원 */
-  capacity?: InputMaybe<Scalars['Float']['input']>;
+  capacity?: InputMaybe<Scalars["Float"]["input"]>;
   /** 소개 */
-  introduction?: InputMaybe<Scalars['String']['input']>;
+  introduction?: InputMaybe<Scalars["String"]["input"]>;
   /** file id */
-  thumbnail__id?: InputMaybe<Scalars['ID']['input']>;
+  thumbnail__id?: InputMaybe<Scalars["ID"]["input"]>;
   /** 모임명 */
-  title?: InputMaybe<Scalars['String']['input']>;
-  type__ids?: InputMaybe<Array<Scalars['ID']['input']>>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
+  type__ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
 };
 
 /** ID 필터 */
 export type IdFilterInput = {
   operator: IdFilterOperators;
-  value?: InputMaybe<Scalars['ID']['input']>;
-  values?: InputMaybe<Array<Scalars['ID']['input']>>;
+  value?: InputMaybe<Scalars["ID"]["input"]>;
+  values?: InputMaybe<Array<Scalars["ID"]["input"]>>;
 };
 
 /** ID 필터 연산자 */
 export enum IdFilterOperators {
-  Equal = 'EQUAL',
-  In = 'IN',
-  IsNotNull = 'IS_NOT_NULL',
-  IsNull = 'IS_NULL',
-  NotEqual = 'NOT_EQUAL',
-  NotIn = 'NOT_IN'
+  Equal = "EQUAL",
+  In = "IN",
+  IsNotNull = "IS_NOT_NULL",
+  IsNull = "IS_NULL",
+  NotEqual = "NOT_EQUAL",
+  NotIn = "NOT_IN",
 }
 
 /** 문의하기 데이터 */
 export type Inquire = {
-  __typename?: 'Inquire';
+  __typename?: "Inquire";
   /** 관리자용 유저 메모 */
-  adminMemo?: Maybe<Scalars['String']['output']>;
+  adminMemo?: Maybe<Scalars["String"]["output"]>;
   /** 답변 */
-  answerContent?: Maybe<Scalars['String']['output']>;
+  answerContent?: Maybe<Scalars["String"]["output"]>;
   /** 답변일 */
-  answereddAt?: Maybe<Scalars['DateTime']['output']>;
+  answereddAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 작성자 */
   author: Member;
   /** 내용 */
-  content: Scalars['String']['output'];
+  content: Scalars["String"]["output"];
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 문의 파일 */
   files?: Maybe<Array<File>>;
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   /** 문의 상태 */
   state: InquireState;
   /** 제목 */
-  title?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars["String"]["output"]>;
   /** 문의 종류 */
   type: InquireType;
   /** 수정 날짜/시간 */
-  updatedAt: Scalars['DateTime']['output'];
+  updatedAt: Scalars["DateTime"]["output"];
 };
 
 /** 문의하기 생성 */
 export type InquireCreateInput = {
   /** 내용 */
-  content: Scalars['String']['input'];
-  fileIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  content: Scalars["String"]["input"];
+  fileIds?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
   /** 제목 */
-  title?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
   /** 문의 종류 */
   type?: InputMaybe<InquireType>;
 };
 
 export type InquireEdge = {
-  __typename?: 'InquireEdge';
+  __typename?: "InquireEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: Inquire;
 };
@@ -1393,13 +1393,13 @@ export type InquireFilterInput = {
 
 /** 문의하기 목록 */
 export type InquireList = {
-  __typename?: 'InquireList';
+  __typename?: "InquireList";
   /** 페이지네이션된 데이터 목록 */
   edges: Array<Maybe<InquireEdge>>;
   /** 페이지네이션된 페이지 정보 */
   pageInfo: PageInfo;
   /** 전체 데이터 개 수 */
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 /** 문의하기 정렬 */
@@ -1417,11 +1417,11 @@ export type InquireSortInput = {
 /** 문의 상태 */
 export enum InquireState {
   /** 답변 대기중 */
-  Active = 'ACTIVE',
+  Active = "ACTIVE",
   /** 답변 완료 */
-  Answered = 'ANSWERED',
+  Answered = "ANSWERED",
   /** 확인중 / 진행중 */
-  Checking = 'CHECKING'
+  Checking = "CHECKING",
 }
 
 export type InquireStateFilterInput = {
@@ -1433,7 +1433,7 @@ export type InquireStateFilterInput = {
 /** 문의 종류 */
 export enum InquireType {
   /** 일반 */
-  Common = 'COMMON'
+  Common = "COMMON",
 }
 
 export type InquireTypeFilterInput = {
@@ -1445,10 +1445,10 @@ export type InquireTypeFilterInput = {
 /** 문의하기 수정 */
 export type InquireUpdateInput = {
   /** 내용 */
-  content?: InputMaybe<Scalars['String']['input']>;
-  fileIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  content?: InputMaybe<Scalars["String"]["input"]>;
+  fileIds?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
   /** 제목 */
-  title?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
   /** 문의 종류 */
   type?: InputMaybe<InquireType>;
 };
@@ -1456,74 +1456,74 @@ export type InquireUpdateInput = {
 /** 문의하기 수정 - 관리자용 */
 export type InquireUpdateInputForAdmin = {
   /** 관리자 메모 */
-  adminMemo?: InputMaybe<Scalars['String']['input']>;
+  adminMemo?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 /** 정수(Int) 필터 */
 export type IntFilterInput = {
   operator: NumberFilterOperators;
-  value?: InputMaybe<Scalars['Int']['input']>;
-  value2?: InputMaybe<Scalars['Int']['input']>;
-  values?: InputMaybe<Array<Scalars['Float']['input']>>;
+  value?: InputMaybe<Scalars["Int"]["input"]>;
+  value2?: InputMaybe<Scalars["Int"]["input"]>;
+  values?: InputMaybe<Array<Scalars["Float"]["input"]>>;
 };
 
 /** 정수 정렬 */
 export type IntSortInput = {
-  case?: InputMaybe<Array<Scalars['Int']['input']>>;
+  case?: InputMaybe<Array<Scalars["Int"]["input"]>>;
   nulls?: InputMaybe<Nulls>;
   order: Order;
 };
 
 /** 카카오 Access Token */
 export type KakaoAccessData = {
-  __typename?: 'KakaoAccessData';
+  __typename?: "KakaoAccessData";
   /** 가입된 계정인지? */
-  isJoin: Scalars['Boolean']['output'];
+  isJoin: Scalars["Boolean"]["output"];
   /** 발급 JWT 토큰 */
   jwtData: KakaoJwtData;
 };
 
 /** 카카오 JWT Data */
 export type KakaoJwtData = {
-  __typename?: 'KakaoJWTData';
-  access_token: Scalars['String']['output'];
-  expires_in: Scalars['Float']['output'];
-  refresh_token: Scalars['String']['output'];
-  refresh_token_expires_in: Scalars['Float']['output'];
-  scope: Scalars['String']['output'];
-  token_type: Scalars['String']['output'];
+  __typename?: "KakaoJWTData";
+  access_token: Scalars["String"]["output"];
+  expires_in: Scalars["Float"]["output"];
+  refresh_token: Scalars["String"]["output"];
+  refresh_token_expires_in: Scalars["Float"]["output"];
+  scope: Scalars["String"]["output"];
+  token_type: Scalars["String"]["output"];
 };
 
 export enum LeaveReasonEnum {
-  Be = 'BE',
-  Changed = 'CHANGED',
-  To = 'TO'
+  Be = "BE",
+  Changed = "CHANGED",
+  To = "TO",
 }
 
 /** 일반 사용자 */
 export type Member = User & {
-  __typename?: 'Member';
+  __typename?: "Member";
   /** 관리자용 유저 메모 */
-  adminMemo?: Maybe<Scalars['String']['output']>;
-  communityPostCount: Scalars['Int']['output'];
-  communityPostHideCount: Scalars['Int']['output'];
-  communityPostLikeCount: Scalars['Int']['output'];
+  adminMemo?: Maybe<Scalars["String"]["output"]>;
+  communityPostCount: Scalars["Int"]["output"];
+  communityPostHideCount: Scalars["Int"]["output"];
+  communityPostLikeCount: Scalars["Int"]["output"];
   /** 이메일 */
-  email?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars["String"]["output"]>;
   /** UUID */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   /** 고유번호 */
-  idx: Scalars['Int']['output'];
+  idx: Scalars["Int"]["output"];
   /** 가입 날짜/시간 */
-  joinedAt: Scalars['DateTime']['output'];
+  joinedAt: Scalars["DateTime"]["output"];
   /** 탈퇴 날짜/시간 */
-  leavedAt?: Maybe<Scalars['DateTime']['output']>;
+  leavedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 닉네임 */
-  nickname?: Maybe<Scalars['String']['output']>;
+  nickname?: Maybe<Scalars["String"]["output"]>;
   /** 알림 설정 */
   notificationSetting: UserNotificationSetting;
   /** 전화번호 */
-  phoneNumber?: Maybe<Scalars['String']['output']>;
+  phoneNumber?: Maybe<Scalars["String"]["output"]>;
   /** 권한 타입 */
   role: UserRole;
   /** 소셜 서비스 연결 리스트 */
@@ -1531,11 +1531,11 @@ export type Member = User & {
   /** 상태 */
   state: UserState;
   /** 정지 처리된 시간 */
-  suspendedAt?: Maybe<Scalars['DateTime']['output']>;
+  suspendedAt?: Maybe<Scalars["DateTime"]["output"]>;
 };
 
 export type Mutation = {
-  __typename?: 'Mutation';
+  __typename?: "Mutation";
   /** 커뮤니티 게시물 숨기기 */
   addCommunityPostHide: CommunityPost;
   /** 커뮤니티 게시물 좋아요 */
@@ -1765,7 +1765,7 @@ export type Mutation = {
    *
    * 읽음처리한 개수를 반환
    */
-  readAllNotification: Scalars['Float']['output'];
+  readAllNotification: Scalars["Float"]["output"];
   /**
    * 특정 알림을 읽음 처리합니다.
    *
@@ -1790,7 +1790,7 @@ export type Mutation = {
    */
   removeFCMToken: UserFcmToken;
   /** 전화번호 인증 요청 */
-  requestAuthNumber?: Maybe<Scalars['String']['output']>;
+  requestAuthNumber?: Maybe<Scalars["String"]["output"]>;
   /** 임의 알림을 생성합니다. 관리자만 허용됩니다. */
   sendNotificationForAdmin: Notification;
   /**
@@ -1988,7 +1988,7 @@ export type Mutation = {
    * **에러 코드**
    * - `NOT_FOUND`: 없는 유저.
    */
-  updateUserAdminMemo: Scalars['String']['output'];
+  updateUserAdminMemo: Scalars["String"]["output"];
   /**
    * 유저 정보 변경 - 관리자 권한
    *
@@ -1997,571 +1997,471 @@ export type Mutation = {
    */
   updateUserForAdmin: Member;
   /** 전화번호 인증 확인 */
-  validateAuthNumber: Scalars['String']['output'];
+  validateAuthNumber: Scalars["String"]["output"];
 };
-
 
 export type MutationAddCommunityPostHideArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationAddCommunityPostLikeArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationAnswerInquireForAdminArgs = {
-  answerContent: Scalars['String']['input'];
-  id: Scalars['ID']['input'];
+  answerContent: Scalars["String"]["input"];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationBlockUserArgs = {
-  isBlocking: Scalars['Boolean']['input'];
-  userId: Scalars['ID']['input'];
+  isBlocking: Scalars["Boolean"]["input"];
+  userId: Scalars["ID"]["input"];
 };
-
 
 export type MutationBlockUsersArgs = {
-  isBlocking: Scalars['Boolean']['input'];
-  userIds: Array<Scalars['ID']['input']>;
+  isBlocking: Scalars["Boolean"]["input"];
+  userIds: Array<Scalars["ID"]["input"]>;
 };
-
 
 export type MutationChangeInquireStateForAdminArgs = {
-  id: Scalars['ID']['input'];
-  isPush?: Scalars['Boolean']['input'];
+  id: Scalars["ID"]["input"];
+  isPush?: Scalars["Boolean"]["input"];
   state: InquireState;
 };
-
 
 export type MutationCreateAdminPostCategoryArgs = {
   data: AdminPostCategoryCreateInput;
 };
 
-
 export type MutationCreateBannerForAdminArgs = {
   data: BannerCreateInput;
 };
-
 
 export type MutationCreateCommunityPostArgs = {
   data: CommunityPostCreateInput;
 };
 
-
 export type MutationCreateCommunityPostReplyArgs = {
   data: CommunityPostReplyCreateInput;
 };
-
 
 export type MutationCreateCommunityReportArgs = {
   data: CommunityReportCreateInput;
 };
 
-
 export type MutationCreateEventForAdminArgs = {
   data: EventCreateInput;
 };
 
-
 export type MutationCreateFaqForAdminArgs = {
   data: FaqCreateInput;
 };
-
 
 export type MutationCreateGatheringArgs = {
   gatheringData: GatheringCreateInput;
   scheduleData: GatheringFirstScheduleCreateInput;
 };
 
-
 export type MutationCreateGatheringCategoryForAdminArgs = {
   data: GatheringCategoryCreateInputForAdmin;
 };
-
 
 export type MutationCreateGatheringTypeForAdminArgs = {
   data: GatheringTypeCreateInputForAdmin;
 };
 
-
 export type MutationCreateInquireArgs = {
   data: InquireCreateInput;
 };
-
 
 export type MutationCreateNoticeForAdminArgs = {
   data: NoticeCreateInput;
 };
 
-
 export type MutationCreateNotificationStoreForAdminArgs = {
   data: NotificationStorageCreateInput;
-  isSend?: Scalars['Boolean']['input'];
-  recipient_ids?: InputMaybe<Array<Scalars['ID']['input']>>;
+  isSend?: Scalars["Boolean"]["input"];
+  recipient_ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
 };
-
 
 export type MutationCreatePetArgs = {
   data: PetCreateInput;
 };
 
-
 export type MutationCreatePopupForAdminArgs = {
   data: PopupCreateInput;
 };
-
 
 export type MutationCreateReportArgs = {
   data: ReportCreateInput;
 };
 
-
 export type MutationCreateTermsOfServiceForAdminArgs = {
   data: TermsOfServiceCreateInputForAdmin;
 };
 
-
 export type MutationDeleteAdminPostCategoryArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationDeleteBannerForAdminArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationDeleteCommunityPostArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationDeleteCommunityPostHideArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationDeleteCommunityPostLikeArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationDeleteCommunityPostReplyArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationDeleteCommunityPostsForAdminArgs = {
-  ids: Array<Scalars['ID']['input']>;
+  ids: Array<Scalars["ID"]["input"]>;
 };
-
 
 export type MutationDeleteCommunityReportArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationDeleteEventForAdminArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationDeleteFaqForAdminArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationDeleteFaqsForAdminArgs = {
-  ids: Array<Scalars['ID']['input']>;
+  ids: Array<Scalars["ID"]["input"]>;
 };
-
 
 export type MutationDeleteGatheringArgs = {
-  id: Scalars['ID']['input'];
-  reason: Scalars['String']['input'];
+  id: Scalars["ID"]["input"];
+  reason: Scalars["String"]["input"];
 };
-
 
 export type MutationDeleteGatheringCategoryForAdminArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationDeleteGatheringTypeForAdminArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationDeleteInquireArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationDeleteManyCommunityPostRepliesForAdminArgs = {
-  ids: Array<Scalars['ID']['input']>;
+  ids: Array<Scalars["ID"]["input"]>;
 };
-
 
 export type MutationDeleteManyReportsForAdminArgs = {
-  ids: Array<Scalars['ID']['input']>;
+  ids: Array<Scalars["ID"]["input"]>;
 };
-
 
 export type MutationDeleteNoticeForAdminArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationDeleteNotificationStoreForAdminArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationDeletePetArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationDeletePopupForAdminArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationDeleteReportForAdminArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationDeleteTermsOfServiceForAdminArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationGetKakaoAccessTokenArgs = {
-  code: Scalars['String']['input'];
-  redirectUri: Scalars['String']['input'];
+  code: Scalars["String"]["input"];
+  redirectUri: Scalars["String"]["input"];
 };
 
-
 export type MutationLeaveUserArgs = {
-  comment?: InputMaybe<Scalars['String']['input']>;
+  comment?: InputMaybe<Scalars["String"]["input"]>;
   reason: LeaveReasonEnum;
 };
 
-
 export type MutationLeavingUserForAdminArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationLinkAppleArgs = {
-  email?: InputMaybe<Scalars['String']['input']>;
-  identityToken: Scalars['String']['input'];
-  userId: Scalars['ID']['input'];
+  email?: InputMaybe<Scalars["String"]["input"]>;
+  identityToken: Scalars["String"]["input"];
+  userId: Scalars["ID"]["input"];
 };
-
 
 export type MutationLinkGoogleArgs = {
-  accessToken: Scalars['String']['input'];
-  email?: InputMaybe<Scalars['String']['input']>;
-  userId: Scalars['ID']['input'];
+  accessToken: Scalars["String"]["input"];
+  email?: InputMaybe<Scalars["String"]["input"]>;
+  userId: Scalars["ID"]["input"];
 };
-
 
 export type MutationLinkKakaoArgs = {
-  accessToken: Scalars['String']['input'];
-  userId: Scalars['ID']['input'];
+  accessToken: Scalars["String"]["input"];
+  userId: Scalars["ID"]["input"];
 };
-
 
 export type MutationLinkNaverArgs = {
-  accessToken: Scalars['String']['input'];
-  email?: InputMaybe<Scalars['String']['input']>;
-  userId: Scalars['ID']['input'];
+  accessToken: Scalars["String"]["input"];
+  email?: InputMaybe<Scalars["String"]["input"]>;
+  userId: Scalars["ID"]["input"];
 };
-
 
 export type MutationPinCommunityPostsForAdminArgs = {
-  ids: Array<Scalars['ID']['input']>;
-  isPinned: Scalars['Boolean']['input'];
+  ids: Array<Scalars["ID"]["input"]>;
+  isPinned: Scalars["Boolean"]["input"];
 };
-
 
 export type MutationReadNotificationArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationRefreshTokenArgs = {
-  refreshToken: Scalars['String']['input'];
+  refreshToken: Scalars["String"]["input"];
 };
-
 
 export type MutationRemoveFcmTokenArgs = {
-  fcmRegistrationToken: Scalars['String']['input'];
+  fcmRegistrationToken: Scalars["String"]["input"];
 };
-
 
 export type MutationRequestAuthNumberArgs = {
-  phoneNumber: Scalars['PhoneNumber']['input'];
+  phoneNumber: Scalars["PhoneNumber"]["input"];
 };
-
 
 export type MutationSendNotificationForAdminArgs = {
   data: NotificationCreateInput;
 };
 
-
 export type MutationSendNotificationStoreForAdminArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationSetFcmTokenArgs = {
   data: UserFcmTokenAddInput;
 };
 
-
 export type MutationSignInArgs = {
-  loginId: Scalars['String']['input'];
-  password: Scalars['String']['input'];
+  loginId: Scalars["String"]["input"];
+  password: Scalars["String"]["input"];
 };
-
 
 export type MutationSignInAppleArgs = {
-  identityToken: Scalars['String']['input'];
+  identityToken: Scalars["String"]["input"];
 };
-
 
 export type MutationSignInGoogleArgs = {
-  accessToken: Scalars['String']['input'];
+  accessToken: Scalars["String"]["input"];
 };
-
 
 export type MutationSignInKakaoArgs = {
-  accessToken: Scalars['String']['input'];
+  accessToken: Scalars["String"]["input"];
 };
-
 
 export type MutationSignInNaverArgs = {
-  accessToken: Scalars['String']['input'];
+  accessToken: Scalars["String"]["input"];
 };
-
 
 export type MutationSignUpArgs = {
   data: SignUpInput;
 };
 
-
 export type MutationSignUpAppleArgs = {
   data: SocialSignUpInput;
-  identityToken: Scalars['String']['input'];
+  identityToken: Scalars["String"]["input"];
 };
-
 
 export type MutationSignUpGoogleArgs = {
-  accessToken: Scalars['String']['input'];
+  accessToken: Scalars["String"]["input"];
   data: SocialSignUpInput;
 };
-
 
 export type MutationSignUpKakaoArgs = {
-  accessToken: Scalars['String']['input'];
+  accessToken: Scalars["String"]["input"];
   data: SocialSignUpInput;
 };
-
 
 export type MutationSignUpNaverArgs = {
-  accessToken: Scalars['String']['input'];
+  accessToken: Scalars["String"]["input"];
   data: SocialSignUpInput;
 };
 
-
 export type MutationSuspendUserArgs = {
-  id: Scalars['ID']['input'];
-  suspendedEndAt: Scalars['DateTime']['input'];
-  suspendedReason?: InputMaybe<Scalars['String']['input']>;
+  id: Scalars["ID"]["input"];
+  suspendedEndAt: Scalars["DateTime"]["input"];
+  suspendedReason?: InputMaybe<Scalars["String"]["input"]>;
 };
-
 
 export type MutationToggleGatheringLikeArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdateAdminPostCategoryArgs = {
   data: AdminPostCategoryUpdateInput;
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdateBannerForAdminArgs = {
   data: BannerUpdateInput;
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdateCommunityPostArgs = {
   data: CommunityPostUpdateInput;
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdateCommunityPostFilesArgs = {
-  fileIds: Array<Scalars['ID']['input']>;
-  id: Scalars['ID']['input'];
+  fileIds: Array<Scalars["ID"]["input"]>;
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdateCommunityPostReplyArgs = {
   data: CommunityPostReplyUpdateInput;
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdateCommunityReportArgs = {
   data: CommunityReportUpdateInput;
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdateCommunityReportFilesArgs = {
-  fileIds: Array<Scalars['ID']['input']>;
-  id: Scalars['ID']['input'];
+  fileIds: Array<Scalars["ID"]["input"]>;
+  id: Scalars["ID"]["input"];
 };
 
-
 export type MutationUpdateCommunityReportForAdminArgs = {
-  adminMemo?: InputMaybe<Scalars['String']['input']>;
-  id: Scalars['ID']['input'];
+  adminMemo?: InputMaybe<Scalars["String"]["input"]>;
+  id: Scalars["ID"]["input"];
   state?: InputMaybe<CommunityReportStateEnumType>;
 };
 
-
 export type MutationUpdateEventForAdminArgs = {
   data: EventUpdateInput;
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdateFaqForAdminArgs = {
   data: FaqUpdateInput;
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdateGatheringArgs = {
   data: GatheringUpdateInput;
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdateGatheringCategoryForAdminArgs = {
   data: GatheringCategoryUpdateInputForAdmin;
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdateGatheringTypeForAdminArgs = {
   data: GatheringTypeUpdateInputForAdmin;
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdateInquireArgs = {
   data: InquireUpdateInput;
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdateInquireForAdminArgs = {
   data: InquireUpdateInputForAdmin;
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdateManyReportForAdminArgs = {
   data: ReportUpdateInput;
-  ids: Array<Scalars['ID']['input']>;
+  ids: Array<Scalars["ID"]["input"]>;
 };
-
 
 export type MutationUpdateMyNotificationSettingArgs = {
   data: UserNotificationSettingUpdateInput;
 };
 
-
 export type MutationUpdateNoticeForAdminArgs = {
   data: NoticeUpdateInput;
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdateNotificationStoreForAdminArgs = {
   data: NotificationStorageUpdateInput;
-  id: Scalars['ID']['input'];
-  recipient_ids?: InputMaybe<Array<Scalars['ID']['input']>>;
+  id: Scalars["ID"]["input"];
+  recipient_ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
 };
-
 
 export type MutationUpdatePetArgs = {
   data: PetUpdateInput;
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdatePopupForAdminArgs = {
   data: PopupUpdateInput;
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdateReportForAdminArgs = {
   data: ReportUpdateInput;
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdateServiceManageArgs = {
   data: ServiceManageUpdateInput;
 };
 
-
 export type MutationUpdateTermsOfServiceForAdminArgs = {
   data: TermsOfServiceUpdateInputForAdmin;
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type MutationUpdateUserAdminMemoArgs = {
-  id: Scalars['ID']['input'];
-  memo: Scalars['String']['input'];
+  id: Scalars["ID"]["input"];
+  memo: Scalars["String"]["input"];
 };
-
 
 export type MutationUpdateUserForAdminArgs = {
   data: UserUpdateInput;
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
 
-
 export type MutationValidateAuthNumberArgs = {
-  authNumber: Scalars['String']['input'];
-  phoneNumber: Scalars['PhoneNumber']['input'];
+  authNumber: Scalars["String"]["input"];
+  phoneNumber: Scalars["PhoneNumber"]["input"];
 };
 
 /** 공지사항 */
 export type Notice = AdminPost & {
-  __typename?: 'Notice';
+  __typename?: "Notice";
   /** 내용 */
-  content: Scalars['String']['output'];
+  content: Scalars["String"]["output"];
   /** 상태 */
   state: AdminPostState;
   /** 제목 */
-  title: Scalars['String']['output'];
+  title: Scalars["String"]["output"];
   /** 타입 */
   type: AdminPostType;
 };
@@ -2569,76 +2469,76 @@ export type Notice = AdminPost & {
 /** 공지사항 생성 데이터 */
 export type NoticeCreateInput = {
   /** 카테고리 ID */
-  categoryId?: InputMaybe<Scalars['ID']['input']>;
+  categoryId?: InputMaybe<Scalars["ID"]["input"]>;
   /** 내용 */
-  content: Scalars['String']['input'];
+  content: Scalars["String"]["input"];
   /** 상태 */
   state?: InputMaybe<AdminPostState>;
   /** 제목 */
-  title: Scalars['String']['input'];
+  title: Scalars["String"]["input"];
 };
 
 /** 공지사항 수정 데이터 */
 export type NoticeUpdateInput = {
   /** 카테고리 ID */
-  categoryId?: InputMaybe<Scalars['ID']['input']>;
+  categoryId?: InputMaybe<Scalars["ID"]["input"]>;
   /** 내용 */
-  content?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars["String"]["input"]>;
   /** 상태 */
   state?: InputMaybe<AdminPostState>;
   /** 제목 */
-  title?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 /** 알림 */
 export type Notification = {
-  __typename?: 'Notification';
+  __typename?: "Notification";
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   /** 이미지 URL 주소 */
-  imageURL?: Maybe<Scalars['String']['output']>;
+  imageURL?: Maybe<Scalars["String"]["output"]>;
   /** 관리자 임의 전송 여부 */
-  isCreatedForAdmin: Scalars['Boolean']['output'];
+  isCreatedForAdmin: Scalars["Boolean"]["output"];
   /** 해당 알림 읽음 여부 */
-  isRead: Scalars['Boolean']['output'];
+  isRead: Scalars["Boolean"]["output"];
   /** 메시지 */
-  message: Scalars['String']['output'];
+  message: Scalars["String"]["output"];
   /** 연관 데이터의 ID (타입을 참고하여 사용) */
-  relationId?: Maybe<Scalars['ID']['output']>;
+  relationId?: Maybe<Scalars["ID"]["output"]>;
   /** 제목 */
-  title?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars["String"]["output"]>;
   /** 타입 */
   type: NotificationType;
   /** 링크 URL 주소 (타입을 참고하여 사용) */
-  url?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars["String"]["output"]>;
 };
 
 /** 알림 생성 데이터 */
 export type NotificationCreateInput = {
   /** 이미지 URL 주소 */
-  imageURL?: InputMaybe<Scalars['String']['input']>;
+  imageURL?: InputMaybe<Scalars["String"]["input"]>;
   /** 메시지 */
-  message: Scalars['String']['input'];
+  message: Scalars["String"]["input"];
   /** 수신자 ID 목록 (없으면 해당 알림 타입 허용자에게 전부 발송) */
-  recipientIds?: InputMaybe<Array<Scalars['ID']['input']>>;
+  recipientIds?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   /** 연관 데이터의 ID (타입을 참고하여 사용) */
-  relationId?: InputMaybe<Scalars['ID']['input']>;
+  relationId?: InputMaybe<Scalars["ID"]["input"]>;
   /** 제목 */
-  title?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
   /** 타입 */
   type: NotificationType;
   /** 링크 URL 주소 (타입을 참고하여 사용) */
-  url?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type NotificationEdge = {
-  __typename?: 'NotificationEdge';
+  __typename?: "NotificationEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: Notification;
 };
@@ -2671,13 +2571,13 @@ export type NotificationFilterInput = {
 
 /** 알림 목록 */
 export type NotificationList = {
-  __typename?: 'NotificationList';
+  __typename?: "NotificationList";
   /** 페이지네이션된 데이터 목록 */
   edges: Array<Maybe<NotificationEdge>>;
   /** 페이지네이션된 페이지 정보 */
   pageInfo: PageInfo;
   /** 전체 데이터 개 수 */
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 /** 알림 정렬 */
@@ -2709,21 +2609,21 @@ export type NotificationSortInput = {
 /** 알림 저장소 생성 데이터 */
 export type NotificationStorageCreateInput = {
   /** 이미지  URL주소 */
-  imageURL?: InputMaybe<Scalars['String']['input']>;
+  imageURL?: InputMaybe<Scalars["String"]["input"]>;
   /** 내용 */
-  message?: InputMaybe<Scalars['String']['input']>;
+  message?: InputMaybe<Scalars["String"]["input"]>;
   /** 연관 데이터의 ID */
-  relationId?: InputMaybe<Scalars['ID']['input']>;
+  relationId?: InputMaybe<Scalars["ID"]["input"]>;
   /** 예약 발송 시간, null이면 즉시 */
-  scheduledAt?: InputMaybe<Scalars['DateTime']['input']>;
+  scheduledAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** 수신 타겟 */
   target: NotificationStorageTargetType;
   /** 제목 */
-  title?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
   /** 알림 타입 */
   type?: InputMaybe<NotificationType>;
   /** 링크  URL주소 */
-  url?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 /** 알림 필터 */
@@ -2758,48 +2658,48 @@ export type NotificationStorageFilterInput = {
 
 /** 알림 저장소 목록 */
 export type NotificationStorageList = {
-  __typename?: 'NotificationStorageList';
+  __typename?: "NotificationStorageList";
   /** 페이지네이션된 데이터 목록 */
   edges: Array<Maybe<NotificationStorageModelEdge>>;
   /** 페이지네이션된 페이지 정보 */
   pageInfo: PageInfo;
   /** 전체 데이터 개 수 */
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 /** 알림 저장소 */
 export type NotificationStorageModel = {
-  __typename?: 'NotificationStorageModel';
+  __typename?: "NotificationStorageModel";
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   /** 이미지  URL주소 */
-  imageURL?: Maybe<Scalars['String']['output']>;
+  imageURL?: Maybe<Scalars["String"]["output"]>;
   /** 전송 여부 */
-  isSend: Scalars['Boolean']['output'];
+  isSend: Scalars["Boolean"]["output"];
   /** 내용 */
-  message?: Maybe<Scalars['String']['output']>;
+  message?: Maybe<Scalars["String"]["output"]>;
   /** 연관 데이터의 ID */
-  relationId?: Maybe<Scalars['ID']['output']>;
+  relationId?: Maybe<Scalars["ID"]["output"]>;
   /** 예약 발송 시간, null이면 즉시 */
-  scheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  scheduledAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 수신 타겟 */
   target?: Maybe<NotificationStorageTargetType>;
   /** 제목 */
-  title?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars["String"]["output"]>;
   /** 알림 타입 */
   type?: Maybe<NotificationType>;
   /** 링크  URL주소 */
-  url?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars["String"]["output"]>;
 };
 
 export type NotificationStorageModelEdge = {
-  __typename?: 'NotificationStorageModelEdge';
+  __typename?: "NotificationStorageModelEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: NotificationStorageModel;
 };
@@ -2833,44 +2733,44 @@ export type NotificationStorageSortInput = {
 /** 알림 타겟 */
 export enum NotificationStorageTargetType {
   /** 전체 */
-  All = 'ALL',
+  All = "ALL",
   /** 안드 유저만 */
-  Android = 'ANDROID',
+  Android = "ANDROID",
   /** 특정인원 */
-  Specific = 'SPECIFIC',
+  Specific = "SPECIFIC",
   /** iOS유저만 */
-  IOs = 'iOS'
+  IOs = "iOS",
 }
 
 /** 알림 저장소 수정 데이터 */
 export type NotificationStorageUpdateInput = {
   /** 이미지  URL주소 */
-  imageURL?: InputMaybe<Scalars['String']['input']>;
+  imageURL?: InputMaybe<Scalars["String"]["input"]>;
   /** 내용 */
-  message?: InputMaybe<Scalars['String']['input']>;
+  message?: InputMaybe<Scalars["String"]["input"]>;
   /** 연관 데이터의 ID */
-  relationId?: InputMaybe<Scalars['ID']['input']>;
+  relationId?: InputMaybe<Scalars["ID"]["input"]>;
   /** 예약 발송 시간, null이면 즉시 */
-  scheduledAt?: InputMaybe<Scalars['DateTime']['input']>;
+  scheduledAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** 수신 타겟 */
   target?: InputMaybe<NotificationStorageTargetType>;
   /** 제목 */
-  title?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
   /** 알림 타입 */
   type?: InputMaybe<NotificationType>;
   /** 링크  URL주소 */
-  url?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export enum NotificationType {
   /** 채팅 알림 */
-  Chat = 'CHAT',
+  Chat = "CHAT",
   /** 댓글 알림 */
-  Comment = 'COMMENT',
+  Comment = "COMMENT",
   /** 모임 알림 */
-  Gathering = 'GATHERING',
+  Gathering = "GATHERING",
   /** 일정 알림 */
-  Schedule = 'SCHEDULE'
+  Schedule = "SCHEDULE",
 }
 
 /** 알림 타입 필터 */
@@ -2890,107 +2790,107 @@ export type NotificationTypeSortInput = {
 /** 정렬 시 null 순서 */
 export enum Nulls {
   /** null 먼저 */
-  First = 'FIRST',
+  First = "FIRST",
   /** null 마지막에 */
-  Last = 'LAST'
+  Last = "LAST",
 }
 
 /** 숫자 필터 연산자 */
 export enum NumberFilterOperators {
-  Between = 'BETWEEN',
-  Equal = 'EQUAL',
-  GreaterThan = 'GREATER_THAN',
-  GreaterThanEqual = 'GREATER_THAN_EQUAL',
-  In = 'IN',
-  IsNotNull = 'IS_NOT_NULL',
-  IsNull = 'IS_NULL',
-  LessThan = 'LESS_THAN',
-  LessThanEqual = 'LESS_THAN_EQUAL',
-  NotBetween = 'NOT_BETWEEN',
-  NotEqual = 'NOT_EQUAL',
-  NotIn = 'NOT_IN'
+  Between = "BETWEEN",
+  Equal = "EQUAL",
+  GreaterThan = "GREATER_THAN",
+  GreaterThanEqual = "GREATER_THAN_EQUAL",
+  In = "IN",
+  IsNotNull = "IS_NOT_NULL",
+  IsNull = "IS_NULL",
+  LessThan = "LESS_THAN",
+  LessThanEqual = "LESS_THAN_EQUAL",
+  NotBetween = "NOT_BETWEEN",
+  NotEqual = "NOT_EQUAL",
+  NotIn = "NOT_IN",
 }
 
 /** OpenSource모델 */
 export type OpenSourceModel = {
-  __typename?: 'OpenSourceModel';
+  __typename?: "OpenSourceModel";
   /** 이메일 */
-  email?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars["String"]["output"]>;
   /** 라이센스 URL */
-  licenseFileUrl?: Maybe<Scalars['String']['output']>;
+  licenseFileUrl?: Maybe<Scalars["String"]["output"]>;
   /** 라이센스 종류 */
-  licenses?: Maybe<Scalars['String']['output']>;
+  licenses?: Maybe<Scalars["String"]["output"]>;
   /** 소스명 */
-  name?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars["String"]["output"]>;
   /** 게시자 */
-  publisher?: Maybe<Scalars['String']['output']>;
+  publisher?: Maybe<Scalars["String"]["output"]>;
   /** 저장소 */
-  repository?: Maybe<Scalars['String']['output']>;
+  repository?: Maybe<Scalars["String"]["output"]>;
 };
 
 /** 정렬 순서 */
 export enum Order {
   /** 오름차순 */
-  Ascending = 'ASCENDING',
+  Ascending = "ASCENDING",
   /** 내림차순 */
-  Descending = 'DESCENDING'
+  Descending = "DESCENDING",
 }
 
 /** 페이지 정보 */
 export type PageInfo = {
-  __typename?: 'PageInfo';
+  __typename?: "PageInfo";
   /** 현재 페이지의 마지막 데이터 커서 */
-  endCursor?: Maybe<Scalars['String']['output']>;
+  endCursor?: Maybe<Scalars["String"]["output"]>;
   /** 다음 페이지 존재 여부 */
-  hasNextPage: Scalars['Boolean']['output'];
+  hasNextPage: Scalars["Boolean"]["output"];
   /** 이전 페이지 존재 여부 */
-  hasPreviousPage: Scalars['Boolean']['output'];
+  hasPreviousPage: Scalars["Boolean"]["output"];
   /** 현재 페이지의 처음 데이터 커서 */
-  startCursor?: Maybe<Scalars['String']['output']>;
+  startCursor?: Maybe<Scalars["String"]["output"]>;
 };
 
 export type Pet = {
-  __typename?: 'Pet';
+  __typename?: "Pet";
   /** 생년월일 */
-  birthDate?: Maybe<Scalars['String']['output']>;
+  birthDate?: Maybe<Scalars["String"]["output"]>;
   /** 품종 */
-  breed?: Maybe<Scalars['String']['output']>;
+  breed?: Maybe<Scalars["String"]["output"]>;
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 성별 */
   gender?: Maybe<PetGenderType>;
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
-  name: Scalars['String']['output'];
+  id: Scalars["ID"]["output"];
+  name: Scalars["String"]["output"];
   /** 성향 */
-  personality?: Maybe<Scalars['String']['output']>;
+  personality?: Maybe<Scalars["String"]["output"]>;
   /** 크기 */
   size?: Maybe<PetSizeEnum>;
   /** 수정 날짜/시간 */
-  updatedAt: Scalars['DateTime']['output'];
+  updatedAt: Scalars["DateTime"]["output"];
 };
 
 export type PetCreateInput = {
   /** 생년월일 */
-  birthDate?: InputMaybe<Scalars['String']['input']>;
+  birthDate?: InputMaybe<Scalars["String"]["input"]>;
   /** 품종 */
-  breed?: InputMaybe<Scalars['String']['input']>;
+  breed?: InputMaybe<Scalars["String"]["input"]>;
   /** 성별 */
   gender?: InputMaybe<PetGenderType>;
-  name: Scalars['String']['input'];
+  name: Scalars["String"]["input"];
   /** 성향 */
-  personality?: InputMaybe<Scalars['String']['input']>;
-  profile__id: Scalars['ID']['input'];
+  personality?: InputMaybe<Scalars["String"]["input"]>;
+  profile__id: Scalars["ID"]["input"];
   /** 크기 */
   size?: InputMaybe<PetSizeEnum>;
 };
 
 export type PetEdge = {
-  __typename?: 'PetEdge';
+  __typename?: "PetEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: Pet;
 };
@@ -3012,28 +2912,28 @@ export type PetFilterInput = {
 
 export enum PetGenderType {
   /** 암컷 */
-  Female = 'FEMALE',
+  Female = "FEMALE",
   /** 수컷 */
-  Male = 'MALE'
+  Male = "MALE",
 }
 
 export type PetList = {
-  __typename?: 'PetList';
+  __typename?: "PetList";
   /** 페이지네이션된 데이터 목록 */
   edges: Array<Maybe<PetEdge>>;
   /** 페이지네이션된 페이지 정보 */
   pageInfo: PageInfo;
   /** 전체 데이터 개 수 */
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export enum PetSizeEnum {
   /** 대형 */
-  Large = 'LARGE',
+  Large = "LARGE",
   /** 중형 */
-  Medium = 'MEDIUM',
+  Medium = "MEDIUM",
   /** 소형 */
-  Small = 'SMALL'
+  Small = "SMALL",
 }
 
 export type PetSortInput = {
@@ -3049,46 +2949,46 @@ export type PetSortInput = {
 
 export type PetUpdateInput = {
   /** 생년월일 */
-  birthDate?: InputMaybe<Scalars['String']['input']>;
+  birthDate?: InputMaybe<Scalars["String"]["input"]>;
   /** 품종 */
-  breed?: InputMaybe<Scalars['String']['input']>;
+  breed?: InputMaybe<Scalars["String"]["input"]>;
   /** 성별 */
   gender?: InputMaybe<PetGenderType>;
-  name?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
   /** 성향 */
-  personality?: InputMaybe<Scalars['String']['input']>;
-  profile__id?: InputMaybe<Scalars['ID']['input']>;
+  personality?: InputMaybe<Scalars["String"]["input"]>;
+  profile__id?: InputMaybe<Scalars["ID"]["input"]>;
   /** 크기 */
   size?: InputMaybe<PetSizeEnum>;
 };
 
 /** 팝업 */
 export type Popup = AdminPost & {
-  __typename?: 'Popup';
+  __typename?: "Popup";
   /** 클릭 액션 */
   action: AdminPostAction;
   /** 내용 */
-  content: Scalars['String']['output'];
+  content: Scalars["String"]["output"];
   /** 커버 이미지 */
-  coverUrl: Scalars['String']['output'];
+  coverUrl: Scalars["String"]["output"];
   /** 링크 URL */
-  linkUrl?: Maybe<Scalars['String']['output']>;
+  linkUrl?: Maybe<Scalars["String"]["output"]>;
   /** 우선순위 */
-  priority?: Maybe<Scalars['Int']['output']>;
+  priority?: Maybe<Scalars["Int"]["output"]>;
   /**
    * 게시 종료일
    * 없을시 2999-12-31 23:59:59.000 +0900 으로 생성
    */
-  publishingPeriodEndAt: Scalars['DateTime']['output'];
+  publishingPeriodEndAt: Scalars["DateTime"]["output"];
   /**
    * 게시 시작일
    * 없을시 1990-01-01 00:00:00.000 +0900 으로 생성
    */
-  publishingPeriodStartAt: Scalars['DateTime']['output'];
+  publishingPeriodStartAt: Scalars["DateTime"]["output"];
   /** 상태 */
   state: AdminPostState;
   /** 제목 */
-  title: Scalars['String']['output'];
+  title: Scalars["String"]["output"];
   /** 타입 */
   type: AdminPostType;
 };
@@ -3098,29 +2998,29 @@ export type PopupCreateInput = {
   /** 클릭 액션 */
   action: AdminPostAction;
   /** 카테고리 ID */
-  categoryId?: InputMaybe<Scalars['ID']['input']>;
+  categoryId?: InputMaybe<Scalars["ID"]["input"]>;
   /** 내용 */
-  content: Scalars['String']['input'];
+  content: Scalars["String"]["input"];
   /** 커버 이미지 */
-  coverUrl: Scalars['String']['input'];
+  coverUrl: Scalars["String"]["input"];
   /** 이동 URL */
-  linkUrl?: InputMaybe<Scalars['String']['input']>;
+  linkUrl?: InputMaybe<Scalars["String"]["input"]>;
   /** 우선순위 */
-  priority?: InputMaybe<Scalars['Int']['input']>;
+  priority?: InputMaybe<Scalars["Int"]["input"]>;
   /**
    * 게시 종료일
    * 없을시 2999-12-31 23:59:59.000 +0900 으로 생성
    */
-  publishingPeriodEndAt: Scalars['DateTime']['input'];
+  publishingPeriodEndAt: Scalars["DateTime"]["input"];
   /**
    * 게시 시작일
    * 없을시 1990-01-01 00:00:00.000 +0900 으로 생성
    */
-  publishingPeriodStartAt: Scalars['DateTime']['input'];
+  publishingPeriodStartAt: Scalars["DateTime"]["input"];
   /** 상태 */
   state?: InputMaybe<AdminPostState>;
   /** 제목 */
-  title: Scalars['String']['input'];
+  title: Scalars["String"]["input"];
 };
 
 /** 팝업 수정 데이터 */
@@ -3128,33 +3028,33 @@ export type PopupUpdateInput = {
   /** 클릭 액션 */
   action?: InputMaybe<AdminPostAction>;
   /** 카테고리 ID */
-  categoryId?: InputMaybe<Scalars['ID']['input']>;
+  categoryId?: InputMaybe<Scalars["ID"]["input"]>;
   /** 내용 */
-  content?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars["String"]["input"]>;
   /** 커버 이미지 */
-  coverUrl?: InputMaybe<Scalars['String']['input']>;
+  coverUrl?: InputMaybe<Scalars["String"]["input"]>;
   /** 이동 URL */
-  linkUrl?: InputMaybe<Scalars['String']['input']>;
+  linkUrl?: InputMaybe<Scalars["String"]["input"]>;
   /** 우선순위 */
-  priority?: InputMaybe<Scalars['Int']['input']>;
+  priority?: InputMaybe<Scalars["Int"]["input"]>;
   /**
    * 게시 종료일
    * 없을시 2999-12-31 23:59:59.000 +0900 으로 생성
    */
-  publishingPeriodEndAt?: InputMaybe<Scalars['DateTime']['input']>;
+  publishingPeriodEndAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /**
    * 게시 시작일
    * 없을시 1990-01-01 00:00:00.000 +0900 으로 생성
    */
-  publishingPeriodStartAt?: InputMaybe<Scalars['DateTime']['input']>;
+  publishingPeriodStartAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** 상태 */
   state?: InputMaybe<AdminPostState>;
   /** 제목 */
-  title?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type Query = {
-  __typename?: 'Query';
+  __typename?: "Query";
   /**
    * 관리자가 작성한 게시물을 조회합니다.
    *
@@ -3303,7 +3203,7 @@ export type Query = {
   termsOfService: TermsOfService;
   termsOfServices: TermsOfServiceList;
   /** 본인이 읽지않은 알림 수 */
-  unReadNotificationCnt: Scalars['Float']['output'];
+  unReadNotificationCnt: Scalars["Float"]["output"];
   /**
    * 특정 사용자를 조회합니다.
    *
@@ -3323,335 +3223,298 @@ export type Query = {
   users: UserList;
 };
 
-
 export type QueryAdminPostArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
 
-
 export type QueryAdminPostsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
   filter?: InputMaybe<Array<AdminPostFilterInput>>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<AdminPostSortInput>>;
 };
 
-
 export type QueryCommunityPostArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
 
-
 export type QueryCommunityPostRepliesArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
   filter?: InputMaybe<Array<CommunityPostReplyFilterInput>>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<CommunityPostReplyOrderByInput>>;
 };
 
-
 export type QueryCommunityPostReplyArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
 
-
 export type QueryCommunityPostsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
   filter?: InputMaybe<Array<CommunityPostFilterInput>>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<CommunityPostOrderByInput>>;
 };
 
-
 export type QueryCommunityReportArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type QueryCommunityReportForAdminArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
 
-
 export type QueryCommunityReportsForAdminArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
   filter?: InputMaybe<Array<CommunityReportFilterInput>>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<CommunityReportOrderByInput>>;
 };
 
-
 export type QueryFileArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type QueryGatheringArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
 
-
 export type QueryGatheringCategoriesArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
   filter?: InputMaybe<Array<GatheringCategoryFilterInput>>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<GatheringCategorySortInput>>;
 };
 
-
 export type QueryGatheringCategoryArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type QueryGatheringTypeArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
 
-
 export type QueryGatheringTypesArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
   filter?: InputMaybe<Array<GatheringTypeFilterInput>>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<GatheringTypeSortInput>>;
 };
 
-
 export type QueryGatheringsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
   filter?: InputMaybe<Array<GatheringFilterInput>>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<GatheringSortInput>>;
 };
 
-
 export type QueryInquireArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type QueryInquireForAdminArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
 
-
 export type QueryInquiresForAdminArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
   filter?: InputMaybe<Array<InquireFilterInput>>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<InquireSortInput>>;
 };
 
-
 export type QueryMyBlockUsersArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
-
 export type QueryMyCommunityReportsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
   filter?: InputMaybe<Array<CommunityReportFilterInput>>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<CommunityReportOrderByInput>>;
 };
 
-
 export type QueryMyInquiresArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
   filter?: InputMaybe<Array<InquireFilterInput>>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<InquireSortInput>>;
 };
 
-
 export type QueryMyNotificationsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  unreadOnly: Scalars['Boolean']['input'];
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  unreadOnly: Scalars["Boolean"]["input"];
 };
 
-
 export type QueryMyReportsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
   filter?: InputMaybe<Array<ReportFilterInput>>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<ReportSortInput>>;
 };
 
-
 export type QueryNotificationArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
-
 
 export type QueryNotificationStorageArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
 
-
 export type QueryNotificationStoragesArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
   filter?: InputMaybe<Array<NotificationStorageFilterInput>>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<NotificationStorageSortInput>>;
 };
 
-
 export type QueryNotificationsForAdminArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
   filter?: InputMaybe<Array<NotificationFilterInput>>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<NotificationSortInput>>;
 };
 
-
 export type QueryPetArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
 
-
 export type QueryPetsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
   filter?: InputMaybe<Array<PetFilterInput>>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<PetSortInput>>;
 };
 
-
 export type QueryReportForAdminArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
 
-
 export type QueryReportsForAdminArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
   filter?: InputMaybe<Array<ReportFilterInput>>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<ReportSortInput>>;
 };
 
-
 export type QuerySurroundingAddressesArgs = {
-  latitude: Scalars['Float']['input'];
-  longitude: Scalars['Float']['input'];
+  latitude: Scalars["Float"]["input"];
+  longitude: Scalars["Float"]["input"];
 };
-
 
 export type QueryTermsOfServiceArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
 
-
 export type QueryTermsOfServicesArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
   filter?: InputMaybe<Array<TermsOfServiceFilterInput>>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<TermsOfServiceSortInput>>;
 };
 
-
 export type QueryUserArgs = {
-  id: Scalars['ID']['input'];
+  id: Scalars["ID"]["input"];
 };
 
-
 export type QueryUsersArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
   filter?: InputMaybe<Array<UserFilterInput>>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<UserOrderInput>>;
 };
 
 /** 신고 내역 */
 export type Report = {
-  __typename?: 'Report';
+  __typename?: "Report";
   /** 관리자용 유저 메모 */
-  adminMemo?: Maybe<Scalars['String']['output']>;
+  adminMemo?: Maybe<Scalars["String"]["output"]>;
   /** 신고 작성자 */
   author: Member;
   /** 신고 대상의 유형 */
   category: ReportCategoryEnumType;
   /** 신고 내용 (500자 이하) */
-  content: Scalars['String']['output'];
+  content: Scalars["String"]["output"];
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 비고 */
-  etc?: Maybe<Scalars['String']['output']>;
+  etc?: Maybe<Scalars["String"]["output"]>;
   /** 신고 파일 */
   files?: Maybe<Array<File>>;
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   /** 신고 처리 상태 */
   state: ReportStateEnumType;
   /** 신고 당한 사용자 */
   targetUser: Member;
   /** 수정 날짜/시간 */
-  updatedAt: Scalars['DateTime']['output'];
+  updatedAt: Scalars["DateTime"]["output"];
 };
 
 export enum ReportCategoryEnumType {
   /** 사용자 신고 */
-  User = 'USER'
+  User = "USER",
 }
 
 /** 신고 생성 */
@@ -3659,18 +3522,18 @@ export type ReportCreateInput = {
   /** 신고 대상의 유형 */
   category: ReportCategoryEnumType;
   /** 신고 내용 (500자 이하) */
-  content: Scalars['String']['input'];
+  content: Scalars["String"]["input"];
   /** 비고 */
-  etc?: InputMaybe<Scalars['String']['input']>;
-  fileIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  etc?: InputMaybe<Scalars["String"]["input"]>;
+  fileIds?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
   /** 신고 당하는 사용자 ID */
-  targetUserId: Scalars['ID']['input'];
+  targetUserId: Scalars["ID"]["input"];
 };
 
 export type ReportEdge = {
-  __typename?: 'ReportEdge';
+  __typename?: "ReportEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: Report;
 };
@@ -3695,13 +3558,13 @@ export type ReportFilterInput = {
 
 /** 신고 목록 */
 export type ReportList = {
-  __typename?: 'ReportList';
+  __typename?: "ReportList";
   /** 페이지네이션된 데이터 목록 */
   edges: Array<Maybe<ReportEdge>>;
   /** 페이지네이션된 페이지 정보 */
   pageInfo: PageInfo;
   /** 전체 데이터 개 수 */
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 /** 신고 정렬 */
@@ -3718,87 +3581,87 @@ export type ReportSortInput = {
 
 export enum ReportStateEnumType {
   /** 완료 */
-  Complete = 'COMPLETE',
+  Complete = "COMPLETE",
   /** 대기중 */
-  Pending = 'PENDING',
+  Pending = "PENDING",
   /** 처리중 */
-  Processing = 'PROCESSING'
+  Processing = "PROCESSING",
 }
 
 /** 신고 수정 */
 export type ReportUpdateInput = {
   /** 관리자 메모 */
-  adminMemo?: InputMaybe<Scalars['String']['input']>;
+  adminMemo?: InputMaybe<Scalars["String"]["input"]>;
   /** 신고 처리 상태 */
   state?: InputMaybe<ReportStateEnumType>;
 };
 
 /** 서비스 운영 정보 */
 export type ServiceManage = {
-  __typename?: 'ServiceManage';
+  __typename?: "ServiceManage";
   /** 사업자등록번호 */
-  businessLicense?: Maybe<Scalars['String']['output']>;
+  businessLicense?: Maybe<Scalars["String"]["output"]>;
   /** 사업지 주소 */
-  companyAddress?: Maybe<Scalars['String']['output']>;
+  companyAddress?: Maybe<Scalars["String"]["output"]>;
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   /** 마켓팅규정 */
-  marketingTerms?: Maybe<Scalars['String']['output']>;
+  marketingTerms?: Maybe<Scalars["String"]["output"]>;
   /** 오픈소스 리스트 */
   openSource?: Maybe<Array<OpenSourceModel>>;
   /** 개인정보처리방침 */
-  personalProcessingPolicy?: Maybe<Scalars['String']['output']>;
+  personalProcessingPolicy?: Maybe<Scalars["String"]["output"]>;
   /** 환불규정 */
-  refundTerms?: Maybe<Scalars['String']['output']>;
+  refundTerms?: Maybe<Scalars["String"]["output"]>;
   /** 대표자명 */
-  representativeName?: Maybe<Scalars['String']['output']>;
+  representativeName?: Maybe<Scalars["String"]["output"]>;
   /** 서비스이용약관 */
-  serviceTerms?: Maybe<Scalars['String']['output']>;
+  serviceTerms?: Maybe<Scalars["String"]["output"]>;
   /** 수정 날짜/시간 */
-  updatedAt: Scalars['DateTime']['output'];
+  updatedAt: Scalars["DateTime"]["output"];
   /** 탈퇴약관 */
-  withdrawalTerms?: Maybe<Scalars['String']['output']>;
+  withdrawalTerms?: Maybe<Scalars["String"]["output"]>;
 };
 
 /** 서비스 운영정보 Update Input */
 export type ServiceManageUpdateInput = {
   /** 사업자등록번호 */
-  businessLicense?: InputMaybe<Scalars['String']['input']>;
+  businessLicense?: InputMaybe<Scalars["String"]["input"]>;
   /** 사업지 주소 */
-  companyAddress?: InputMaybe<Scalars['String']['input']>;
+  companyAddress?: InputMaybe<Scalars["String"]["input"]>;
   /** 마켓팅규정 */
-  marketingTerms?: InputMaybe<Scalars['String']['input']>;
+  marketingTerms?: InputMaybe<Scalars["String"]["input"]>;
   /** 개인정보처리방침 */
-  personalProcessingPolicy?: InputMaybe<Scalars['String']['input']>;
+  personalProcessingPolicy?: InputMaybe<Scalars["String"]["input"]>;
   /** 환불규정 */
-  refundTerms?: InputMaybe<Scalars['String']['input']>;
+  refundTerms?: InputMaybe<Scalars["String"]["input"]>;
   /** 대표자명 */
-  representativeName?: InputMaybe<Scalars['String']['input']>;
+  representativeName?: InputMaybe<Scalars["String"]["input"]>;
   /** 서비스이용약관 */
-  serviceTerms?: InputMaybe<Scalars['String']['input']>;
+  serviceTerms?: InputMaybe<Scalars["String"]["input"]>;
   /** 탈퇴약관 */
-  withdrawalTerms?: InputMaybe<Scalars['String']['input']>;
+  withdrawalTerms?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 /** 회원가입 데이터 */
 export type SignUpInput = {
   /** 이메일 */
-  email?: InputMaybe<Scalars['String']['input']>;
+  email?: InputMaybe<Scalars["String"]["input"]>;
   /** 닉네임 */
-  nickname: Scalars['String']['input'];
+  nickname: Scalars["String"]["input"];
   /** 비밀번호 */
-  password: Scalars['String']['input'];
+  password: Scalars["String"]["input"];
   /** 전화번호 */
-  phoneNumber?: InputMaybe<Scalars['String']['input']>;
+  phoneNumber?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 /** 회원가입 결과 */
 export type SignUpResult = {
-  __typename?: 'SignUpResult';
+  __typename?: "SignUpResult";
   /** 토큰 정보 */
   token: AuthTokenResponse;
   /** 사용자 정보 */
@@ -3807,17 +3670,17 @@ export type SignUpResult = {
 
 /** 회원가입 데이터 */
 export type SocialSignUpInput = {
-  address: Scalars['String']['input'];
-  nickname: Scalars['String']['input'];
+  address: Scalars["String"]["input"];
+  nickname: Scalars["String"]["input"];
   /** 반려동물 이름 */
-  petName: Scalars['String']['input'];
+  petName: Scalars["String"]["input"];
   /** 반려동물 프로필 파일 id */
-  petProfileId: Scalars['ID']['input'];
-  phoneNumber: Scalars['String']['input'];
+  petProfileId: Scalars["ID"]["input"];
+  phoneNumber: Scalars["String"]["input"];
   /** 휴대폰 인증 후 발급받은 고유 코드 */
-  requestId: Scalars['ID']['input'];
+  requestId: Scalars["ID"]["input"];
   /** 동의하는 약관 id */
-  termsOfService__ids: Array<Scalars['ID']['input']>;
+  termsOfService__ids: Array<Scalars["ID"]["input"]>;
 };
 
 /** 정렬 */
@@ -3829,73 +3692,72 @@ export type SortInput = {
 /** 문자열(String) 필터 */
 export type StringFilterInput = {
   operator: StringFilterOperators;
-  value?: InputMaybe<Scalars['String']['input']>;
-  values?: InputMaybe<Array<Scalars['ID']['input']>>;
+  value?: InputMaybe<Scalars["String"]["input"]>;
+  values?: InputMaybe<Array<Scalars["ID"]["input"]>>;
 };
 
 /** 문자열 필터 연산자 */
 export enum StringFilterOperators {
-  Equal = 'EQUAL',
-  Ilike = 'ILIKE',
-  In = 'IN',
-  IsNotNull = 'IS_NOT_NULL',
-  IsNull = 'IS_NULL',
-  Like = 'LIKE',
-  NotEqual = 'NOT_EQUAL',
-  NotIlike = 'NOT_ILIKE',
-  NotIn = 'NOT_IN',
-  NotLike = 'NOT_LIKE'
+  Equal = "EQUAL",
+  Ilike = "ILIKE",
+  In = "IN",
+  IsNotNull = "IS_NOT_NULL",
+  IsNull = "IS_NULL",
+  Like = "LIKE",
+  NotEqual = "NOT_EQUAL",
+  NotIlike = "NOT_ILIKE",
+  NotIn = "NOT_IN",
+  NotLike = "NOT_LIKE",
 }
 
 /** 문자열 정렬 */
 export type StringSortInput = {
-  case?: InputMaybe<Array<Scalars['String']['input']>>;
+  case?: InputMaybe<Array<Scalars["String"]["input"]>>;
   nulls?: InputMaybe<Nulls>;
   order: Order;
 };
 
 export type Subscription = {
-  __typename?: 'Subscription';
+  __typename?: "Subscription";
   /** 커뮤니티 게시물 댓글 수신 */
   receiveCommunityPostReply: CommunityPostReply;
 };
 
-
 export type SubscriptionReceiveCommunityPostReplyArgs = {
-  rootId: Scalars['ID']['input'];
+  rootId: Scalars["ID"]["input"];
 };
 
 export type TermsOfService = {
-  __typename?: 'TermsOfService';
+  __typename?: "TermsOfService";
   /** 약관 내용 */
-  content: Scalars['String']['output'];
+  content: Scalars["String"]["output"];
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   /** 동의 필수 여부 */
-  isRequired: Scalars['Boolean']['output'];
+  isRequired: Scalars["Boolean"]["output"];
   /** 약관명 */
-  name: Scalars['String']['output'];
+  name: Scalars["String"]["output"];
   /** 수정 날짜/시간 */
-  updatedAt: Scalars['DateTime']['output'];
+  updatedAt: Scalars["DateTime"]["output"];
 };
 
 export type TermsOfServiceCreateInputForAdmin = {
   /** 약관 내용 */
-  content: Scalars['String']['input'];
+  content: Scalars["String"]["input"];
   /** 동의 필수 여부 */
-  isRequired: Scalars['Boolean']['input'];
+  isRequired: Scalars["Boolean"]["input"];
   /** 약관명 */
-  name: Scalars['String']['input'];
+  name: Scalars["String"]["input"];
 };
 
 export type TermsOfServiceEdge = {
-  __typename?: 'TermsOfServiceEdge';
+  __typename?: "TermsOfServiceEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: TermsOfService;
 };
@@ -3912,13 +3774,13 @@ export type TermsOfServiceFilterInput = {
 };
 
 export type TermsOfServiceList = {
-  __typename?: 'TermsOfServiceList';
+  __typename?: "TermsOfServiceList";
   /** 페이지네이션된 데이터 목록 */
   edges: Array<Maybe<TermsOfServiceEdge>>;
   /** 페이지네이션된 페이지 정보 */
   pageInfo: PageInfo;
   /** 전체 데이터 개 수 */
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type TermsOfServiceSortInput = {
@@ -3934,34 +3796,34 @@ export type TermsOfServiceSortInput = {
 
 export type TermsOfServiceUpdateInputForAdmin = {
   /** 약관 내용 */
-  content: Scalars['String']['input'];
+  content: Scalars["String"]["input"];
   /** 동의 필수 여부 */
-  isRequired: Scalars['Boolean']['input'];
+  isRequired: Scalars["Boolean"]["input"];
   /** 약관명 */
-  name: Scalars['String']['input'];
+  name: Scalars["String"]["input"];
 };
 
 /** 사용자 */
 export type User = {
   /** 관리자용 유저 메모 */
-  adminMemo?: Maybe<Scalars['String']['output']>;
-  communityPostCount: Scalars['Int']['output'];
-  communityPostHideCount: Scalars['Int']['output'];
-  communityPostLikeCount: Scalars['Int']['output'];
+  adminMemo?: Maybe<Scalars["String"]["output"]>;
+  communityPostCount: Scalars["Int"]["output"];
+  communityPostHideCount: Scalars["Int"]["output"];
+  communityPostLikeCount: Scalars["Int"]["output"];
   /** 이메일 */
-  email?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars["String"]["output"]>;
   /** UUID */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   /** 고유번호 */
-  idx: Scalars['Int']['output'];
+  idx: Scalars["Int"]["output"];
   /** 가입 날짜/시간 */
-  joinedAt: Scalars['DateTime']['output'];
+  joinedAt: Scalars["DateTime"]["output"];
   /** 탈퇴 날짜/시간 */
-  leavedAt?: Maybe<Scalars['DateTime']['output']>;
+  leavedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 닉네임 */
-  nickname?: Maybe<Scalars['String']['output']>;
+  nickname?: Maybe<Scalars["String"]["output"]>;
   /** 전화번호 */
-  phoneNumber?: Maybe<Scalars['String']['output']>;
+  phoneNumber?: Maybe<Scalars["String"]["output"]>;
   /** 권한 타입 */
   role: UserRole;
   /** 소셜 서비스 연결 리스트 */
@@ -3969,78 +3831,78 @@ export type User = {
   /** 상태 */
   state: UserState;
   /** 정지 처리된 시간 */
-  suspendedAt?: Maybe<Scalars['DateTime']['output']>;
+  suspendedAt?: Maybe<Scalars["DateTime"]["output"]>;
 };
 
 /** 차단 기록 */
 export type UserBlock = {
-  __typename?: 'UserBlock';
+  __typename?: "UserBlock";
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   user: User;
 };
 
 export type UserBlockEdge = {
-  __typename?: 'UserBlockEdge';
+  __typename?: "UserBlockEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: UserBlock;
 };
 
 /** 차단 기록 목록 */
 export type UserBlockList = {
-  __typename?: 'UserBlockList';
+  __typename?: "UserBlockList";
   /** 페이지네이션된 데이터 목록 */
   edges: Array<Maybe<UserBlockEdge>>;
   /** 페이지네이션된 페이지 정보 */
   pageInfo: PageInfo;
   /** 전체 데이터 개 수 */
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type UserEdge = {
-  __typename?: 'UserEdge';
+  __typename?: "UserEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: User;
 };
 
 /** 사용자 FCM 토큰 */
 export type UserFcmToken = {
-  __typename?: 'UserFCMToken';
+  __typename?: "UserFCMToken";
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** FCM 등록 토큰 */
-  fcmRegistrationToken: Scalars['String']['output'];
+  fcmRegistrationToken: Scalars["String"]["output"];
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   /** OS */
   os: FcmTokenOsEnum;
   /** 수정 날짜/시간 */
-  updatedAt: Scalars['DateTime']['output'];
+  updatedAt: Scalars["DateTime"]["output"];
   user: User;
 };
 
 /** 사용자 FCM 토큰 추가 */
 export type UserFcmTokenAddInput = {
   /** FCM 등록 토큰 */
-  fcmRegistrationToken: Scalars['String']['input'];
+  fcmRegistrationToken: Scalars["String"]["input"];
   /** OS */
   os: FcmTokenOsEnum;
 };
 
 export type UserFcmTokenEdge = {
-  __typename?: 'UserFCMTokenEdge';
+  __typename?: "UserFCMTokenEdge";
   /** 커서 */
-  cursor: Scalars['String']['output'];
+  cursor: Scalars["String"]["output"];
   /** 노드 */
   node: UserFcmToken;
 };
@@ -4068,38 +3930,38 @@ export type UserFilterInput = {
 
 /** 사용자 목록 */
 export type UserList = {
-  __typename?: 'UserList';
+  __typename?: "UserList";
   /** 페이지네이션된 데이터 목록 */
   edges: Array<Maybe<UserEdge>>;
   /** 페이지네이션된 페이지 정보 */
   pageInfo: PageInfo;
   /** 전체 데이터 개 수 */
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 /** 사용자 알림 설정 */
 export type UserNotificationSetting = {
-  __typename?: 'UserNotificationSetting';
+  __typename?: "UserNotificationSetting";
   /** 채팅 */
-  chat?: Maybe<Scalars['Boolean']['output']>;
+  chat?: Maybe<Scalars["Boolean"]["output"]>;
   /** 댓글 */
-  comment?: Maybe<Scalars['Boolean']['output']>;
+  comment?: Maybe<Scalars["Boolean"]["output"]>;
   /** 모임 */
-  gathering?: Maybe<Scalars['Boolean']['output']>;
+  gathering?: Maybe<Scalars["Boolean"]["output"]>;
   /** 일정 */
-  schedule?: Maybe<Scalars['Boolean']['output']>;
+  schedule?: Maybe<Scalars["Boolean"]["output"]>;
 };
 
 /** 사용자 알림 설정 수정 */
 export type UserNotificationSettingUpdateInput = {
   /** 채팅 */
-  chat?: InputMaybe<Scalars['Boolean']['input']>;
+  chat?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** 댓글 */
-  comment?: InputMaybe<Scalars['Boolean']['input']>;
+  comment?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** 모임 */
-  gathering?: InputMaybe<Scalars['Boolean']['input']>;
+  gathering?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** 일정 */
-  schedule?: InputMaybe<Scalars['Boolean']['input']>;
+  schedule?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
 /** 사용자 정렬 */
@@ -4125,30 +3987,30 @@ export type UserOrderInput = {
 /** 프로필 수정 */
 export type UserProfileUpdateInput = {
   /** 프로필 설명 */
-  description?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars["String"]["input"]>;
   /** 홈페이지 등 링크 */
-  url?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 /** 사용자 권한 */
 export enum UserRole {
   /** 관리자 */
-  Admin = 'ADMIN',
+  Admin = "ADMIN",
   /** 일반 사용자 */
-  Member = 'MEMBER'
+  Member = "MEMBER",
 }
 
 /** 사용자 소셜 서비스 연결 */
 export type UserSocialLink = {
-  __typename?: 'UserSocialLink';
+  __typename?: "UserSocialLink";
   /** 생성 날짜/시간 */
-  createdAt: Scalars['DateTime']['output'];
+  createdAt: Scalars["DateTime"]["output"];
   /** 삭제 날짜/시간 */
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars["DateTime"]["output"]>;
   /** 이메일 */
-  email?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars["String"]["output"]>;
   /** 기본 키(UUID) */
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   /** 소셜 서비스 종류 */
   socialType: UserSocialType;
 };
@@ -4156,27 +4018,27 @@ export type UserSocialLink = {
 /** 사용자 소셜 종류 */
 export enum UserSocialType {
   /** 애플 */
-  Apple = 'APPLE',
+  Apple = "APPLE",
   /** 구글 */
-  Google = 'GOOGLE',
+  Google = "GOOGLE",
   /** 카카오 */
-  Kakao = 'KAKAO',
+  Kakao = "KAKAO",
   /** 네이버 */
-  Naver = 'NAVER'
+  Naver = "NAVER",
 }
 
 /** 사용자 상태 */
 export enum UserState {
   /** 활성화 상태 */
-  Active = 'ACTIVE',
+  Active = "ACTIVE",
   /** 비활성화 상태 - 휴면계정 */
-  Inactive = 'INACTIVE',
+  Inactive = "INACTIVE",
   /** 탈퇴상태 */
-  Leaved = 'LEAVED',
+  Leaved = "LEAVED",
   /** 가입 대기중 */
-  Pending = 'PENDING',
+  Pending = "PENDING",
   /** 정지 */
-  Suspended = 'SUSPENDED'
+  Suspended = "SUSPENDED",
 }
 
 /** 사용자 타입 필터 */
@@ -4196,67 +4058,50 @@ export type UserTypeSortInput = {
 /** 사용자 수정 데이터 */
 export type UserUpdateInput = {
   /** 이메일 */
-  email?: InputMaybe<Scalars['String']['input']>;
+  email?: InputMaybe<Scalars["String"]["input"]>;
   /** 닉네임 */
-  nickname?: InputMaybe<Scalars['String']['input']>;
+  nickname?: InputMaybe<Scalars["String"]["input"]>;
   notificationSetting?: InputMaybe<UserNotificationSettingUpdateInput>;
   /** 전화번호 */
-  phoneNumber?: InputMaybe<Scalars['String']['input']>;
+  phoneNumber?: InputMaybe<Scalars["String"]["input"]>;
   profile?: InputMaybe<UserProfileUpdateInput>;
 };
 
-export type MeQueryVariables = Exact<{ [key: string]: never; }>;
+export type MeQueryVariables = Exact<{ [key: string]: never }>;
 
-
-export type MeQuery = (
-  { __typename?: 'Query' }
-  & { me: (
-    { __typename?: 'Member' }
-    & Pick<Member, 'id'>
-  ) }
-);
+export type MeQuery = { __typename?: "Query" } & { me: { __typename?: "Member" } & Pick<Member, "id"> };
 
 export type TermsOfServiceQueryVariables = Exact<{
-  termsOfServiceId: Scalars['ID']['input'];
+  termsOfServiceId: Scalars["ID"]["input"];
 }>;
 
-
-export type TermsOfServiceQuery = (
-  { __typename?: 'Query' }
-  & { termsOfService: (
-    { __typename?: 'TermsOfService' }
-    & Pick<TermsOfService, 'content' | 'id' | 'name'>
-  ) }
-);
+export type TermsOfServiceQuery = { __typename?: "Query" } & {
+  termsOfService: { __typename?: "TermsOfService" } & Pick<TermsOfService, "content" | "id" | "name">;
+};
 
 export type TermsOfServicesQueryVariables = Exact<{
   sort?: InputMaybe<Array<TermsOfServiceSortInput> | TermsOfServiceSortInput>;
 }>;
 
-
-export type TermsOfServicesQuery = (
-  { __typename?: 'Query' }
-  & { termsOfServices: (
-    { __typename?: 'TermsOfServiceList' }
-    & Pick<TermsOfServiceList, 'totalCount'>
-    & { edges: Array<Maybe<(
-      { __typename?: 'TermsOfServiceEdge' }
-      & { node: (
-        { __typename?: 'TermsOfService' }
-        & Pick<TermsOfService, 'id' | 'name' | 'updatedAt'>
-      ) }
-    )>> }
-  ) }
-);
-
+export type TermsOfServicesQuery = { __typename?: "Query" } & {
+  termsOfServices: { __typename?: "TermsOfServiceList" } & Pick<TermsOfServiceList, "totalCount"> & {
+      edges: Array<
+        Maybe<
+          { __typename?: "TermsOfServiceEdge" } & {
+            node: { __typename?: "TermsOfService" } & Pick<TermsOfService, "id" | "name" | "updatedAt">;
+          }
+        >
+      >;
+    };
+};
 
 export const MeDocument = gql`
-    query Me {
-  me {
-    id
+  query Me {
+    me {
+      id
+    }
   }
-}
-    `;
+`;
 
 /**
  * __useMeQuery__
@@ -4274,25 +4119,25 @@ export const MeDocument = gql`
  * });
  */
 export function useMeQuery(baseOptions?: Apollo.QueryHookOptions<MeQuery, MeQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<MeQuery, MeQueryVariables>(MeDocument, options);
-      }
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<MeQuery, MeQueryVariables>(MeDocument, options);
+}
 export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery, MeQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options);
-        }
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options);
+}
 export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
 export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>;
 export const TermsOfServiceDocument = gql`
-    query TermsOfService($termsOfServiceId: ID!) {
-  termsOfService(id: $termsOfServiceId) {
-    content
-    id
-    name
+  query TermsOfService($termsOfServiceId: ID!) {
+    termsOfService(id: $termsOfServiceId) {
+      content
+      id
+      name
+    }
   }
-}
-    `;
+`;
 
 /**
  * __useTermsOfServiceQuery__
@@ -4310,31 +4155,35 @@ export const TermsOfServiceDocument = gql`
  *   },
  * });
  */
-export function useTermsOfServiceQuery(baseOptions: Apollo.QueryHookOptions<TermsOfServiceQuery, TermsOfServiceQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<TermsOfServiceQuery, TermsOfServiceQueryVariables>(TermsOfServiceDocument, options);
-      }
-export function useTermsOfServiceLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TermsOfServiceQuery, TermsOfServiceQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<TermsOfServiceQuery, TermsOfServiceQueryVariables>(TermsOfServiceDocument, options);
-        }
+export function useTermsOfServiceQuery(
+  baseOptions: Apollo.QueryHookOptions<TermsOfServiceQuery, TermsOfServiceQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<TermsOfServiceQuery, TermsOfServiceQueryVariables>(TermsOfServiceDocument, options);
+}
+export function useTermsOfServiceLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<TermsOfServiceQuery, TermsOfServiceQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<TermsOfServiceQuery, TermsOfServiceQueryVariables>(TermsOfServiceDocument, options);
+}
 export type TermsOfServiceQueryHookResult = ReturnType<typeof useTermsOfServiceQuery>;
 export type TermsOfServiceLazyQueryHookResult = ReturnType<typeof useTermsOfServiceLazyQuery>;
 export type TermsOfServiceQueryResult = Apollo.QueryResult<TermsOfServiceQuery, TermsOfServiceQueryVariables>;
 export const TermsOfServicesDocument = gql`
-    query TermsOfServices($sort: [TermsOfServiceSortInput!]) {
-  termsOfServices(sort: $sort) {
-    totalCount
-    edges {
-      node {
-        id
-        name
-        updatedAt
+  query TermsOfServices($sort: [TermsOfServiceSortInput!]) {
+    termsOfServices(sort: $sort) {
+      totalCount
+      edges {
+        node {
+          id
+          name
+          updatedAt
+        }
       }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useTermsOfServicesQuery__
@@ -4352,14 +4201,18 @@ export const TermsOfServicesDocument = gql`
  *   },
  * });
  */
-export function useTermsOfServicesQuery(baseOptions?: Apollo.QueryHookOptions<TermsOfServicesQuery, TermsOfServicesQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<TermsOfServicesQuery, TermsOfServicesQueryVariables>(TermsOfServicesDocument, options);
-      }
-export function useTermsOfServicesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TermsOfServicesQuery, TermsOfServicesQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<TermsOfServicesQuery, TermsOfServicesQueryVariables>(TermsOfServicesDocument, options);
-        }
+export function useTermsOfServicesQuery(
+  baseOptions?: Apollo.QueryHookOptions<TermsOfServicesQuery, TermsOfServicesQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<TermsOfServicesQuery, TermsOfServicesQueryVariables>(TermsOfServicesDocument, options);
+}
+export function useTermsOfServicesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<TermsOfServicesQuery, TermsOfServicesQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<TermsOfServicesQuery, TermsOfServicesQueryVariables>(TermsOfServicesDocument, options);
+}
 export type TermsOfServicesQueryHookResult = ReturnType<typeof useTermsOfServicesQuery>;
 export type TermsOfServicesLazyQueryHookResult = ReturnType<typeof useTermsOfServicesLazyQuery>;
 export type TermsOfServicesQueryResult = Apollo.QueryResult<TermsOfServicesQuery, TermsOfServicesQueryVariables>;
