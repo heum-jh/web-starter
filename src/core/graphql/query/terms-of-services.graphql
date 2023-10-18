@@ -1,0 +1,12 @@
+query TermsOfServices($sort: [TermsOfServiceSortInput!]) {
+  termsOfServices(sort: $sort) {
+    totalCount
+    edges {
+      node {
+        id
+        name
+        updatedAt
+      }
+    }
+  }
+}

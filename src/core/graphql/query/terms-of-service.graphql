@@ -1,0 +1,7 @@
+query TermsOfService($termsOfServiceId: ID!) {
+  termsOfService(id: $termsOfServiceId) {
+    content
+    id
+    name
+  }
+}

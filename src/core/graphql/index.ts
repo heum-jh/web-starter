@@ -19,6 +19,28 @@ export type Scalars = {
   PhoneNumber: { input: any; output: any; }
 };
 
+export type Address = {
+  __typename?: 'Address';
+  /** 읍면동 */
+  eupmyeondong: Scalars['String']['output'];
+  /** 위도 */
+  latitude: Scalars['Float']['output'];
+  /** 경도 */
+  longitude: Scalars['Float']['output'];
+  /** 시도 */
+  sido: Scalars['String']['output'];
+  /** 시군구 */
+  sigungu?: Maybe<Scalars['String']['output']>;
+};
+
+export type AddressEdge = {
+  __typename?: 'AddressEdge';
+  /** 커서 */
+  cursor: Scalars['String']['output'];
+  /** 노드 */
+  node: Address;
+};
+
 /** 관리자 */
 export type Admin = User & {
   __typename?: 'Admin';
@@ -3277,6 +3299,7 @@ export type Query = {
   reportsForAdmin: ReportList;
   /** 서비스 운영 정보 */
   serviceManage: ServiceManage;
+  surroundingAddresses: Array<Address>;
   termsOfService: TermsOfService;
   termsOfServices: TermsOfServiceList;
   /** 본인이 읽지않은 알림 수 */
@@ -3557,6 +3580,12 @@ export type QueryReportsForAdminArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   sort?: InputMaybe<Array<ReportSortInput>>;
+};
+
+
+export type QuerySurroundingAddressesArgs = {
+  latitude: Scalars['Float']['input'];
+  longitude: Scalars['Float']['input'];
 };
 
 
@@ -4187,6 +4216,39 @@ export type MeQuery = (
   ) }
 );
 
+export type TermsOfServiceQueryVariables = Exact<{
+  termsOfServiceId: Scalars['ID']['input'];
+}>;
+
+
+export type TermsOfServiceQuery = (
+  { __typename?: 'Query' }
+  & { termsOfService: (
+    { __typename?: 'TermsOfService' }
+    & Pick<TermsOfService, 'content' | 'id' | 'name'>
+  ) }
+);
+
+export type TermsOfServicesQueryVariables = Exact<{
+  sort?: InputMaybe<Array<TermsOfServiceSortInput> | TermsOfServiceSortInput>;
+}>;
+
+
+export type TermsOfServicesQuery = (
+  { __typename?: 'Query' }
+  & { termsOfServices: (
+    { __typename?: 'TermsOfServiceList' }
+    & Pick<TermsOfServiceList, 'totalCount'>
+    & { edges: Array<Maybe<(
+      { __typename?: 'TermsOfServiceEdge' }
+      & { node: (
+        { __typename?: 'TermsOfService' }
+        & Pick<TermsOfService, 'id' | 'name' | 'updatedAt'>
+      ) }
+    )>> }
+  ) }
+);
+
 
 export const MeDocument = gql`
     query Me {
@@ -4222,3 +4284,82 @@ export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery
 export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
 export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>;
+export const TermsOfServiceDocument = gql`
+    query TermsOfService($termsOfServiceId: ID!) {
+  termsOfService(id: $termsOfServiceId) {
+    content
+    id
+    name
+  }
+}
+    `;
+
+/**
+ * __useTermsOfServiceQuery__
+ *
+ * To run a query within a React component, call `useTermsOfServiceQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTermsOfServiceQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTermsOfServiceQuery({
+ *   variables: {
+ *      termsOfServiceId: // value for 'termsOfServiceId'
+ *   },
+ * });
+ */
+export function useTermsOfServiceQuery(baseOptions: Apollo.QueryHookOptions<TermsOfServiceQuery, TermsOfServiceQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TermsOfServiceQuery, TermsOfServiceQueryVariables>(TermsOfServiceDocument, options);
+      }
+export function useTermsOfServiceLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TermsOfServiceQuery, TermsOfServiceQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TermsOfServiceQuery, TermsOfServiceQueryVariables>(TermsOfServiceDocument, options);
+        }
+export type TermsOfServiceQueryHookResult = ReturnType<typeof useTermsOfServiceQuery>;
+export type TermsOfServiceLazyQueryHookResult = ReturnType<typeof useTermsOfServiceLazyQuery>;
+export type TermsOfServiceQueryResult = Apollo.QueryResult<TermsOfServiceQuery, TermsOfServiceQueryVariables>;
+export const TermsOfServicesDocument = gql`
+    query TermsOfServices($sort: [TermsOfServiceSortInput!]) {
+  termsOfServices(sort: $sort) {
+    totalCount
+    edges {
+      node {
+        id
+        name
+        updatedAt
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useTermsOfServicesQuery__
+ *
+ * To run a query within a React component, call `useTermsOfServicesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTermsOfServicesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTermsOfServicesQuery({
+ *   variables: {
+ *      sort: // value for 'sort'
+ *   },
+ * });
+ */
+export function useTermsOfServicesQuery(baseOptions?: Apollo.QueryHookOptions<TermsOfServicesQuery, TermsOfServicesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TermsOfServicesQuery, TermsOfServicesQueryVariables>(TermsOfServicesDocument, options);
+      }
+export function useTermsOfServicesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TermsOfServicesQuery, TermsOfServicesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TermsOfServicesQuery, TermsOfServicesQueryVariables>(TermsOfServicesDocument, options);
+        }
+export type TermsOfServicesQueryHookResult = ReturnType<typeof useTermsOfServicesQuery>;
+export type TermsOfServicesLazyQueryHookResult = ReturnType<typeof useTermsOfServicesLazyQuery>;
+export type TermsOfServicesQueryResult = Apollo.QueryResult<TermsOfServicesQuery, TermsOfServicesQueryVariables>;
